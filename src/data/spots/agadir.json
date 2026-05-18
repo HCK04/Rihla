@@ -1,0 +1,317 @@
+[
+  {
+    "id": "aga-souss-massa",
+    "city": "agadir",
+    "name": {
+      "en": "Souss-Massa National Park",
+      "fr": "Parc National de Souss-Massa",
+      "ar": "المنتزه الوطني للسوس ماسة"
+    },
+    "category": "nature",
+    "rarity": 44,
+    "reviewCount": 11000,
+    "photoCount": 46000,
+    "distanceFromCenter": 40,
+    "description": {
+      "en": "An Atlantic coastal biosphere reserve where endangered bald ibises nest, flamingos winter in river estuaries, and golden jackals hunt at dusk — one of the most biodiverse protected areas in North Africa.",
+      "fr": "Une réserve de biosphère côtière atlantique où nichent les ibis chauves en danger, les flamants hivernent dans les estuaires et les chacals dorés chassent au crépuscule.",
+      "ar": "محمية أحياء ساحلية أطلسية حيث تعشش أبو منجل الأصلع المهددة بالانقراض وتشتي أسراب الفلامينغو في مصبات الأنهار."
+    },
+    "culturalStory": {
+      "en": "Souss-Massa was established in 1991 specifically to protect the Northern Bald Ibis (Geronticus eremita), one of the world's most critically endangered birds, with a wild population of fewer than 600 individuals. The park's estuary systems — where the Souss and Massa rivers meet the Atlantic — create a rare convergence of freshwater and marine ecosystems on the same coast. The Berber communities who have farmed and fished this coast for millennia are still integrated into the park's management through traditional resource-use agreements."
+    },
+    "bestTime": "dawn for birds",
+    "image": "/spots/aga-souss-massa.jpg",
+    "coordinates": [
+      30.0833,
+      -9.6167
+    ],
+    "tags": [
+      "nature",
+      "bald ibis",
+      "birdwatching",
+      "flamingos",
+      "biosphere"
+    ]
+  },
+  {
+    "id": "aga-kasbah",
+    "city": "agadir",
+    "name": {
+      "en": "Agadir Kasbah",
+      "fr": "Kasbah d'Agadir",
+      "ar": "قصبة أكادير"
+    },
+    "category": "culture",
+    "rarity": 50,
+    "reviewCount": 8400,
+    "photoCount": 36000,
+    "distanceFromCenter": 3.5,
+    "description": {
+      "en": "The ruined hilltop fortress that survived the 1960 earthquake — now an archaeological site with a haunting inscription in three languages above its gate, overlooking a rebuilt city and the Atlantic below.",
+      "fr": "La forteresse en ruine sur la colline qui a survécu au tremblement de terre de 1960 — un site archéologique avec une inscription poignante en trois langues au-dessus de sa porte.",
+      "ar": "القلعة المتهالكة على التل التي نجت من زلزال 1960 — موقع أثري بنقش مؤثر بثلاث لغات فوق بوابته يطل على مدينة مُعادة البناء والمحيط."
+    },
+    "culturalStory": {
+      "en": "The earthquake that struck Agadir on 29 February 1960 killed 15,000 people in 15 seconds and destroyed 70% of the city. The Kasbah, built in 1541, was the only significant structure to survive more or less intact. Its gate carries an inscription in Tifinagh (Berber script), Arabic, and Dutch: 'If destiny is against you, it will find you even in paradise; if it is for you, it will find you even in the ruins.' Modern Agadir was rebuilt entirely from scratch — a rare opportunity that created one of the most planned cities in Africa, with wide boulevards, zoned districts, and earthquake-resistant architecture."
+    },
+    "bestTime": "sunset",
+    "image": "/spots/aga-kasbah.jpg",
+    "coordinates": [
+      30.4386,
+      -9.5832
+    ],
+    "tags": [
+      "ruins",
+      "earthquake",
+      "historic",
+      "viewpoint",
+      "Berber"
+    ]
+  },
+  {
+    "id": "aga-tiznit-souk",
+    "city": "agadir",
+    "name": {
+      "en": "Tiznit Silver Souk",
+      "fr": "Souk de l'Argent de Tiznit",
+      "ar": "سوق الفضة في تيزنيت"
+    },
+    "category": "market",
+    "rarity": 62,
+    "reviewCount": 5800,
+    "photoCount": 21000,
+    "distanceFromCenter": 95,
+    "description": {
+      "en": "A covered silversmith souk in the nearby walled town of Tiznit — Amazigh craftsmen still use 19th-century techniques to produce the iconic blue enamel and silver jewellery of southern Morocco.",
+      "fr": "Un souk d'orfèvres couvert dans la ville fortifiée voisine de Tiznit — des artisans amazighs utilisent encore des techniques du XIXe siècle pour produire la bijouterie emblématique en émail bleu et argent.",
+      "ar": "سوق صاغة مغطى في مدينة تيزنيت المسوّرة القريبة — حرفيون أمازيغ لا يزالون يستخدمون تقنيات القرن التاسع عشر لإنتاج مجوهرات الفضة والمينا الزرقاء."
+    },
+    "culturalStory": {
+      "en": "Tiznit was founded in 1882 by Sultan Hassan I specifically as a military garrison for campaigns into the Sahara. The town quickly became the silversmith capital of southern Morocco because the Berber tribes of the Anti-Atlas had been master silversmiths for centuries, trading their work as far as Timbuktu. The blue enamel technique (called tazra) used here is distinct from any other Moroccan jewellery tradition and is found nowhere else in the world. The souk is still entirely local — prices are fixed by craft knowledge, not tourist negotiation."
+    },
+    "bestTime": "morning",
+    "image": "/spots/aga-tiznit.jpg",
+    "coordinates": [
+      29.6977,
+      -9.7315
+    ],
+    "tags": [
+      "silver",
+      "market",
+      "Amazigh",
+      "crafts",
+      "Berber jewellery"
+    ]
+  },
+  {
+    "id": "aga-old-souk",
+    "city": "agadir",
+    "name": {
+      "en": "Souk El Had",
+      "fr": "Souk El Had",
+      "ar": "سوق الأحد"
+    },
+    "category": "market",
+    "rarity": 55,
+    "reviewCount": 9200,
+    "photoCount": 34000,
+    "distanceFromCenter": 1.8,
+    "description": {
+      "en": "One of Morocco's largest covered markets — 6,000 stalls selling argan oil, dried herbs, Berber carpets, saffron from Taliouine, and dates in a sprawling complex where Souss valley farmers still trade alongside Amazigh artisans.",
+      "fr": "L'un des plus grands marchés couverts du Maroc — 6 000 stands vendant huile d'argan, herbes séchées, tapis berbères et safran de Taliouine.",
+      "ar": "أحد أكبر الأسواق المغطاة في المغرب — 6000 كشك تبيع زيت الأرجان والأعشاب المجففة والسجاد البربري والزعفران من تالووين."
+    },
+    "culturalStory": {
+      "en": "Souk El Had (Sunday Market) was established after the 1960 earthquake as part of Agadir's planned reconstruction — one of the few elements of the new city designed to replicate the traditional weekly market cycle. Despite the planned origins, it has evolved into a genuinely organic trading space. The argan oil sold here comes from the Souss Valley cooperative women's collectives — a UNESCO-recognised agro-pastoral tradition where Berber women harvest and cold-press argan by hand. Saffron from nearby Taliouine is among the world's finest."
+    },
+    "bestTime": "morning",
+    "image": "/spots/aga-souk-had.jpg",
+    "coordinates": [
+      30.4222,
+      -9.5987
+    ],
+    "tags": [
+      "market",
+      "argan oil",
+      "saffron",
+      "Berber",
+      "local life"
+    ]
+  },
+  {
+    "id": "aga-aghroud-beach",
+    "city": "agadir",
+    "name": {
+      "en": "Aghroud Beach",
+      "fr": "Plage d'Aghroud",
+      "ar": "شاطئ أغرود"
+    },
+    "category": "nature",
+    "rarity": 78,
+    "reviewCount": 1100,
+    "photoCount": 4200,
+    "distanceFromCenter": 8,
+    "description": {
+      "en": "A completely undeveloped Atlantic beach 8 km north of Agadir's tourist zone — no facilities, no beach clubs, massive surf, and the kind of solitude that is almost impossible to find on the Moroccan coast in July.",
+      "fr": "Une plage atlantique totalement non aménagée à 8 km au nord de la zone touristique d'Agadir — aucune installation, pas de clubs de plage, un surf massif.",
+      "ar": "شاطئ أطلسي غير مُطوَّر تماماً على بعد 8 كم شمال المنطقة السياحية في أكادير — لا مرافق ولا نوادي شاطئ وأمواج عملاقة."
+    },
+    "culturalStory": {
+      "en": "Aghroud is separated from Agadir's main beach by the river mouth of the Souss, which makes it difficult to reach without transport and effectively keeps tourist development out. The beach is used by local surfers — Agadir has produced some of Morocco's best surfers — and by Souss valley families who make the trip for its wild conditions. The surf here is genuinely powerful: Atlantic swells arrive unbroken from thousands of kilometres of open ocean. On flat days, the beach is empty, the dunes intact, and the water cold and clear."
+    },
+    "bestTime": "morning for surf, evening for solitude",
+    "image": "/spots/aga-aghroud.jpg",
+    "coordinates": [
+      30.4582,
+      -9.6134
+    ],
+    "tags": [
+      "beach",
+      "surf",
+      "hidden",
+      "wild",
+      "solitude"
+    ]
+  },
+  {
+    "id": "aga-argan-cooperative",
+    "city": "agadir",
+    "name": {
+      "en": "Tifaout Argan Cooperative",
+      "fr": "Coopérative Tifaout d'Argan",
+      "ar": "تعاونية تيفاوت للأرجان"
+    },
+    "category": "culture",
+    "rarity": 66,
+    "reviewCount": 4300,
+    "photoCount": 16000,
+    "distanceFromCenter": 22,
+    "description": {
+      "en": "A women-run argan oil cooperative in the Souss Valley where you can watch the entire UNESCO-recognised process — goats climbing trees to eat argan fruit, cracking the nuts by hand, cold-pressing the oil — and buy directly from the women who made it.",
+      "fr": "Une coopérative d'huile d'argan dirigée par des femmes dans la vallée du Souss où vous pouvez observer l'ensemble du processus reconnu par l'UNESCO.",
+      "ar": "تعاونية زيت الأرجان التي تديرها النساء في وادي السوس حيث يمكنك مشاهدة العملية المعترف بها من اليونسكو بأكملها."
+    },
+    "culturalStory": {
+      "en": "The argan tree (Argania spinosa) grows only in a 800,000-hectare zone in southwest Morocco — UNESCO listed this Arganeraie Biosphere Reserve in 1998. The traditional harvest involves goats climbing the thorny trees to eat the fruit, then Berber women collecting the expelled nuts, cracking them by hand on stones (a skill passed from mother to daughter over generations), and cold-pressing the kernels into oil. The cooperative model was introduced in 1996 and has given Berber women economic independence in communities where they previously had none. The oil produced has a genuinely different character from industrially-processed argan."
+    },
+    "bestTime": "morning",
+    "image": "/spots/aga-argan-coop.jpg",
+    "coordinates": [
+      30.3856,
+      -9.4312
+    ],
+    "tags": [
+      "argan",
+      "women cooperative",
+      "Berber",
+      "UNESCO",
+      "authentic"
+    ]
+  },
+  {
+    "id": "aga-taroudant",
+    "city": "agadir",
+    "name": {
+      "en": "Taroudant",
+      "fr": "Taroudant",
+      "ar": "تارودانت"
+    },
+    "category": "medina",
+    "rarity": 46,
+    "reviewCount": 9800,
+    "photoCount": 42000,
+    "distanceFromCenter": 80,
+    "description": {
+      "en": "A perfectly preserved walled Berber city in the Souss Valley, often called 'the Grandmother of Marrakech' — ochre walls 7 km long, a souk full of Souss valley produce, almost no tourists, and a pace of life unchanged for centuries.",
+      "fr": "Une ville berbère fortifiée parfaitement préservée dans la vallée du Souss, souvent appelée 'la grand-mère de Marrakech' — des murs ocre de 7 km, un souk plein de produits de la vallée du Souss.",
+      "ar": "مدينة بربرية محاطة بالأسوار محفوظة بشكل مثالي في وادي السوس، تُعرف غالباً بـ'جدة مراكش' — أسوار أوكرية بطول 7 كم وسوق مليء بمنتجات وادي السوس."
+    },
+    "culturalStory": {
+      "en": "Taroudant was the capital of the Saadian dynasty before they moved to Marrakech in 1524. The Saadians were Berbers from the Souss Valley who eventually drove out the Portuguese and established a Moroccan empire that reached Sudan. The city's ochre walls — the longest complete medieval ramparts in Morocco — were built in the 16th century and have never been significantly breached. Unlike Marrakech, Taroudant was never heavily colonised or touristed, which means its medina is a working Berber city with a souk that operates on entirely local rhythms: camel trade, Souss Valley olive oil, and Tachelhit (Berber) as the primary language."
+    },
+    "bestTime": "market day (Thursday and Sunday)",
+    "image": "/spots/aga-taroudant.jpg",
+    "coordinates": [
+      30.4722,
+      -8.8778
+    ],
+    "tags": [
+      "medina",
+      "Berber",
+      "ramparts",
+      "authentic",
+      "Saadian"
+    ]
+  },
+  {
+    "id": "aga-imouzzer-valley",
+    "city": "agadir",
+    "name": {
+      "en": "Imouzzer Ida Outanane",
+      "fr": "Imouzzer Ida Outanane",
+      "ar": "إموزر إيدا أوتنان"
+    },
+    "category": "nature",
+    "rarity": 70,
+    "reviewCount": 3600,
+    "photoCount": 14000,
+    "distanceFromCenter": 60,
+    "description": {
+      "en": "A mountain valley 60 km north of Agadir famous for a waterfall that runs only in February — the drive through terraced argan orchards, Berber villages, and pink almond blossom is one of the most beautiful short journeys in Morocco.",
+      "fr": "Une vallée de montagne à 60 km au nord d'Agadir célèbre pour une cascade qui coule seulement en février — la route à travers les vergers d'arganiers en terrasse est l'un des plus beaux courts trajets du Maroc.",
+      "ar": "وادي جبلي على بعد 60 كم شمال أكادير مشهور بشلال يجري فقط في فبراير — الطريق عبر بساتين الأرجان المدرّجة وقرى بربرية وزهور اللوز الوردية."
+    },
+    "culturalStory": {
+      "en": "The Honey Festival of Imouzzer is one of Morocco's oldest agricultural festivals, held each July when the mountain honey — produced from wild thyme, lavender, and euphorbia growing on the Anti-Atlas limestone — is harvested. Berber beekeepers from the Ida Outanane tribe have maintained this practice for centuries, and the honey has a distinct mineral character unlike any other in Morocco. The waterfall (Cascade d'Imouzzer) flows only during the brief wet season — visiting in February or March, when it's at full force amid almond blossom, is one of the most spectacular seasonal natural experiences in the country."
+    },
+    "bestTime": "February for waterfall and almond blossom",
+    "image": "/spots/aga-imouzzer.jpg",
+    "coordinates": [
+      30.6833,
+      -9.4667
+    ],
+    "tags": [
+      "nature",
+      "waterfall",
+      "Berber",
+      "honey",
+      "seasonal"
+    ]
+  },
+  {
+    "id": "aga-beach-taghazout",
+    "city": "agadir",
+    "name": {
+      "en": "Taghazout Village",
+      "fr": "Village de Taghazout",
+      "ar": "قرية تغازوت"
+    },
+    "category": "nature",
+    "rarity": 40,
+    "reviewCount": 19000,
+    "photoCount": 88000,
+    "distanceFromCenter": 19,
+    "description": {
+      "en": "Morocco's original surf village — a whitewashed fishing village on a headland where the Atlantic swell has drawn surfers since the 1960s hippie trail. The main point break (Anchor Point) is considered one of the best in the world.",
+      "fr": "Le village de surf originel du Maroc — un village de pêcheurs blanchi à la chaux sur un cap où la houle atlantique attire les surfeurs depuis la piste hippie des années 1960.",
+      "ar": "قرية التزلج الأصلية في المغرب — قرية صيادين مبيضة على رأس مال حيث تجذب أمواج الأطلسي المتزلجين منذ طريق الهيبيز في الستينيات."
+    },
+    "culturalStory": {
+      "en": "Taghazout first appeared on the world surfing map in the early 1970s when European and American surfers on the 'Hippie Trail' discovered that the Atlantic swells hitting the rocky headlands created some of the most consistent point break surf outside Hawaii. Anchor Point, the main break, works best from October to April with swells from 3 to 15 feet. The village remained a quiet fishing community until the 2010s; the fishermen still go out at dawn regardless of how many surfers are on the beach. The best wave moments are October and March, when swell is consistent and the summer crowds are absent."
+    },
+    "bestTime": "October–March for surf; any sunrise",
+    "image": "/spots/aga-taghazout.jpg",
+    "coordinates": [
+      30.5439,
+      -9.7085
+    ],
+    "tags": [
+      "surf",
+      "village",
+      "fishing",
+      "Atlantic",
+      "point break"
+    ]
+  }
+]

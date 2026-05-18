@@ -1,0 +1,317 @@
+[
+  {
+    "id": "tng-kasbah-museum",
+    "city": "tangier",
+    "name": {
+      "en": "Kasbah Museum of Mediterranean Cultures",
+      "fr": "Musée de la Kasbah des Cultures Méditerranéennes",
+      "ar": "متحف قصبة الثقافات المتوسطية"
+    },
+    "category": "museum",
+    "rarity": 38,
+    "reviewCount": 18000,
+    "photoCount": 72000,
+    "distanceFromCenter": 0.9,
+    "description": {
+      "en": "A 17th-century sultan's palace turned museum at the highest point of Tangier's medina — panoramic views of the strait, Phoenician mosaics, and the room where Ahmed al-Mansur signed the treaty that changed Atlantic trade forever.",
+      "fr": "Un palais de sultan du XVIIe siècle transformé en musée au point le plus haut de la médina de Tanger — vues panoramiques sur le détroit, mosaïques phéniciennes.",
+      "ar": "قصر سلطان من القرن السابع عشر تحول إلى متحف في أعلى نقطة في مدينة طنجة القديمة — إطلالات بانورامية على المضيق ومسارات فينيقية."
+    },
+    "culturalStory": {
+      "en": "The Kasbah sits at the point where the Atlantic meets the Mediterranean — geographically one of the most strategic locations in the ancient world. The Romans called the nearby headland Ampelusia; the Phoenicians traded here before Rome existed. The palace's audience chamber (Dar el-Makhzen) was where Moroccan sultans received European ambassadors who were all racing to control the strait's trade. The museum's Phoenician and Roman rooms contain artefacts from digs at Chellah and Volubilis that most visitors never find."
+    },
+    "bestTime": "morning",
+    "image": "/spots/tng-kasbah-museum.jpg",
+    "coordinates": [
+      35.7912,
+      -5.8094
+    ],
+    "tags": [
+      "museum",
+      "kasbah",
+      "panoramic",
+      "history",
+      "Phoenician"
+    ]
+  },
+  {
+    "id": "tng-petit-socco",
+    "city": "tangier",
+    "name": {
+      "en": "Petit Socco",
+      "fr": "Petit Socco",
+      "ar": "الصاغة الصغيرة"
+    },
+    "category": "culture",
+    "rarity": 45,
+    "reviewCount": 12000,
+    "photoCount": 54000,
+    "distanceFromCenter": 0.6,
+    "description": {
+      "en": "The atmospheric heart of the old medina — a small square where William Burroughs wrote 'Naked Lunch', Matisse sketched from a café chair, and Paul Bowles spent 52 years watching the world.",
+      "fr": "Le cœur atmosphérique de la vieille médina — une petite place où William Burroughs écrivit 'Le Festin nu', Matisse dessina depuis un café, et Paul Bowles passa 52 ans à observer le monde.",
+      "ar": "قلب المدينة القديمة الملاذ — ساحة صغيرة كتب فيها وليام بوروز 'وليمة عارية' ورسم منها ماتيس من كرسي مقهى."
+    },
+    "culturalStory": {
+      "en": "Petit Socco was the nerve center of the International Zone of Tangier (1923–1956), when the city was governed simultaneously by France, Spain, Britain, Italy, and the United States. The result was a city of extreme freedom and moral ambiguity that attracted every species of exile, spy, and artist. Paul Bowles arrived in 1947 and never left. Tennessee Williams wrote 'Cat on a Hot Tin Roof' nearby. The Beat Generation gathered here in the 1950s because Tangier was the one city where everything was legal and nothing cost anything."
+    },
+    "bestTime": "late afternoon",
+    "image": "/spots/tng-petit-socco.jpg",
+    "coordinates": [
+      35.7887,
+      -5.8088
+    ],
+    "tags": [
+      "historic",
+      "literary",
+      "beat generation",
+      "café",
+      "atmosphere"
+    ]
+  },
+  {
+    "id": "tng-cap-spartel",
+    "city": "tangier",
+    "name": {
+      "en": "Cap Spartel",
+      "fr": "Cap Spartel",
+      "ar": "رأس سبارتل"
+    },
+    "category": "nature",
+    "rarity": 52,
+    "reviewCount": 8900,
+    "photoCount": 38000,
+    "distanceFromCenter": 14,
+    "description": {
+      "en": "The northwestern tip of Africa where the Atlantic meets the Mediterranean — a lighthouse from 1864, cedar forest, and the exact point where two seas visibly collide in two distinct colors.",
+      "fr": "La pointe nord-ouest de l'Afrique où l'Atlantique rencontre la Méditerranée — un phare de 1864, forêt de cèdres et le point exact où deux mers se heurtent visiblement.",
+      "ar": "الطرف الشمالي الغربي لأفريقيا حيث يلتقي الأطلسي بالبحر الأبيض المتوسط — منارة من عام 1864 وغابة أرز."
+    },
+    "culturalStory": {
+      "en": "Cap Spartel has been a reference point for Mediterranean navigation since antiquity — the Romans called it Ampelusia (Cape of the Vine). The lighthouse was built in 1864, funded jointly by the major European powers and the US because every ship rounding Africa to enter the Mediterranean passed this point. The two seas do not mix immediately — a visible turbulence line runs along the cape for several kilometres, with darker Atlantic water meeting lighter Mediterranean blue. On clear days, the Spanish coast is 14 kilometres away."
+    },
+    "bestTime": "sunset or storm",
+    "image": "/spots/tng-cap-spartel.jpg",
+    "coordinates": [
+      35.7887,
+      -5.9254
+    ],
+    "tags": [
+      "nature",
+      "lighthouse",
+      "dramatic",
+      "ocean",
+      "two seas"
+    ]
+  },
+  {
+    "id": "tng-caves-hercules",
+    "city": "tangier",
+    "name": {
+      "en": "Caves of Hercules",
+      "fr": "Grottes d'Hercule",
+      "ar": "كهوف هرقل"
+    },
+    "category": "nature",
+    "rarity": 36,
+    "reviewCount": 22000,
+    "photoCount": 96000,
+    "distanceFromCenter": 15.5,
+    "description": {
+      "en": "A sea cave where Hercules rested after his 12 labours — the ocean-facing opening is shaped like the map of Africa, and 6,000 years of human habitation have carved a cathedral out of soft rock.",
+      "fr": "Une grotte marine où Hercule se reposa après ses 12 travaux — l'ouverture côté océan est en forme de carte de l'Afrique, et 6 000 ans d'habitation humaine ont creusé une cathédrale dans la roche molle.",
+      "ar": "كهف بحري حيث استراح هرقل بعد أعماله الاثني عشر — الفتحة المطلة على المحيط تشبه شكل خريطة أفريقيا."
+    },
+    "culturalStory": {
+      "en": "The Caves of Hercules are genuinely ancient — Neolithic tools have been found in the deeper chambers, and the cave has been continuously inhabited or used for religious purposes for 6,000 years. Berber mythology places Hercules here as he prepared for his 11th Labour (stealing the Golden Apples of the Hesperides, which Moroccan tradition locates in this region). The circular ocean-facing window was enlarged by Roman-era millstone cutters who used the cave as a quarry — you can still see the circular grooves they cut in the walls."
+    },
+    "bestTime": "morning low tide",
+    "image": "/spots/tng-caves-hercules.jpg",
+    "coordinates": [
+      35.7659,
+      -5.9218
+    ],
+    "tags": [
+      "cave",
+      "mythology",
+      "neolithic",
+      "ocean",
+      "dramatic"
+    ]
+  },
+  {
+    "id": "tng-medina-tangier",
+    "city": "tangier",
+    "name": {
+      "en": "Tangier Medina",
+      "fr": "Médina de Tanger",
+      "ar": "مدينة طنجة القديمة"
+    },
+    "category": "medina",
+    "rarity": 48,
+    "reviewCount": 14000,
+    "photoCount": 62000,
+    "distanceFromCenter": 0.5,
+    "description": {
+      "en": "A labyrinthine medina built on a hillside above the strait — narrower and steeper than Marrakech or Fez, with a distinct Spanish-Arabic hybrid architecture that survives from the International Zone era.",
+      "fr": "Une médina labyrinthique construite sur une colline au-dessus du détroit — plus étroite et plus escarpée que Marrakech ou Fès, avec une architecture hybride hispano-arabe distinctive.",
+      "ar": "مدينة قديمة متاهية مبنية على تلة فوق المضيق — أضيق وأكثر انحداراً من مراكش أو فاس، بهندسة معمارية هجينة إسبانية عربية مميزة."
+    },
+    "culturalStory": {
+      "en": "Tangier's medina preserves the physical memory of its 33 years as an International Zone. Spanish tiles mix with Moroccan zellige in doorways; the street signs are still in Arabic, French, and Spanish; and the architecture shifts between Moorish and European within the same block. The medina's highest point — the Kasbah — overlooks Europe 14 km away, which is why every colonial power fought to control it. Paul Bowles called Tangier the city where you could see the edge of the world from your bedroom window."
+    },
+    "bestTime": "morning",
+    "image": "/spots/tng-medina.jpg",
+    "coordinates": [
+      35.788,
+      -5.8079
+    ],
+    "tags": [
+      "medina",
+      "hybrid",
+      "historic",
+      "labyrinthine",
+      "international zone"
+    ]
+  },
+  {
+    "id": "tng-grand-socco",
+    "city": "tangier",
+    "name": {
+      "en": "Grand Socco",
+      "fr": "Grand Socco",
+      "ar": "ساحة 9 أبريل"
+    },
+    "category": "culture",
+    "rarity": 55,
+    "reviewCount": 7600,
+    "photoCount": 29000,
+    "distanceFromCenter": 0.3,
+    "description": {
+      "en": "The open square at the junction of old and new Tangier — Rif mountain women in striped haik sell strawberries and herbs at dawn while taxis and trams surround them, unchanged in composition for a century.",
+      "fr": "La place ouverte à la jonction du vieux et du nouveau Tanger — les femmes rifaines en haïk rayé vendent des fraises et des herbes à l'aube pendant que taxis et tramways les entourent.",
+      "ar": "الساحة المفتوحة عند تقاطع طنجة القديمة والجديدة — نساء جبال الريف في حائكهن المخطط يبعن الفراولة والأعشاب فجراً."
+    },
+    "culturalStory": {
+      "en": "Grand Socco (Place du 9 Avril 1947) marks the day Sultan Mohammed V arrived in Tangier and gave his first public speech calling implicitly for independence — the date is commemorated in the square's official name. Before independence, it was the main market where Rif mountain Berbers came down weekly to trade. The same pattern continues today: early morning, women in the striped haik and wide-brimmed hats of the Rif sell produce brought down from the mountain villages, exactly as they have for generations."
+    },
+    "bestTime": "early morning",
+    "image": "/spots/tng-grand-socco.jpg",
+    "coordinates": [
+      35.7858,
+      -5.8124
+    ],
+    "tags": [
+      "market",
+      "square",
+      "Rif women",
+      "authentic",
+      "historic"
+    ]
+  },
+  {
+    "id": "tng-villa-harris",
+    "city": "tangier",
+    "name": {
+      "en": "Perdicaris Park",
+      "fr": "Parc Perdicaris",
+      "ar": "حديقة برديكاريس"
+    },
+    "category": "nature",
+    "rarity": 82,
+    "reviewCount": 680,
+    "photoCount": 2400,
+    "distanceFromCenter": 9.5,
+    "description": {
+      "en": "A wild semi-jungle park in the hills above Tangier where macaque monkeys live freely among cork oak and lentisk forest — almost entirely unknown to tourists, free entry, and one of the last wild natural areas near a Moroccan city.",
+      "fr": "Un parc semi-jungle sauvage dans les collines au-dessus de Tanger où des macaques vivent librement dans les forêts de chênes-lièges et de lentisques.",
+      "ar": "حديقة شبه غابوية برية في تلال فوق طنجة حيث تعيش القرود البربرية بحرية بين أشجار الفلين والضرو — مجهولة تقريباً للسياح."
+    },
+    "culturalStory": {
+      "en": "Perdicaris Park takes its name from Ion Perdicaris, a Greek-American millionaire who built a villa in these hills in the 1870s and was kidnapped in 1904 by the Moroccan bandit Raisuni — triggering an international crisis and the famous US State Department telegram 'Perdicaris alive or Raisuli dead.' The villa is gone but the park survives as dense cork oak forest where Barbary macaques have lived for millennia. The macaques here are genuinely wild, not fed by tourists."
+    },
+    "bestTime": "early morning for monkeys",
+    "image": "/spots/tng-perdicaris.jpg",
+    "coordinates": [
+      35.7724,
+      -5.9148
+    ],
+    "tags": [
+      "nature",
+      "macaques",
+      "forest",
+      "wild",
+      "hidden"
+    ]
+  },
+  {
+    "id": "tng-american-legation",
+    "city": "tangier",
+    "name": {
+      "en": "American Legation Museum",
+      "fr": "Musée de la Légation américaine",
+      "ar": "متحف البعثة الأمريكية"
+    },
+    "category": "museum",
+    "rarity": 68,
+    "reviewCount": 3100,
+    "photoCount": 11000,
+    "distanceFromCenter": 0.7,
+    "description": {
+      "en": "The only US National Historic Landmark outside American soil — Morocco was the first country to recognize the United States in 1777, and this 19th-century palace contains Paul Bowles' writing desk, original diplomatic correspondence, and a Matisse lithography collection.",
+      "fr": "Le seul monument historique national américain hors du sol américain — le Maroc fut le premier pays à reconnaître les États-Unis en 1777.",
+      "ar": "المعلم التاريخي الوطني الأمريكي الوحيد خارج الأراضي الأمريكية — المغرب كان أول دولة تعترف بالولايات المتحدة عام 1777."
+    },
+    "culturalStory": {
+      "en": "In 1777, Sultan Sidi Mohammed ben Abdallah became the first head of state to officially recognize American independence — two full years before France did. The building given to the US government in 1821 is still American-owned today, making it the only piece of foreign soil the US has ever received as a gift. The museum contains Paul Bowles' original desk and manuscripts, a collection of Matisse prints (made during his Tangier stays in 1912–1913), and the original 1787 Treaty of Friendship between Morocco and the US."
+    },
+    "bestTime": "any morning",
+    "image": "/spots/tng-legation.jpg",
+    "coordinates": [
+      35.7873,
+      -5.8072
+    ],
+    "tags": [
+      "museum",
+      "diplomatic",
+      "American",
+      "Bowles",
+      "Matisse"
+    ]
+  },
+  {
+    "id": "tng-plage-merkala",
+    "city": "tangier",
+    "name": {
+      "en": "Plage Merkala",
+      "fr": "Plage Merkala",
+      "ar": "شاطئ مركالة"
+    },
+    "category": "nature",
+    "rarity": 76,
+    "reviewCount": 1400,
+    "photoCount": 5200,
+    "distanceFromCenter": 2.8,
+    "description": {
+      "en": "A wild, unmanicured Atlantic beach directly below the ramparts of the old city — no beach clubs, no tourists, just Tangier families, Atlantic waves, and the medina silhouette directly above you.",
+      "fr": "Une plage atlantique sauvage et non aménagée directement en dessous des remparts de la vieille ville — pas de clubs de plage, pas de touristes.",
+      "ar": "شاطئ أطلسي بري غير مُرتَّب مباشرة أسفل أسوار المدينة القديمة — لا نوادي شاطئ ولا سياح، فقط عائلات طنجة."
+    },
+    "culturalStory": {
+      "en": "Plage Merkala sits at the base of the medina's sea-facing wall — the same wall that has faced the Atlantic since the Portuguese built it in the 15th century. Unlike Tangier's main beach (heavily developed, full of beach clubs), Merkala is accessed down a concrete stair from the medina gate and has no commercial infrastructure at all. Tangerois families who have lived in the medina for generations use it as their neighbourhood beach. Looking up from the sand, you see the full profile of the 15th-century walls and the minaret of the Grand Mosque directly above."
+    },
+    "bestTime": "morning or sunset",
+    "image": "/spots/tng-merkala.jpg",
+    "coordinates": [
+      35.7901,
+      -5.8034
+    ],
+    "tags": [
+      "beach",
+      "local life",
+      "hidden",
+      "Atlantic",
+      "medina views"
+    ]
+  }
+]

@@ -1,0 +1,247 @@
+[
+  {
+    "id": "rbt-hassan-tower",
+    "city": "rabat",
+    "name": {
+      "en": "Hassan Tower",
+      "fr": "Tour Hassan",
+      "ar": "صومعة حسان"
+    },
+    "category": "culture",
+    "rarity": 18,
+    "reviewCount": 52000,
+    "photoCount": 260000,
+    "distanceFromCenter": 1,
+    "description": {
+      "en": "The unfinished minaret of a 12th-century mosque that would have been the largest in the world — 300 marble columns stand in the field where the prayer hall once began.",
+      "fr": "Le minaret inachevé d'une mosquée du XIIe siècle qui aurait été la plus grande du monde — 300 colonnes de marbre se dressent dans le champ où commençait la salle de prière.",
+      "ar": "المئذنة غير المكتملة لمسجد من القرن الثاني عشر كان سيكون الأكبر في العالم."
+    },
+    "culturalStory": {
+      "en": "Yacoub al-Mansur began building Hassan Mosque in 1195 to celebrate his victory over Alfonso VIII of Castile. He planned a minaret 86 metres tall, surpassing even the Koutoubia in Marrakech. Construction stopped with his death in 1199, leaving the tower at 44 metres. An earthquake in 1755 destroyed most of the completed structure. What remains — the tower and 200 columns — is one of the most atmospheric archaeological sites in the Maghreb."
+    },
+    "bestTime": "sunrise or golden hour",
+    "image": "/spots/rbt-hassan-tower.jpg",
+    "coordinates": [
+      34.0242,
+      -6.8223
+    ],
+    "tags": [
+      "ruins",
+      "iconic",
+      "almohad",
+      "history",
+      "columns"
+    ]
+  },
+  {
+    "id": "rbt-kasbah-oudayas",
+    "city": "rabat",
+    "name": {
+      "en": "Kasbah des Oudayas",
+      "fr": "Kasbah des Oudayas",
+      "ar": "قصبة الوداية"
+    },
+    "category": "medina",
+    "rarity": 42,
+    "reviewCount": 24000,
+    "photoCount": 118000,
+    "distanceFromCenter": 1.5,
+    "description": {
+      "en": "A 12th-century Almohad fortress overlooking the Atlantic and the Bou Regreg river — blue-and-white painted lanes, an Andalusian garden, and a terrace café with the best view in Rabat.",
+      "fr": "Une forteresse almohade du XIIe siècle surplombant l'Atlantique et le fleuve Bou Regreg — ruelles bleu et blanc, jardin andalou et café-terrasse avec la meilleure vue de Rabat.",
+      "ar": "قلعة موحدية من القرن الثاني عشر تطل على المحيط الأطلسي ونهر أبي رقراق."
+    },
+    "culturalStory": {
+      "en": "The Kasbah was built by Yacoub al-Mansur in the 12th century as a military garrison. Its residents were the Oudayas — an Arab tribe from southern Morocco used as the sultan's guards. The Andalusian garden inside was built in the 17th century by Moriscos (Moorish refugees expelled from Spain after 1609) who brought their horticultural traditions from Granada. The Café Maure inside the garden walls has been serving mint tea in the same space for over a century."
+    },
+    "bestTime": "morning or late afternoon",
+    "image": "/spots/rbt-oudayas.jpg",
+    "coordinates": [
+      34.0341,
+      -6.8328
+    ],
+    "tags": [
+      "kasbah",
+      "blue-white",
+      "almohad",
+      "garden",
+      "view"
+    ]
+  },
+  {
+    "id": "rbt-cafe-maure",
+    "city": "rabat",
+    "name": {
+      "en": "Café Maure",
+      "fr": "Café Maure",
+      "ar": "المقهى المغربي"
+    },
+    "category": "cafe",
+    "rarity": 72,
+    "reviewCount": 3400,
+    "photoCount": 14000,
+    "distanceFromCenter": 1.6,
+    "description": {
+      "en": "A hidden café inside the Andalusian garden of the Oudayas Kasbah — mint tea and almond briouat served on a terrace overlooking the Atlantic, frequented by diplomats and Rabatis who know.",
+      "fr": "Un café caché dans le jardin andalou de la Kasbah des Oudayas — thé à la menthe et briouat aux amandes servis sur une terrasse surplombant l'Atlantique.",
+      "ar": "مقهى مخفي داخل الحديقة الأندلسية لقصبة الوداية — شاي بالنعناع وبريوات اللوز تُقدَّم على شرفة تطل على المحيط."
+    },
+    "culturalStory": {
+      "en": "Café Maure occupies a 17th-century building inside the Andalusian garden. For decades it was frequented almost exclusively by Moroccan intellectuals and foreign diplomats — Rabat's status as capital means the café's guest list has included writers, ministers, and visiting heads of state. The garden is watered by a seguia (irrigation channel) laid by the Moriscos in 1609, still functioning today."
+    },
+    "bestTime": "afternoon",
+    "image": "/spots/rbt-cafe-maure.jpg",
+    "coordinates": [
+      34.0348,
+      -6.8335
+    ],
+    "tags": [
+      "cafe",
+      "mint tea",
+      "terrace",
+      "garden",
+      "diplomatic"
+    ]
+  },
+  {
+    "id": "rbt-chellah",
+    "city": "rabat",
+    "name": {
+      "en": "Chellah Necropolis",
+      "fr": "Nécropole du Chellah",
+      "ar": "شالة"
+    },
+    "category": "culture",
+    "rarity": 55,
+    "reviewCount": 9800,
+    "photoCount": 42000,
+    "distanceFromCenter": 2.3,
+    "description": {
+      "en": "A walled Roman-then-Merenid necropolis where storks nest in minaret ruins and cats wander between sarcophagi — one of the most evocative archaeological sites in North Africa.",
+      "fr": "Une nécropole romain-puis-mérinide fortifiée où les cigognes nichent dans les ruines de minarets et les chats errent entre les sarcophages.",
+      "ar": "نكروبوليس رومانية ثم مرينية مسوّرة حيث تعشش اللقالق في أنقاض المآذن وتتجول القطط بين التوابيت."
+    },
+    "culturalStory": {
+      "en": "Chellah is one of the few sites in the world where Roman, Berber, and Islamic archaeology exist in the same enclosure. The Romans built a city here called Sala Colonia in the 1st century AD. The Merenid sultans built their dynastic necropolis on the same ground in the 14th century, considering the site sacred. White storks have nested in the minaret ruins for centuries — the Moroccan tradition holds that storks are the souls of Hajj pilgrims who failed to return."
+    },
+    "bestTime": "morning for stork activity",
+    "image": "/spots/rbt-chellah.jpg",
+    "coordinates": [
+      34.0082,
+      -6.8237
+    ],
+    "tags": [
+      "ruins",
+      "roman",
+      "merenid",
+      "storks",
+      "archaeological"
+    ]
+  },
+  {
+    "id": "rbt-oudayas-walls",
+    "city": "rabat",
+    "name": {
+      "en": "Oudayas Ramparts at Sunset",
+      "fr": "Remparts des Oudayas au coucher du soleil",
+      "ar": "أسوار الوداية عند الغروب"
+    },
+    "category": "viewpoint",
+    "rarity": 80,
+    "reviewCount": 980,
+    "photoCount": 4200,
+    "distanceFromCenter": 1.7,
+    "description": {
+      "en": "The outer sea-facing wall of the Oudayas Kasbah — a walkway along the Atlantic where Rabatis come at sunset to watch waves break on the estuary below, almost entirely unknown to tourists.",
+      "fr": "La muraille extérieure de la Kasbah des Oudayas face à la mer — une promenade le long de l'Atlantique où les Rabatis viennent au coucher du soleil.",
+      "ar": "الجدار الخارجي المواجه للبحر لقصبة الوداية — ممشى على طول الأطلسي حيث يأتي سكان الرباط عند الغروب."
+    },
+    "culturalStory": {
+      "en": "The external rampart path is where the Kasbah meets the Atlantic directly — a narrow walkway along the 12th-century walls with a sheer drop to the ocean. Young couples from Rabat come here in the evenings for the sunset views over the Bou Regreg estuary and Sale on the opposite bank. The path is rarely marked on tourist maps, which means on a weekday afternoon you may have the entire Atlantic-facing medieval wall to yourself."
+    },
+    "bestTime": "one hour before sunset",
+    "image": "/spots/rbt-ramparts.jpg",
+    "coordinates": [
+      34.0358,
+      -6.835
+    ],
+    "tags": [
+      "viewpoint",
+      "sunset",
+      "ocean",
+      "walls",
+      "romantic"
+    ]
+  },
+  {
+    "id": "rbt-bouknadel-garden",
+    "city": "rabat",
+    "name": {
+      "en": "Jardins Exotiques de Bouknadel",
+      "fr": "Jardins Exotiques de Bouknadel",
+      "ar": "الحدائق الغريبة لبوقنادل"
+    },
+    "category": "nature",
+    "rarity": 78,
+    "reviewCount": 1800,
+    "photoCount": 6400,
+    "distanceFromCenter": 12,
+    "description": {
+      "en": "A remarkable collection of 1,500 plant species from across the world, laid out in themed gardens — Japanese, Chinese, Saharan, tropical — by an eccentric French horticulturalist in the 1950s.",
+      "fr": "Une remarquable collection de 1 500 espèces végétales du monde entier, disposées dans des jardins thématiques — japonais, chinois, saharien, tropical — par un horticulteur français excentrique dans les années 1950.",
+      "ar": "مجموعة رائعة من 1500 نوع نباتي من جميع أنحاء العالم في حدائق موضوعية."
+    },
+    "culturalStory": {
+      "en": "Marcel François created these gardens between 1951 and 1956 as a one-man labour of love, landscaping 4 hectares into themed botanical zones representing every continent. After his death, the Moroccan state took over management. The garden receives almost no international tourists despite being one of the most unusual horticultural sites in North Africa. On weekday mornings you can walk the entire Japanese, Saharan, and Amazonian sections entirely alone."
+    },
+    "bestTime": "weekday morning",
+    "image": "/spots/rbt-bouknadel.jpg",
+    "coordinates": [
+      34.0924,
+      -6.7841
+    ],
+    "tags": [
+      "garden",
+      "botanical",
+      "peaceful",
+      "nature",
+      "unusual"
+    ]
+  },
+  {
+    "id": "rbt-museum-mohammed-vi",
+    "city": "rabat",
+    "name": {
+      "en": "Mohammed VI Museum of Modern Art",
+      "fr": "Musée Mohammed VI d'Art Moderne",
+      "ar": "متحف محمد السادس للفن الحديث"
+    },
+    "category": "museum",
+    "rarity": 58,
+    "reviewCount": 6200,
+    "photoCount": 22000,
+    "distanceFromCenter": 0.8,
+    "description": {
+      "en": "Morocco's premier modern art museum — four floors of Moroccan and international contemporary art in a new landmark building, chronically undervisited for the quality it contains.",
+      "fr": "Le musée d'art moderne le plus important du Maroc — quatre étages d'art contemporain marocain et international dans un bâtiment emblématique, chroniquement sous-visité pour la qualité de ses collections.",
+      "ar": "متحف الفن الحديث الأبرز في المغرب — أربعة طوابق من الفن المعاصر المغربي والدولي."
+    },
+    "culturalStory": {
+      "en": "Opened in 2014, MMVI is Morocco's most ambitious cultural infrastructure project of the 21st century. The permanent collection spans Moroccan modernism from the 1930s to the present — including the complete works of Mohammed Larbi Rahali, Mohammed Melehi, and Farid Belkahia. The institution is deliberately understated on social media, which means its extraordinary collection of Arab and African contemporary art is experienced almost exclusively by Rabatis and visiting diplomats."
+    },
+    "bestTime": "any afternoon",
+    "image": "/spots/rbt-museum.jpg",
+    "coordinates": [
+      34.0186,
+      -6.8291
+    ],
+    "tags": [
+      "museum",
+      "modern art",
+      "Moroccan art",
+      "contemporary",
+      "culture"
+    ]
+  }
+]

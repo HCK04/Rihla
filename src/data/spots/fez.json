@@ -1,0 +1,247 @@
+[
+  {
+    "id": "fez-bab-bou-jeloud",
+    "city": "fez",
+    "name": {
+      "en": "Bab Bou Jeloud (Blue Gate)",
+      "fr": "Bab Bou Jeloud (Porte Bleue)",
+      "ar": "باب بوجلود (الباب الأزرق)"
+    },
+    "category": "medina",
+    "rarity": 20,
+    "reviewCount": 48000,
+    "photoCount": 220000,
+    "distanceFromCenter": 0.1,
+    "description": {
+      "en": "The magnificent blue-tiled gate marking the entrance to Fez el-Bali, the world's largest medieval medina. Iconic but crowded — visit at 6am for photographs.",
+      "fr": "La magnifique porte aux carreaux bleus marquant l'entrée de Fès el-Bali, la plus grande médina médiévale du monde. Emblématique mais animée — à photographier à 6h du matin.",
+      "ar": "البوابة الرائعة المكسوة بالبلاط الأزرق التي تمثل مدخل فاس البالي، أكبر مدينة قديمة في العالم. أيقونية لكن مزدحمة."
+    },
+    "culturalStory": {
+      "en": "Built in 1913 during the French Protectorate period, Bab Bou Jeloud is relatively modern by Fez standards — yet it has become the defining image of the city. The exterior tiles are blue (the colour of Fez), while the interior tiles are green (the colour of Islam). The gate marks the boundary between the medieval world of Fez el-Bali and the Moroccan-French ville nouvelle."
+    },
+    "bestTime": "6-7am for photography, evening for atmosphere",
+    "image": "/spots/fez-bab-bou-jeloud.jpg",
+    "coordinates": [
+      34.0647,
+      -4.9758
+    ],
+    "tags": [
+      "gate",
+      "iconic",
+      "architecture",
+      "medina entrance",
+      "blue"
+    ]
+  },
+  {
+    "id": "fez-bou-inania",
+    "city": "fez",
+    "name": {
+      "en": "Bou Inania Madrasa",
+      "fr": "Médersa Bou Inania",
+      "ar": "مدرسة البوعنانية"
+    },
+    "category": "culture",
+    "rarity": 48,
+    "reviewCount": 18000,
+    "photoCount": 82000,
+    "distanceFromCenter": 0.2,
+    "description": {
+      "en": "The finest Marinid madrasa in Morocco — extraordinary carved stucco, cedar wood screens, and a central pool reflecting centuries of Islamic scholarship. One of the few mosques open to non-Muslims in Fez.",
+      "fr": "La plus belle médersa marinide du Maroc — stuc sculpté extraordinaire, écrans en bois de cèdre et bassin central reflétant des siècles de savoir islamique.",
+      "ar": "أجمل مدرسة مرينية في المغرب — جص منحوت رائع وشاشات من خشب الأرز وحوض مركزي يعكس قروناً من العلم الإسلامي."
+    },
+    "culturalStory": {
+      "en": "Sultan Abou Inan Faris built this madrasa between 1350 and 1357, constructing it directly opposite the Bou Inania mosque so that the adhan (call to prayer) from the madrasa's minaret would be heard on the same level. The water clock on the exterior wall once marked prayer times through a system of 13 wooden beams and metal bowls — no one today fully understands how it worked."
+    },
+    "bestTime": "morning",
+    "image": "/spots/fez-bou-inania.jpg",
+    "coordinates": [
+      34.0647,
+      -4.9754
+    ],
+    "tags": [
+      "madrasa",
+      "marinid",
+      "islamic architecture",
+      "zellige",
+      "open to visitors"
+    ]
+  },
+  {
+    "id": "fez-chouara-tanneries",
+    "city": "fez",
+    "name": {
+      "en": "Chouara Tanneries",
+      "fr": "Tanneries Chouara",
+      "ar": "مدابغ الشوارة"
+    },
+    "category": "culture",
+    "rarity": 30,
+    "reviewCount": 62000,
+    "photoCount": 310000,
+    "distanceFromCenter": 0.5,
+    "description": {
+      "en": "The world-famous medieval tanneries of Fez — stone-age technology producing the finest leather in the world for 1,000 years. Viewed from leather shop terraces above the vats.",
+      "fr": "Les célèbres tanneries médiévales de Fès — une technologie de l'âge de pierre produisant le meilleur cuir du monde depuis 1 000 ans.",
+      "ar": "مدابغ فاس الوسطية الشهيرة عالمياً — تقنية حجرية تنتج أفضل الجلود في العالم منذ 1000 عام."
+    },
+    "culturalStory": {
+      "en": "The Chouara tanneries have operated continuously since the 11th century using the same methods. The white vats contain a mixture of cow urine, pigeon dung, water, and salt — the ancient recipe for softening hides. Workers stand in these vats up to their knees, treading leather for hours. The coloured pits contain natural dyes: saffron (yellow), indigo (blue), poppy (red), henna (orange), and antimony (black). The leather guild still operates under medieval guild law."
+    },
+    "bestTime": "morning (10am-noon), weekdays",
+    "image": "/spots/fez-chouara.jpg",
+    "coordinates": [
+      34.0658,
+      -4.9697
+    ],
+    "tags": [
+      "tannery",
+      "iconic",
+      "craft",
+      "medieval",
+      "leather"
+    ]
+  },
+  {
+    "id": "fez-al-qarawiyyin",
+    "city": "fez",
+    "name": {
+      "en": "Al-Qarawiyyin Mosque & University",
+      "fr": "Mosquée et Université Al-Qarawiyyin",
+      "ar": "جامعة القرويين"
+    },
+    "category": "mosque",
+    "rarity": 55,
+    "reviewCount": 14000,
+    "photoCount": 58000,
+    "distanceFromCenter": 0.4,
+    "description": {
+      "en": "The oldest continuously operating university in the world, founded 859 AD — non-Muslims can view the entrance courtyards and library exterior, recently restored by architect Aziz Mekouar.",
+      "fr": "La plus ancienne université en activité continue au monde, fondée en 859 — les non-musulmans peuvent voir les cours d'entrée et l'extérieur de la bibliothèque.",
+      "ar": "أقدم جامعة في العالم لا تزال تعمل بشكل مستمر، تأسست عام 859 — يمكن لغير المسلمين رؤية فناء المدخل ومبنى المكتبة من الخارج."
+    },
+    "culturalStory": {
+      "en": "Al-Qarawiyyin was founded by Fatima al-Fihri, the daughter of a wealthy merchant from Kairouan (Tunisia), in 859 AD — making it not only the world's oldest university but one founded by a woman. At its peak in the 12th century, it attracted scholars from across the Islamic world and Europe. Pope Sylvester II may have studied here, bringing Arab numerals and the concept of zero to Europe."
+    },
+    "bestTime": "morning, view from outside or courtyard entrance",
+    "image": "/spots/fez-qarawiyyin.jpg",
+    "coordinates": [
+      34.0644,
+      -4.9736
+    ],
+    "tags": [
+      "university",
+      "mosque",
+      "history",
+      "islamic",
+      "oldest in world"
+    ]
+  },
+  {
+    "id": "fez-merenid-tombs",
+    "city": "fez",
+    "name": {
+      "en": "Merenid Tombs Viewpoint",
+      "fr": "Ruines des Tombes Mérinides",
+      "ar": "أضرحة المرينيين"
+    },
+    "category": "viewpoint",
+    "rarity": 74,
+    "reviewCount": 4800,
+    "photoCount": 22000,
+    "distanceFromCenter": 1.2,
+    "description": {
+      "en": "The ruined tombs of the Merenid dynasty on the hill north of the medina — the best panoramic view of Fez el-Bali, especially at sunset. Wild cats roam the ruins.",
+      "fr": "Les tombes en ruine de la dynastie mérinide sur la colline au nord de la médina — la meilleure vue panoramique sur Fès el-Bali, surtout au coucher du soleil.",
+      "ar": "أضرحة الأسرة المرينية الخربة على التل شمال المدينة — أفضل منظر بانورامي لفاس البالي، خاصة عند غروب الشمس."
+    },
+    "culturalStory": {
+      "en": "The Merenid sultans who built the great madrasas of Fez chose this hill for their dynastic tombs in the 14th century. The mausoleums were looted and destroyed centuries ago, leaving only the carved stone bases. Today the site is famous among locals for its sunset views and as a gathering spot for Fassis at dusk. Dozens of cats inhabit the ruins — fed by locals who consider them sacred guardians of the tombs."
+    },
+    "bestTime": "one hour before sunset",
+    "image": "/spots/fez-merenid-tombs.jpg",
+    "coordinates": [
+      34.0712,
+      -4.9747
+    ],
+    "tags": [
+      "viewpoint",
+      "ruins",
+      "sunset",
+      "panoramic",
+      "cats"
+    ]
+  },
+  {
+    "id": "fez-jardin-jnan-sbil",
+    "city": "fez",
+    "name": {
+      "en": "Jardin Jnan Sbil",
+      "fr": "Jardin Jnan Sbil",
+      "ar": "حديقة جنان السبيل"
+    },
+    "category": "nature",
+    "rarity": 69,
+    "reviewCount": 3200,
+    "photoCount": 14000,
+    "distanceFromCenter": 0.8,
+    "description": {
+      "en": "A beautiful 5-hectare royal garden on the edge of Fez el-Bali — majestic palms, banana trees, fountains and ponds. Where Fassis come to picnic on Fridays, almost unknown to tourists.",
+      "fr": "Un magnifique jardin royal de 5 hectares en bordure de Fès el-Bali — palmiers majestueux, bananiers, fontaines et étangs. Où les Fassis viennent pique-niquer le vendredi.",
+      "ar": "حديقة ملكية جميلة مساحتها 5 هكتارات على حافة فاس البالي — نخيل شامخ وأشجار موز ونوافير وبرك. مكان التنزه للفاسيين يوم الجمعة."
+    },
+    "culturalStory": {
+      "en": "Originally a royal private garden attached to the palace complex of Fez el-Jdid (New Fez), Jnan Sbil was opened to the public in the 1990s. The garden is fed by the Wadi Boukherareb river and maintains year-round greenery through a traditional network of seguias (irrigation channels) dating to the 13th century. On Friday mornings, entire extended families lay out picnics on the lawns — a completely different Fez from the medina."
+    },
+    "bestTime": "Friday morning for local life, any weekday for peace",
+    "image": "/spots/fez-jnan-sbil.jpg",
+    "coordinates": [
+      34.0598,
+      -4.9773
+    ],
+    "tags": [
+      "garden",
+      "peaceful",
+      "local life",
+      "royal",
+      "picnic"
+    ]
+  },
+  {
+    "id": "fez-attarine-madrasa",
+    "city": "fez",
+    "name": {
+      "en": "Attarine Madrasa",
+      "fr": "Médersa Attarine",
+      "ar": "مدرسة العطارين"
+    },
+    "category": "culture",
+    "rarity": 53,
+    "reviewCount": 8200,
+    "photoCount": 38000,
+    "distanceFromCenter": 0.4,
+    "description": {
+      "en": "A Marinid-era madrasa directly adjacent to the Qarawiyyin mosque — less visited than Bou Inania but arguably finer craftsmanship. The carved stucco is considered the apex of Moroccan decorative art.",
+      "fr": "Une médersa de l'époque mérinide directement adjacente à la mosquée Qarawiyyin — moins visitée que Bou Inania mais avec une artisanat peut-être supérieur.",
+      "ar": "مدرسة مرينية ملاصقة لمسجد القرويين — أقل زيارة من بوعنانية لكن حرفيتها ربما أرقى. الجص المنحوت يعتبر ذروة الفن الزخرفي المغربي."
+    },
+    "culturalStory": {
+      "en": "Built by Sultan Abu Said Othman II in 1323-25, the Attarine madrasa served as the dormitory and study hall for students attending the Qarawiyyin — they could walk through a connecting door directly into the mosque. 'Attarine' means 'spice sellers' — the madrasa stood in the heart of the spice market. The central courtyard pool is perfectly proportioned to reflect the cedar ceiling above — a deliberate optical effect."
+    },
+    "bestTime": "morning, weekdays",
+    "image": "/spots/fez-attarine.jpg",
+    "coordinates": [
+      34.0639,
+      -4.9737
+    ],
+    "tags": [
+      "madrasa",
+      "marinid",
+      "zellige",
+      "carved stucco",
+      "islamic art"
+    ]
+  }
+]

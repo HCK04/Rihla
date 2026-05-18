@@ -1,0 +1,281 @@
+[
+  {
+    "id": "mkc-jardin-majorelle",
+    "city": "marrakech",
+    "name": {
+      "en": "Jardin Majorelle",
+      "fr": "Jardin Majorelle",
+      "ar": "حديقة ماجوريل"
+    },
+    "category": "nature",
+    "rarity": 12,
+    "reviewCount": 85000,
+    "photoCount": 420000,
+    "distanceFromCenter": 2.1,
+    "description": {
+      "en": "The iconic blue garden created by French painter Jacques Majorelle, later restored by Yves Saint Laurent. Beautiful but heavily visited.",
+      "fr": "L'emblématique jardin bleu créé par le peintre français Jacques Majorelle, restauré par Yves Saint Laurent. Magnifique mais très fréquenté.",
+      "ar": "الحديقة الزرقاء الشهيرة التي أنشأها الرسام الفرنسي جاك ماجوريل، وأعاد ترميمها إيف سان لوران. جميلة لكن مزدحمة جداً."
+    },
+    "culturalStory": {
+      "en": "Jacques Majorelle spent 40 years painting the landscape of Morocco and created this 2.5-acre botanical garden in 1923. After his death it fell into disrepair until Yves Saint Laurent and Pierre Bergé bought it in 1980. The distinctive cobalt blue — now called Majorelle Blue — is trademarked."
+    },
+    "bestTime": "opening time (8am) to beat crowds",
+    "image": "/spots/mkc-jardin-majorelle.jpg",
+    "coordinates": [
+      31.6417,
+      -8.0037
+    ],
+    "tags": [
+      "garden",
+      "ysl",
+      "iconic",
+      "instagram"
+    ]
+  },
+  {
+    "id": "mkc-djemaa-el-fna",
+    "city": "marrakech",
+    "name": {
+      "en": "Djemaa el-Fna",
+      "fr": "Place Djemaa el-Fna",
+      "ar": "جامع الفناء"
+    },
+    "category": "medina",
+    "rarity": 8,
+    "reviewCount": 120000,
+    "photoCount": 680000,
+    "distanceFromCenter": 0.1,
+    "description": {
+      "en": "The famous central square of Marrakech — UNESCO-listed, alive with storytellers, musicians, snake charmers, and food stalls. The most visited space in Africa.",
+      "fr": "La célèbre place centrale de Marrakech — classée à l'UNESCO, animée par des conteurs, musiciens, charmeurs de serpents et étals de nourriture.",
+      "ar": "الساحة المركزية الشهيرة في مراكش — مدرجة في قائمة اليونسكو، تضج بالحكواتيين والموسيقيين ومرضي الأفاعي وأكشاك الطعام."
+    },
+    "culturalStory": {
+      "en": "Djemaa el-Fna has been the social heart of Marrakech for over a thousand years. UNESCO recognised it not for a building, but for an intangible heritage of oral traditions — the halqa storytelling circles where griots pass stories through generations. At dusk, the square transforms: smoke from 100 food stalls rises, and the noise of the day gives way to music."
+    },
+    "bestTime": "sunset to midnight for the full atmosphere",
+    "image": "/spots/mkc-djemaa-el-fna.jpg",
+    "coordinates": [
+      31.6258,
+      -7.9891
+    ],
+    "tags": [
+      "square",
+      "food",
+      "nightlife",
+      "unesco",
+      "iconic"
+    ]
+  },
+  {
+    "id": "mkc-le-jardin-secret",
+    "city": "marrakech",
+    "name": {
+      "en": "Le Jardin Secret",
+      "fr": "Le Jardin Secret",
+      "ar": "الحديقة السرية"
+    },
+    "category": "nature",
+    "rarity": 72,
+    "reviewCount": 4200,
+    "photoCount": 18000,
+    "distanceFromCenter": 0.3,
+    "description": {
+      "en": "A stunning 19th-century riad garden hidden in the heart of the medina — two gardens (Islamic and exotic) with a minaret view that most tourists walk past without knowing it exists.",
+      "fr": "Un magnifique jardin de riad du XIXe siècle caché au cœur de la médina — deux jardins (islamique et exotique) avec une vue sur un minaret que la plupart des touristes longent sans savoir qu'il existe.",
+      "ar": "حديقة رياض رائعة من القرن التاسع عشر مخفية في قلب المدينة القديمة — حديقتان (إسلامية وغريبة) مع منظر لمئذنة يمر أمامها معظم السياح دون أن يعرفوا بوجودها."
+    },
+    "culturalStory": {
+      "en": "This palace compound dates to the Saadian dynasty (16th century) and was one of the largest private estates in Marrakech. The Islamic garden follows ancient Persian design principles — four quadrants divided by water channels, symbolising the four rivers of paradise. The tower offers the best legal elevated view of the medina that most visitors never find."
+    },
+    "bestTime": "morning, weekdays",
+    "image": "/spots/mkc-le-jardin-secret.jpg",
+    "coordinates": [
+      31.6322,
+      -7.9886
+    ],
+    "tags": [
+      "garden",
+      "riad",
+      "medina",
+      "peaceful",
+      "hidden"
+    ]
+  },
+  {
+    "id": "mkc-mellah",
+    "city": "marrakech",
+    "name": {
+      "en": "Mellah Jewish Quarter",
+      "fr": "Mellah — Quartier juif",
+      "ar": "الملاح — الحي اليهودي"
+    },
+    "category": "medina",
+    "rarity": 68,
+    "reviewCount": 3100,
+    "photoCount": 12000,
+    "distanceFromCenter": 0.6,
+    "description": {
+      "en": "The historic Jewish quarter of Marrakech, founded in 1558 — ornate balconied houses, the Lazama Synagogue, and a working souk where locals shop for spices and fabrics.",
+      "fr": "Le quartier juif historique de Marrakech, fondé en 1558 — maisons à balcons ornés, synagogue Lazama, et un souk actif où les habitants font leurs courses.",
+      "ar": "الحي اليهودي التاريخي في مراكش، تأسس عام 1558 — بيوت ذات شرفات مزخرفة، كنيس لازاما، وسوق نشط يتسوق منه السكان."
+    },
+    "culturalStory": {
+      "en": "The Mellah was established by Sultan Ahmad al-Mansur as a protected Jewish quarter adjacent to the royal palace. At its peak in the early 20th century, over 16,000 Jews lived here. The ornate wooden balconies — unique in Marrakech's medina — allowed women to observe street life while remaining screened. The quarter today is mostly Muslim, but the Lazama Synagogue still holds occasional services."
+    },
+    "bestTime": "weekday morning",
+    "image": "/spots/mkc-mellah.jpg",
+    "coordinates": [
+      31.6215,
+      -7.9843
+    ],
+    "tags": [
+      "history",
+      "jewish heritage",
+      "architecture",
+      "market",
+      "culture"
+    ]
+  },
+  {
+    "id": "mkc-el-badi-palace",
+    "city": "marrakech",
+    "name": {
+      "en": "El Badi Palace Ruins",
+      "fr": "Ruines du Palais el-Badi",
+      "ar": "أطلال قصر البديع"
+    },
+    "category": "culture",
+    "rarity": 55,
+    "reviewCount": 9800,
+    "photoCount": 45000,
+    "distanceFromCenter": 0.7,
+    "description": {
+      "en": "The vast ruins of the once-magnificent 16th-century Saadian palace — 360 rooms, sunken gardens, and stork nests on every tower. Far less visited than Bahia Palace but far more dramatic.",
+      "fr": "Les vastes ruines du magnifique palais saadien du XVIe siècle — 360 chambres, jardins en contrebas, et nids de cigognes sur chaque tour. Bien moins visité que le palais Bahia mais bien plus dramatique.",
+      "ar": "أطلال القصر السعدي الضخم من القرن السادس عشر — 360 غرفة وحدائق غائرة وأعشاش لقلق فوق كل برج. أقل زيارة بكثير من قصر الباهية لكن أكثر إثارة."
+    },
+    "culturalStory": {
+      "en": "Ahmad al-Mansur built El Badi ('The Incomparable') after his 1578 victory over Portugal, using ransom from Portuguese prisoners to fund construction. Materials were imported from Italy at incredible expense — marble traded weight-for-weight against sugar. Moulay Ismail stripped it bare in 1696, reusing its treasures for his new capital at Meknes. What remains today are the bones of a palace that was once described as the eighth wonder of the world."
+    },
+    "bestTime": "late afternoon, golden hour on the walls",
+    "image": "/spots/mkc-el-badi.jpg",
+    "coordinates": [
+      31.6194,
+      -7.9864
+    ],
+    "tags": [
+      "ruins",
+      "saadian",
+      "history",
+      "dramatic",
+      "storks"
+    ]
+  },
+  {
+    "id": "mkc-medersa-ben-youssef",
+    "city": "marrakech",
+    "name": {
+      "en": "Medersa Ben Youssef",
+      "fr": "Médersa Ben Youssef",
+      "ar": "مدرسة ابن يوسف"
+    },
+    "category": "culture",
+    "rarity": 45,
+    "reviewCount": 22000,
+    "photoCount": 98000,
+    "distanceFromCenter": 0.2,
+    "description": {
+      "en": "The largest historical Quranic school in Morocco — a masterpiece of Moroccan craftsmanship with intricate zellige tiles, carved stucco, and cedar wood rising around a tranquil pool.",
+      "fr": "La plus grande école coranique historique du Maroc — un chef-d'œuvre de l'artisanat marocain avec des carreaux de zellige complexes, du stuc sculpté et du bois de cèdre autour d'un bassin tranquille.",
+      "ar": "أكبر مدرسة قرآنية تاريخية في المغرب — تحفة فنية من الحرفية المغربية مع بلاط الزليج المعقد والجص المنحوت وخشب الأرز حول حوض هادئ."
+    },
+    "culturalStory": {
+      "en": "Founded in the 14th century and rebuilt by the Saadian sultan Abdallah al-Ghalib in 1564-65, this madrasa accommodated up to 900 students who studied Islamic law, Quran, and the sciences. The building represents the zenith of Moroccan architectural craftsmanship: three levels of decoration — zellige tilework at the base, carved stucco in the middle, and painted cedar at the top — each zone distinct and harmonious."
+    },
+    "bestTime": "morning",
+    "image": "/spots/mkc-medersa.jpg",
+    "coordinates": [
+      31.6347,
+      -7.9874
+    ],
+    "tags": [
+      "islamic architecture",
+      "madrasa",
+      "zellige",
+      "saadian",
+      "craftsmanship"
+    ]
+  },
+  {
+    "id": "mkc-bahia-palace",
+    "city": "marrakech",
+    "name": {
+      "en": "Bahia Palace",
+      "fr": "Palais de la Bahia",
+      "ar": "قصر الباهية"
+    },
+    "category": "culture",
+    "rarity": 38,
+    "reviewCount": 38000,
+    "photoCount": 185000,
+    "distanceFromCenter": 0.6,
+    "description": {
+      "en": "A 19th-century grand vizier's palace with ornate rooms, painted ceilings, and garden courtyards — best visited early morning before tour groups arrive.",
+      "fr": "Un palais de grand vizir du XIXe siècle avec des salles ornées, des plafonds peints et des cours jardinées — à visiter tôt le matin avant les groupes touristiques.",
+      "ar": "قصر الوزير الأعظم من القرن التاسع عشر بغرف مزخرفة وسقوف مزوقة وساحات حدائق — يفضل زيارته صباحاً قبل وصول المجموعات السياحية."
+    },
+    "culturalStory": {
+      "en": "Built by Si Moussa and expanded by his son Ba Ahmed in the 1890s, the Bahia ('Brilliance') Palace was designed to be the greatest palace of its time. Ba Ahmed, who served as Grand Vizier, had four wives and 24 concubines — the harem quarters alone contain 150 rooms. When Ba Ahmed died in 1900, Sultan Abdelaziz immediately seized the palace, and the concubines fled, taking everything of value they could carry."
+    },
+    "bestTime": "8-9am before tour groups",
+    "image": "/spots/mkc-bahia.jpg",
+    "coordinates": [
+      31.6215,
+      -7.9822
+    ],
+    "tags": [
+      "palace",
+      "history",
+      "architecture",
+      "painted ceilings",
+      "saadian"
+    ]
+  },
+  {
+    "id": "mkc-koutoubia-gardens",
+    "city": "marrakech",
+    "name": {
+      "en": "Koutoubia Gardens",
+      "fr": "Jardins de la Koutoubia",
+      "ar": "حدائق الكتبية"
+    },
+    "category": "nature",
+    "rarity": 45,
+    "reviewCount": 12000,
+    "photoCount": 55000,
+    "distanceFromCenter": 0.2,
+    "description": {
+      "en": "The rose and orange-blossom gardens surrounding the 12th-century Koutoubia Mosque — best at dawn when the light hits the minaret and locals do their morning walk.",
+      "fr": "Les jardins de roses et de fleurs d'oranger entourant la mosquée Koutoubia du XIIe siècle — idéaux à l'aube quand la lumière frappe le minaret.",
+      "ar": "حدائق الورد وزهر البرتقال المحيطة بمسجد الكتبية من القرن الثاني عشر — في أحسن حالاتها عند الفجر حين يضرب الضوء المئذنة."
+    },
+    "culturalStory": {
+      "en": "The Koutoubia minaret — 70 metres tall, built in 1158 — was the architectural blueprint for both the Giralda in Seville and the Hassan Tower in Rabat. 'Koutoubia' means 'of the booksellers' in Arabic — the mosque was once surrounded by over 100 manuscript and book stalls. The gardens were planted in the 20th century and today host thousands of rose bushes that bloom twice yearly."
+    },
+    "bestTime": "sunrise or sunset",
+    "image": "/spots/mkc-koutoubia.jpg",
+    "coordinates": [
+      31.6238,
+      -7.9945
+    ],
+    "tags": [
+      "mosque",
+      "gardens",
+      "iconic",
+      "minaret",
+      "morning walk"
+    ]
+  }
+]

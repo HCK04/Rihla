@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Cinematic Morocco ── */
+
+  --color-surface:           #FAF7F2;
+  --color-surface-dim:       #D6D3CD;
+  --color-surface-bright:    #FAF7F2;
+  --color-surface-lowest:    #FFFFFF;
+  --color-surface-low:       #F2EEE8;
+  --color-surface-container: #EAE6DF;
+  --color-surface-high:      #E3DED7;
+  --color-surface-highest:   #DDD9D1;
+  --color-surface-variant:   #DDD9D1;
+  --color-background:        #FAF7F2;
+
+  --color-on-surface:        #17110A;
+  --color-on-surface-variant:#5C4236;
+  --color-inverse-surface:   #2C2218;
+  --color-inverse-on-surface:#F3EDEA;
+
+  --color-outline:           #8C6E60;
+  --color-outline-variant:   #D9B8A8;
+
+  /* Primary — deep Atlas Earth */
+  --color-primary:            #6B2200;
+  --color-on-primary:         #FFFFFF;
+  --color-primary-container:  #9B3B0A;
+  --color-on-primary-container:#FFF6F2;
+  --color-inverse-primary:    #FFAE88;
+  --color-primary-fixed:      #FFD5C0;
+  --color-primary-fixed-dim:  #FFAE88;
+  --color-on-primary-fixed:   #280D00;
+
+  /* Secondary — deep slate */
+  --color-secondary:          #354B5C;
+  --color-on-secondary:       #FFFFFF;
+  --color-secondary-container:#BDD5EC;
+  --color-on-secondary-container:#415668;
+
+  /* Gold */
+  --color-tertiary:           #5C4600;
+  --color-on-tertiary:        #FFFFFF;
+  --color-tertiary-container: #C09A1A;
+  --color-on-tertiary-container:#3C2E00;
+  --color-tertiary-fixed:     #F7D060;
+  --color-tertiary-fixed-dim: #DFB200;
+  --color-on-tertiary-fixed:  #1A1000;
+
+  --color-error:              #BA1A1A;
+  --color-on-error:           #FFFFFF;
+  --color-error-container:    #FFDAD6;
+  --color-on-error-container: #93000A;
+
+  /* Typography */
+  --font-display: "Playfair Display", "Georgia", serif;
+  --font-sans:    "Plus Jakarta Sans", "Helvetica Neue", sans-serif;
+
+  /* Radius */
+  --radius-sm:   0.25rem;
+  --radius-md:   0.75rem;
+  --radius-lg:   1rem;
+  --radius-xl:   1.5rem;
+  --radius-full: 9999px;
+
+  /* Elevation */
+  --shadow-card:  0 12px 40px rgba(23, 17, 10, 0.09);
+  --shadow-float: 0 4px 20px rgba(23, 17, 10, 0.11);
+  --shadow-lift:  0 24px 64px rgba(23, 17, 10, 0.15);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  background-color: #FAF7F2;
+  color: #17110A;
+  font-family: "Plus Jakarta Sans", "Helvetica Neue", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  font-feature-settings: "kern" 1, "liga" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100dvh;
+  overscroll-behavior: none;
+}
+
+::-webkit-scrollbar { width: 0; height: 0; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
+[dir="rtl"] {
+  font-family: "Cairo", "Noto Naskh Arabic", "Plus Jakarta Sans", sans-serif;
+}
+
+/* Zellige decorative divider */
+.zellige-divider {
+  background-image: repeating-linear-gradient(
+    90deg,
+    #D9B8A8 0px, #D9B8A8 1px,
+    transparent 1px, transparent 22px
+  );
+  height: 1px;
+  opacity: 0.55;
+}
+
+/* Subtle zellige texture */
+.zellige-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23A04020' fill-opacity='0.025'%3E%3Cpath d='M30 0L60 30 30 60 0 30z'/%3E%3Cpath d='M30 15L45 30 30 45 15 30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Elevation */
+.card-shadow    { box-shadow: 0 12px 40px rgba(23,17,10,0.09); }
+.card-shadow-sm { box-shadow: 0 4px 20px rgba(23,17,10,0.07); }
+
+/* Frosted glass */
+.glass {
+  background: rgba(250,247,242,0.86);
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+}
+.glass-dark {
+  background: rgba(20,12,6,0.74);
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+}
+
+/* Safe area — standalone (use on wrappers, not combined with pt-X on same element) */
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.safe-top    { padding-top:    env(safe-area-inset-top,    0px); }
+
+/* Safe area — additive (base padding + safe inset, safe to use on same element as content) */
+.pt-safe-12  { padding-top:    calc(3rem    + env(safe-area-inset-top,    0px)); }
+.pt-safe-14  { padding-top:    calc(3.5rem  + env(safe-area-inset-top,    0px)); }
+.pb-safe-20  { padding-bottom: calc(5rem    + env(safe-area-inset-bottom, 0px)); }
+
+/* Gold shimmer */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+.gold-shimmer {
+  background: linear-gradient(90deg, #5C4600 0%, #C09A1A 40%, #DFB200 50%, #C09A1A 60%, #5C4600 100%);
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Pulse for video CTA */
+@keyframes pulse-ring {
+  0%  { transform: scale(0.88); opacity: 0.9; }
+  70% { transform: scale(1.4);  opacity: 0;   }
+  100%{ transform: scale(1.4);  opacity: 0;   }
+}
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.44);
+  animation: pulse-ring 2.2s ease-out infinite;
+}

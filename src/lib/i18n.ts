@@ -1,0 +1,426 @@
+export type Lang = 'en' | 'fr' | 'ar' | 'es' | 'pt' | 'de'
+
+export const SUPPORTED_LANGS: { code: Lang; label: string; flag: string; rtl?: boolean }[] = [
+  { code: 'en', label: 'English',   flag: '🇬🇧' },
+  { code: 'fr', label: 'Français',  flag: '🇫🇷' },
+  { code: 'ar', label: 'العربية',   flag: '🇲🇦', rtl: true },
+  { code: 'es', label: 'Español',   flag: '🇪🇸' },
+  { code: 'pt', label: 'Português', flag: '🇵🇹' },
+  { code: 'de', label: 'Deutsch',   flag: '🇩🇪' },
+]
+
+export function detectLang(browserLang: string): Lang {
+  const code = browserLang.split('-')[0].toLowerCase()
+  const supported = SUPPORTED_LANGS.map(l => l.code)
+  return supported.includes(code as Lang) ? (code as Lang) : 'en'
+}
+
+export const UI_STRINGS: Record<Lang, Record<string, string>> = {
+  en: {
+    // General
+    tagline:              'Morocco, as locals know it.',
+    loading:              'Discovering...',
+    offline:              "You're offline — showing saved spots",
+    try_again:            'Try again',
+    something_went_wrong: 'Something went wrong',
+    share:                'Share',
+    skip_explore:         'Skip — just explore',
+
+    // Nav
+    discover: 'Discover',
+    chat:     'Chat',
+    scan:     'Scan',
+    plan:     'My Plan',
+
+    // Discover
+    hidden_gems:    'Hidden Gems',
+    all_spots:      'All Spots',
+    rarity_score:   'Rarity Score',
+    all_cities:     'All Cities',
+    all_categories: 'All',
+    cat_culture:    'Culture',
+    cat_food:       'Food',
+    cat_nature:     'Nature',
+    cat_medina:     'Medina',
+    cat_market:     'Market',
+    cat_museum:     'Museum',
+    cat_cafe:       'Café',
+
+    // Spot / Plan actions
+    add_to_plan: 'Add to Plan',
+    share_plan:  'Share My Plan',
+
+    // Chat
+    chat_title:         'RihlAI Chat',
+    chat_subtitle:      'Ask anything about Morocco',
+    chat_empty_title:   'Morocco, as locals know it',
+    chat_empty_subtitle:'Hidden gems, food, culture, and getting around — ask me anything.',
+    ask_morocco:        'Ask anything about Morocco...',
+
+    // Scan
+    scan_heading:          'Identify',
+    scan_subheading:       'Point at a monument, food, or Arabic sign',
+    scan_tap:              'Tap to scan',
+    scan_gallery:          'Or choose from gallery',
+    scan_hint:             'Monuments, food dishes, architecture, and signs in Arabic or French.',
+    scan_prompt:           'Point at a monument or dish',
+    scan_identifying:      'Identifying…',
+    scan_analysing:        'Analysing cultural context',
+    scan_cultural_story:   'Cultural Story',
+    scan_best_time_label:  'Best time:',
+    scan_another:          'Scan another',
+
+    // Itinerary
+    team_question:     'Which team are you following?',
+    itinerary_subtitle:'Pick your team — get your city itinerary',
+    search_team:       'Search team…',
+    crafting:          'Crafting your itinerary…',
+    curating_prefix:   'Curating hidden gems for',
+    days_unit:         'days',
+    change_team:       'Change team',
+  },
+
+  fr: {
+    tagline:              'Le Maroc, comme les locaux le connaissent.',
+    loading:              'Découverte en cours...',
+    offline:              'Hors ligne — affichage des lieux sauvegardés',
+    try_again:            'Réessayer',
+    something_went_wrong: 'Quelque chose a mal tourné',
+    share:                'Partager',
+    skip_explore:         'Passer — explorer seulement',
+
+    discover: 'Découvrir',
+    chat:     'Chat',
+    scan:     'Scanner',
+    plan:     'Mon Plan',
+
+    hidden_gems:    'Pépites cachées',
+    all_spots:      'Tous les lieux',
+    rarity_score:   'Score de rareté',
+    all_cities:     'Toutes les villes',
+    all_categories: 'Tout',
+    cat_culture:    'Culture',
+    cat_food:       'Nourriture',
+    cat_nature:     'Nature',
+    cat_medina:     'Médina',
+    cat_market:     'Marché',
+    cat_museum:     'Musée',
+    cat_cafe:       'Café',
+
+    add_to_plan: 'Ajouter au plan',
+    share_plan:  'Partager mon plan',
+
+    chat_title:          'RihlAI Chat',
+    chat_subtitle:       'Posez une question sur le Maroc',
+    chat_empty_title:    'Le Maroc, comme les locaux le connaissent',
+    chat_empty_subtitle: 'Pépites cachées, nourriture, culture et déplacements — posez-moi n\'importe quelle question.',
+    ask_morocco:         'Posez une question sur le Maroc...',
+
+    scan_heading:         'Identifier',
+    scan_subheading:      'Pointez vers un monument, un plat ou un panneau arabe',
+    scan_tap:             'Appuyer pour scanner',
+    scan_gallery:         'Ou choisir dans la galerie',
+    scan_hint:            'Monuments, plats, architecture et panneaux en arabe ou en français.',
+    scan_prompt:          'Pointez vers un monument ou un plat',
+    scan_identifying:     'Identification en cours…',
+    scan_analysing:       'Analyse du contexte culturel',
+    scan_cultural_story:  'Histoire culturelle',
+    scan_best_time_label: 'Meilleur moment :',
+    scan_another:         'Scanner autre chose',
+
+    team_question:      'Quelle équipe suivez-vous ?',
+    itinerary_subtitle: 'Choisissez votre équipe — obtenez votre itinéraire',
+    search_team:        'Rechercher une équipe…',
+    crafting:           'Préparation de votre itinéraire…',
+    curating_prefix:    'Sélection des pépites cachées pour',
+    days_unit:          'jours',
+    change_team:        'Changer d\'équipe',
+  },
+
+  ar: {
+    tagline:              'المغرب، كما يعرفه السكان المحليون.',
+    loading:              'جارٍ الاستكشاف...',
+    offline:              'أنت غير متصل — عرض الأماكن المحفوظة',
+    try_again:            'حاول مجدداً',
+    something_went_wrong: 'حدث خطأ ما',
+    share:                'مشاركة',
+    skip_explore:         'تخطي — استكشف فقط',
+
+    discover: 'اكتشف',
+    chat:     'محادثة',
+    scan:     'مسح',
+    plan:     'خطتي',
+
+    hidden_gems:    'الجواهر الخفية',
+    all_spots:      'جميع الأماكن',
+    rarity_score:   'درجة الندرة',
+    all_cities:     'جميع المدن',
+    all_categories: 'الكل',
+    cat_culture:    'ثقافة',
+    cat_food:       'طعام',
+    cat_nature:     'طبيعة',
+    cat_medina:     'مدينة',
+    cat_market:     'سوق',
+    cat_museum:     'متحف',
+    cat_cafe:       'مقهى',
+
+    add_to_plan: 'أضف للخطة',
+    share_plan:  'شارك خطتي',
+
+    chat_title:          'محادثة رحلة AI',
+    chat_subtitle:       'اسأل عن أي شيء في المغرب',
+    chat_empty_title:    'المغرب، كما يعرفه السكان المحليون',
+    chat_empty_subtitle: 'الجواهر الخفية، الطعام، الثقافة، والتنقل — اسألني أي شيء.',
+    ask_morocco:         'اسأل عن أي شيء في المغرب...',
+
+    scan_heading:         'تعرف',
+    scan_subheading:      'وجّه الكاميرا نحو معلم أو طبق أو لافتة عربية',
+    scan_tap:             'انقر للمسح',
+    scan_gallery:         'أو اختر من المعرض',
+    scan_hint:            'المعالم والأطباق والعمارة والإشارات بالعربية أو الفرنسية.',
+    scan_prompt:          'وجّه الكاميرا نحو معلم أو طبق',
+    scan_identifying:     'جارٍ التعرف…',
+    scan_analysing:       'تحليل السياق الثقافي',
+    scan_cultural_story:  'القصة الثقافية',
+    scan_best_time_label: 'أفضل وقت:',
+    scan_another:         'مسح شيء آخر',
+
+    team_question:      'أي فريق تتابع؟',
+    itinerary_subtitle: 'اختر فريقك — احصل على جدول مدينتك',
+    search_team:        'ابحث عن فريق…',
+    crafting:           'جارٍ إعداد جدولك…',
+    curating_prefix:    'اختيار الجواهر الخفية في',
+    days_unit:          'أيام',
+    change_team:        'تغيير الفريق',
+  },
+
+  es: {
+    tagline:              'Marruecos, como lo conocen los locales.',
+    loading:              'Descubriendo...',
+    offline:              'Sin conexión — mostrando lugares guardados',
+    try_again:            'Intentar de nuevo',
+    something_went_wrong: 'Algo salió mal',
+    share:                'Compartir',
+    skip_explore:         'Saltar — solo explorar',
+
+    discover: 'Descubrir',
+    chat:     'Chat',
+    scan:     'Escanear',
+    plan:     'Mi Plan',
+
+    hidden_gems:    'Joyas ocultas',
+    all_spots:      'Todos los lugares',
+    rarity_score:   'Puntuación de rareza',
+    all_cities:     'Todas las ciudades',
+    all_categories: 'Todo',
+    cat_culture:    'Cultura',
+    cat_food:       'Comida',
+    cat_nature:     'Naturaleza',
+    cat_medina:     'Medina',
+    cat_market:     'Mercado',
+    cat_museum:     'Museo',
+    cat_cafe:       'Café',
+
+    add_to_plan: 'Añadir al plan',
+    share_plan:  'Compartir mi plan',
+
+    chat_title:          'RihlAI Chat',
+    chat_subtitle:       'Pregunta cualquier cosa sobre Marruecos',
+    chat_empty_title:    'Marruecos, como lo conocen los locales',
+    chat_empty_subtitle: 'Joyas ocultas, comida, cultura y cómo moverse — pregúntame cualquier cosa.',
+    ask_morocco:         'Pregunta cualquier cosa sobre Marruecos...',
+
+    scan_heading:         'Identificar',
+    scan_subheading:      'Apunta a un monumento, comida o señal en árabe',
+    scan_tap:             'Toca para escanear',
+    scan_gallery:         'O elige de la galería',
+    scan_hint:            'Monumentos, platos, arquitectura y señales en árabe o francés.',
+    scan_prompt:          'Apunta a un monumento o plato',
+    scan_identifying:     'Identificando…',
+    scan_analysing:       'Analizando el contexto cultural',
+    scan_cultural_story:  'Historia Cultural',
+    scan_best_time_label: 'Mejor momento:',
+    scan_another:         'Escanear otro',
+
+    team_question:      '¿A qué equipo sigues?',
+    itinerary_subtitle: 'Elige tu equipo — obtén tu itinerario',
+    search_team:        'Buscar equipo…',
+    crafting:           'Creando tu itinerario…',
+    curating_prefix:    'Seleccionando joyas ocultas para',
+    days_unit:          'días',
+    change_team:        'Cambiar equipo',
+  },
+
+  pt: {
+    tagline:              'Marrocos, como os locais conhecem.',
+    loading:              'A descobrir...',
+    offline:              'Offline — a mostrar locais guardados',
+    try_again:            'Tentar novamente',
+    something_went_wrong: 'Algo correu mal',
+    share:                'Partilhar',
+    skip_explore:         'Saltar — apenas explorar',
+
+    discover: 'Descobrir',
+    chat:     'Chat',
+    scan:     'Digitalizar',
+    plan:     'Meu Plano',
+
+    hidden_gems:    'Joias escondidas',
+    all_spots:      'Todos os locais',
+    rarity_score:   'Pontuação de raridade',
+    all_cities:     'Todas as cidades',
+    all_categories: 'Tudo',
+    cat_culture:    'Cultura',
+    cat_food:       'Comida',
+    cat_nature:     'Natureza',
+    cat_medina:     'Medina',
+    cat_market:     'Mercado',
+    cat_museum:     'Museu',
+    cat_cafe:       'Café',
+
+    add_to_plan: 'Adicionar ao plano',
+    share_plan:  'Partilhar o meu plano',
+
+    chat_title:          'RihlAI Chat',
+    chat_subtitle:       'Pergunte qualquer coisa sobre Marrocos',
+    chat_empty_title:    'Marrocos, como os locais conhecem',
+    chat_empty_subtitle: 'Joias escondidas, comida, cultura e como circular — pergunte-me qualquer coisa.',
+    ask_morocco:         'Pergunte qualquer coisa sobre Marrocos...',
+
+    scan_heading:         'Identificar',
+    scan_subheading:      'Aponte para um monumento, comida ou sinal em árabe',
+    scan_tap:             'Toque para digitalizar',
+    scan_gallery:         'Ou escolha da galeria',
+    scan_hint:            'Monumentos, pratos, arquitetura e sinais em árabe ou francês.',
+    scan_prompt:          'Aponte para um monumento ou prato',
+    scan_identifying:     'A identificar…',
+    scan_analysing:       'A analisar o contexto cultural',
+    scan_cultural_story:  'História Cultural',
+    scan_best_time_label: 'Melhor altura:',
+    scan_another:         'Digitalizar outro',
+
+    team_question:      'Que equipa está a acompanhar?',
+    itinerary_subtitle: 'Escolha a sua equipa — obtenha o seu itinerário',
+    search_team:        'Pesquisar equipa…',
+    crafting:           'A criar o seu itinerário…',
+    curating_prefix:    'A selecionar joias escondidas para',
+    days_unit:          'dias',
+    change_team:        'Mudar de equipa',
+  },
+
+  de: {
+    tagline:              'Marokko, wie Einheimische es kennen.',
+    loading:              'Entdecke...',
+    offline:              'Offline — gespeicherte Orte werden angezeigt',
+    try_again:            'Erneut versuchen',
+    something_went_wrong: 'Etwas ist schiefgelaufen',
+    share:                'Teilen',
+    skip_explore:         'Überspringen — einfach erkunden',
+
+    discover: 'Entdecken',
+    chat:     'Chat',
+    scan:     'Scannen',
+    plan:     'Mein Plan',
+
+    hidden_gems:    'Geheimtipps',
+    all_spots:      'Alle Orte',
+    rarity_score:   'Seltenheitswert',
+    all_cities:     'Alle Städte',
+    all_categories: 'Alle',
+    cat_culture:    'Kultur',
+    cat_food:       'Essen',
+    cat_nature:     'Natur',
+    cat_medina:     'Medina',
+    cat_market:     'Markt',
+    cat_museum:     'Museum',
+    cat_cafe:       'Café',
+
+    add_to_plan: 'Zum Plan hinzufügen',
+    share_plan:  'Plan teilen',
+
+    chat_title:          'RihlAI Chat',
+    chat_subtitle:       'Fragen Sie alles über Marokko',
+    chat_empty_title:    'Marokko, wie Einheimische es kennen',
+    chat_empty_subtitle: 'Geheimtipps, Essen, Kultur und Fortbewegung — fragen Sie mich alles.',
+    ask_morocco:         'Fragen Sie alles über Marokko...',
+
+    scan_heading:         'Identifizieren',
+    scan_subheading:      'Auf ein Denkmal, Essen oder ein arabisches Schild zeigen',
+    scan_tap:             'Zum Scannen tippen',
+    scan_gallery:         'Oder aus Galerie wählen',
+    scan_hint:            'Denkmäler, Gerichte, Architektur und Schilder auf Arabisch oder Französisch.',
+    scan_prompt:          'Auf ein Denkmal oder Gericht zeigen',
+    scan_identifying:     'Identifizierung…',
+    scan_analysing:       'Kulturellen Kontext analysieren',
+    scan_cultural_story:  'Kulturelle Geschichte',
+    scan_best_time_label: 'Beste Zeit:',
+    scan_another:         'Weiteres scannen',
+
+    team_question:      'Welchem Team folgen Sie?',
+    itinerary_subtitle: 'Team wählen — Stadtitinerar erhalten',
+    search_team:        'Team suchen…',
+    crafting:           'Ihr Itinerar wird erstellt…',
+    curating_prefix:    'Geheimtipps für',
+    days_unit:          'Tage',
+    change_team:        'Team wechseln',
+  },
+}
+
+export const CHAT_PROMPTS: Record<Lang, string[]> = {
+  en: [
+    'What should I eat in Fez tonight?',
+    'Best hidden hammam in Marrakech?',
+    'How do I get from the medina to the stadium?',
+    "What's open on Friday morning?",
+    'Where do locals go for breakfast?',
+    'Is it safe to walk the medina at night?',
+  ],
+  fr: [
+    'Que devrais-je manger à Fès ce soir ?',
+    'Meilleur hammam caché à Marrakech ?',
+    'Comment aller de la médina au stade ?',
+    "Qu'est-ce qui est ouvert vendredi matin ?",
+    'Où vont les locaux pour le petit-déjeuner ?',
+    'Est-il sûr de se promener dans la médina la nuit ?',
+  ],
+  ar: [
+    'ماذا يجب أن آكل في فاس الليلة؟',
+    'أفضل حمام خفي في مراكش؟',
+    'كيف أصل من المدينة القديمة إلى الملعب؟',
+    'ما الذي يفتح صباح الجمعة؟',
+    'أين يذهب السكان المحليون لتناول الإفطار؟',
+    'هل من الآمن المشي في المدينة القديمة ليلاً؟',
+  ],
+  es: [
+    '¿Qué debería comer en Fez esta noche?',
+    '¿El mejor hammam escondido en Marrakech?',
+    '¿Cómo llego desde la medina al estadio?',
+    '¿Qué está abierto el viernes por la mañana?',
+    '¿Dónde van los locales a desayunar?',
+    '¿Es seguro caminar por la medina de noche?',
+  ],
+  pt: [
+    'O que devo comer em Fez esta noite?',
+    'Melhor hammam escondido em Marrakech?',
+    'Como vou da medina ao estádio?',
+    'O que está aberto na manhã de sexta-feira?',
+    'Onde vão os locais ao pequeno-almoço?',
+    'É seguro caminhar pela medina à noite?',
+  ],
+  de: [
+    'Was sollte ich heute Abend in Fès essen?',
+    'Bester versteckter Hammam in Marrakesch?',
+    'Wie komme ich von der Medina zum Stadion?',
+    'Was ist freitagmorgens geöffnet?',
+    'Wo frühstücken Einheimische?',
+    'Ist es sicher, nachts durch die Medina zu gehen?',
+  ],
+}
+
+export function t(lang: Lang, key: string): string {
+  return UI_STRINGS[lang]?.[key] ?? UI_STRINGS.en[key] ?? key
+}
+
+export function chatPrompts(lang: Lang): string[] {
+  return CHAT_PROMPTS[lang] ?? CHAT_PROMPTS.en
+}

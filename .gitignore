@@ -1,0 +1,20 @@
+node_modules/
+.next/
+out/
+
+# env secrets
+.env
+.env.local
+.env*.local
+
+# large media files
+*.mp4
+*.mov
+*.avi
+
+# auto-generated
+next-env.d.ts
+tsconfig.tsbuildinfo
+
+# local editor/tool settings
+.claude/

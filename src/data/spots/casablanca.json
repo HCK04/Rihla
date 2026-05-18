@@ -1,0 +1,142 @@
+[
+  {
+    "id": "cas-hassan-ii",
+    "city": "casablanca",
+    "name": {
+      "en": "Hassan II Mosque",
+      "fr": "Mosquée Hassan II",
+      "ar": "مسجد الحسن الثاني"
+    },
+    "category": "mosque",
+    "rarity": 22,
+    "reviewCount": 95000,
+    "photoCount": 480000,
+    "distanceFromCenter": 1.2,
+    "description": {
+      "en": "The world's third-largest mosque, built partly over the Atlantic Ocean — its 210-metre minaret is the tallest religious structure on earth. Non-Muslims may enter on guided tours.",
+      "fr": "La troisième plus grande mosquée du monde, construite en partie sur l'Atlantique — son minaret de 210 mètres est la plus haute structure religieuse sur Terre.",
+      "ar": "ثالث أكبر مسجد في العالم، مبني جزئياً فوق المحيط الأطلسي — مئذنته البالغة 210 أمتار هي أطول هيكل ديني على وجه الأرض."
+    },
+    "culturalStory": {
+      "en": "King Hassan II commissioned the mosque in 1980 to mark Morocco's 1,400 years of Islam. He wanted it built over the ocean so worshippers could pray above the Atlantic as the Quran says 'God's throne was built on water.' 6,000 craftsmen spent six years carving the marble, cedar, and zellige tilework by hand. The retractable roof over the prayer hall can open in minutes to reveal the Atlantic sky above."
+    },
+    "bestTime": "morning guided tour (non-Muslims 9am–11:30am)",
+    "image": "/spots/cas-hassan-ii.jpg",
+    "coordinates": [
+      33.6086,
+      -7.6326
+    ],
+    "tags": [
+      "mosque",
+      "iconic",
+      "architecture",
+      "ocean view",
+      "guided tour"
+    ]
+  },
+  {
+    "id": "cas-habous",
+    "city": "casablanca",
+    "name": {
+      "en": "Quartier des Habous",
+      "fr": "Quartier des Habous",
+      "ar": "حي الحبوس"
+    },
+    "category": "medina",
+    "rarity": 65,
+    "reviewCount": 7200,
+    "photoCount": 28000,
+    "distanceFromCenter": 3.1,
+    "description": {
+      "en": "A planned 'new medina' built by the French in the 1930s to traditional Moroccan standards — immaculate arched lanes, patisseries, bookshops, and a royal palace gate. Far fewer tourists than the old medina.",
+      "fr": "Une 'nouvelle médina' planifiée construite par les Français dans les années 1930 selon les standards marocains traditionnels — ruelles voûtées impeccables, pâtisseries, librairies et une porte de palais royal.",
+      "ar": "مدينة قديمة جديدة مخططة بناها الفرنسيون في الثلاثينيات وفق المعايير المغربية التقليدية — أزقة مقوسة أنيقة ومحلات حلوى ومكتبات وبوابة قصر ملكي."
+    },
+    "culturalStory": {
+      "en": "The Habous quarter is a remarkable experiment in colonial urban planning: French architects designed an entirely new medina in 1930s Casablanca using traditional Moroccan architecture, creating something that never actually existed historically — a perfectly planned, harmonious medina. The result is paradoxically the most 'authentic'-feeling neighbourhood in a city that is otherwise very French. The royal palace's ornate gate — flanked by the Mahkama law courts — is one of the finest pieces of Moroccan craftsmanship in the country."
+    },
+    "bestTime": "weekend morning",
+    "image": "/spots/cas-habous.jpg",
+    "coordinates": [
+      33.5811,
+      -7.6203
+    ],
+    "tags": [
+      "medina",
+      "colonial",
+      "crafts",
+      "patisseries",
+      "architecture"
+    ]
+  },
+  {
+    "id": "cas-bain-des-roches",
+    "city": "casablanca",
+    "name": {
+      "en": "Bain des Roches",
+      "fr": "Bain des Roches",
+      "ar": "بان دي روش"
+    },
+    "category": "nature",
+    "rarity": 85,
+    "reviewCount": 420,
+    "photoCount": 1800,
+    "distanceFromCenter": 5.8,
+    "description": {
+      "en": "A hidden tidal rock pool cove along the Corniche where Casablancans swim among the Atlantic waves — completely unknown to tourists, accessible down a cliff path between beach clubs.",
+      "fr": "Une crique de bassin de marée cachée le long de la Corniche où les Casablancais nagent dans les vagues de l'Atlantique — totalement inconnue des touristes.",
+      "ar": "خليج حوض مدّي مخفي على طول الكورنيش حيث يسبح سكان الدار البيضاء وسط أمواج الأطلسي — مجهول تماماً للسياح."
+    },
+    "culturalStory": {
+      "en": "This natural rock pool has been used by Casablanca's working-class families for generations as their free alternative to the private beach clubs that line the Corniche. At high tide, Atlantic waves crash directly into the pool; at low tide, it becomes a calm, warm swimming hole. Local teenagers jump from the rocks — some up to 8 metres — a rite of passage for Casablancan youth that has continued for decades."
+    },
+    "bestTime": "low tide, morning",
+    "image": "/spots/cas-bain-des-roches.jpg",
+    "coordinates": [
+      33.596,
+      -7.681
+    ],
+    "tags": [
+      "hidden",
+      "swimming",
+      "local life",
+      "nature",
+      "ocean"
+    ]
+  },
+  {
+    "id": "cas-ancienne-medina",
+    "city": "casablanca",
+    "name": {
+      "en": "Ancienne Medina",
+      "fr": "Ancienne Médina",
+      "ar": "المدينة القديمة"
+    },
+    "category": "medina",
+    "rarity": 55,
+    "reviewCount": 8900,
+    "photoCount": 34000,
+    "distanceFromCenter": 0.4,
+    "description": {
+      "en": "The original, pre-colonial medina of Casablanca — small and scrappy compared to Fez or Marrakech, but authentic, un-touristed, and fascinating as a contrast to the skyscrapers visible over the rooftops.",
+      "fr": "La médina originelle pré-coloniale de Casablanca — petite et brouillonne comparée à Fès ou Marrakech, mais authentique, peu touristique et fascinante.",
+      "ar": "المدينة الأصلية لما قبل الاستعمار في الدار البيضاء — صغيرة وفوضوية مقارنة بفاس أو مراكش، لكنها أصيلة وخالية من السياح."
+    },
+    "culturalStory": {
+      "en": "The Ancienne Medina is the historic core that existed before the French transformed Casablanca into a modern port city in the early 20th century. When the French arrived in 1907, Casablanca had a population of 20,000; by 1950, it had grown to 600,000. The medina absorbed the shock of urbanisation around it and became a working-class neighbourhood — chaotic, loud, and alive in a way that the wide boulevards of the Ville Nouvelle never are."
+    },
+    "bestTime": "morning",
+    "image": "/spots/cas-medina.jpg",
+    "coordinates": [
+      33.5965,
+      -7.6143
+    ],
+    "tags": [
+      "medina",
+      "authentic",
+      "history",
+      "local life",
+      "contrasts"
+    ]
+  }
+]
