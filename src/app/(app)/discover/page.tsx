@@ -52,18 +52,31 @@ export default function DiscoverPage() {
       >
         <div className="px-5 pt-4 pb-3">
           <div className="flex items-center justify-between mb-4">
-            <h1
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: '40px',
-                fontWeight: 700,
-                lineHeight: '44px',
-                letterSpacing: '-0.01em',
-                color: '#18191a',
-              }}
-            >
-              {t(lang, 'discover')}
-            </h1>
+            <div>
+              <p style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '10px',
+                fontWeight: 600,
+                letterSpacing: '0.12em',
+                color: '#9B6E58',
+                textTransform: 'uppercase',
+                marginBottom: 3,
+              }}>
+                Morocco · WC2030
+              </p>
+              <h1
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '44px',
+                  fontWeight: 700,
+                  lineHeight: '46px',
+                  letterSpacing: '-0.02em',
+                  color: '#17110A',
+                }}
+              >
+                {t(lang, 'discover')}
+              </h1>
+            </div>
 
             {/* Hidden gems toggle */}
             <button
@@ -143,11 +156,13 @@ export default function DiscoverPage() {
       </div>
 
       {/* Count */}
-      <div className="px-5 py-3">
-        <p style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#8c7166' }}>
-          {filtered.length} {filtered.length !== 1 ? t(lang, 'all_spots').toLowerCase() : t(lang, 'all_spots').toLowerCase().replace(/s$/, '')}
-          {hiddenGemsOnly && ` · ${t(lang, 'hidden_gems')}`}
-        </p>
+      <div className="px-5 py-3 flex items-center gap-2">
+        <span style={{ fontFamily: 'var(--font-display)', fontSize: '18px', fontWeight: 700, color: '#17110A' }}>
+          {filtered.length}
+        </span>
+        <span style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#8C7166' }}>
+          {hiddenGemsOnly ? t(lang, 'hidden_gems').toLowerCase() : t(lang, 'all_spots').toLowerCase()}
+        </span>
       </div>
 
       {/* Cards */}

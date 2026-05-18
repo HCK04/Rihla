@@ -124,19 +124,35 @@ function ItineraryContent() {
   /* ── Loading ── */
   if (loading && selectedTeam) {
     return (
-      <div className="min-h-dvh flex flex-col items-center justify-center gap-5 px-8" style={{ background: '#FAF7F2' }}>
-        <div className="w-20 h-20 rounded-3xl flex items-center justify-center"
-          style={{ background: '#FEF3EE', border: '1px solid rgba(155,59,10,0.16)' }}>
-          <Sparkles size={32} color="#6B2200" strokeWidth={1.5} className="animate-pulse" />
-        </div>
-        <div className="text-center">
-          <p style={{ fontFamily: 'var(--font-display)', fontSize: '22px', fontWeight: 700, color: '#17110A', marginBottom: 8 }}>
-            {t(lang, 'crafting')}
-          </p>
-          <p style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: '#8C6E60', lineHeight: '20px' }}>
-            {t(lang, 'curating_prefix')} {CITY_LABELS[selectedTeam.city]}
-          </p>
-        </div>
+      <div className="min-h-dvh flex flex-col items-center justify-center gap-8 px-8 relative" style={{ background: '#FAF7F2' }}>
+        <div className="absolute inset-0 zellige-bg pointer-events-none opacity-30" />
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="relative flex flex-col items-center gap-6"
+        >
+          <img
+            src={flagUrl(selectedTeam.code)}
+            alt={selectedTeam.name}
+            width={84} height={56}
+            className="rounded-xl object-cover"
+            style={{ boxShadow: '0 12px 40px rgba(0,0,0,0.22)' }}
+          />
+          <div className="text-center">
+            <p style={{ fontFamily: 'var(--font-display)', fontSize: '26px', fontWeight: 700, color: '#17110A', marginBottom: 6, letterSpacing: '-0.01em' }}>
+              {t(lang, 'crafting')}
+            </p>
+            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: '#8C6E60', lineHeight: '20px' }}>
+              {t(lang, 'curating_prefix')} {CITY_LABELS[selectedTeam.city]}
+            </p>
+          </div>
+          <div className="flex gap-2">
+            {[0, 1, 2].map(i => (
+              <div key={i} className="w-1.5 h-1.5 rounded-full animate-bounce"
+                style={{ background: '#6B2200', animationDelay: `${i * 150}ms` }} />
+            ))}
+          </div>
+        </motion.div>
       </div>
     )
   }
@@ -166,18 +182,24 @@ function ItineraryContent() {
   if (itinerary && selectedTeam) {
     return (
       <div className="min-h-dvh" style={{ background: '#FAF7F2' }}>
-        <div className="px-5 pb-4 pt-safe-12" style={{ borderBottom: '0.5px solid rgba(217,184,168,0.30)' }}>
+        <div className="px-5 pb-4 pt-safe-12" style={{ borderBottom: '0.5px solid rgba(217,184,168,0.28)' }}>
+          <p style={{
+            fontFamily: 'var(--font-sans)', fontSize: '10px', fontWeight: 600,
+            letterSpacing: '0.12em', color: '#9B6E58', textTransform: 'uppercase', marginBottom: 8,
+          }}>
+            Your Itinerary
+          </p>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img
                 src={flagUrl(selectedTeam.code)}
                 alt={selectedTeam.name}
-                width={36} height={24}
-                className="rounded-sm object-cover"
-                style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.18)' }}
+                width={40} height={27}
+                className="rounded-md object-cover"
+                style={{ boxShadow: '0 3px 10px rgba(0,0,0,0.20)' }}
               />
               <div>
-                <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '22px', fontWeight: 700, color: '#17110A', lineHeight: '27px' }}>
+                <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 700, color: '#17110A', lineHeight: '28px', letterSpacing: '-0.01em' }}>
                   {selectedTeam.name}
                 </h1>
                 <p style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#8C6E60' }}>
@@ -188,6 +210,7 @@ function ItineraryContent() {
             <button style={{
               height: 38, paddingLeft: 14, paddingRight: 14, borderRadius: 9999,
               background: '#F7D060', border: '1px solid #DFB200',
+              boxShadow: '0 4px 14px rgba(197,162,0,0.22)',
               fontFamily: 'var(--font-sans)', fontSize: '13px', fontWeight: 600, color: '#3C2E00',
               display: 'flex', alignItems: 'center', gap: 6,
             }}>
@@ -199,18 +222,24 @@ function ItineraryContent() {
         <div className="px-5 py-5 flex flex-col gap-6 pb-8">
           {itinerary.map((day, di) => (
             <motion.div key={day.day} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: di * 0.1 }}>
-              <div className="flex items-center gap-3 mb-1">
-                <div className="w-8 h-8 rounded-xl flex items-center justify-center" style={{ background: '#6B2200' }}>
-                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', fontWeight: 700, color: '#FFF' }}>{day.day}</span>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-9 h-9 rounded-2xl flex items-center justify-center flex-shrink-0"
+                  style={{
+                    background: 'linear-gradient(135deg, #6B2200 0%, #9B3B0A 100%)',
+                    boxShadow: '0 4px 14px rgba(107,34,0,0.28)',
+                  }}>
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '16px', fontWeight: 700, color: '#FFF' }}>{day.day}</span>
                 </div>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '18px', fontWeight: 700, color: '#17110A' }}>{day.label}</h3>
+                <div>
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 700, color: '#17110A', lineHeight: '24px' }}>{day.label}</h3>
+                  {day.theme && (
+                    <p style={{ fontFamily: 'var(--font-sans)', fontSize: '12px', color: '#8C6E60', fontStyle: 'italic', marginTop: 2 }}>
+                      {day.theme}
+                    </p>
+                  )}
+                </div>
               </div>
-              {day.theme && (
-                <p className="ml-11 mb-3" style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#8C6E60', fontStyle: 'italic' }}>
-                  {day.theme}
-                </p>
-              )}
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2.5 mt-3">
                 {day.slots.map((slot, si) => {
                   const spotText = slot.spot ?? slot.activity ?? ''
                   const resolvedId = resolveSpotId(slot.spotId, spotText, selectedTeam!.city)
@@ -221,7 +250,8 @@ function ItineraryContent() {
                     onClick={() => resolvedId && router.push(`/spot/${resolvedId}`)}
                     className="flex items-start gap-3 p-4 rounded-2xl text-left w-full active:scale-[0.98] transition-transform duration-150"
                     style={{
-                      background: '#FFFFFF', boxShadow: '0 4px 20px rgba(23,17,10,0.07)',
+                      background: '#FFFFFF',
+                      boxShadow: '0 1px 0 rgba(255,255,255,0.9) inset, 0 4px 20px rgba(23,17,10,0.07)',
                       cursor: resolvedId ? 'pointer' : 'default',
                     }}>
                     <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
@@ -374,11 +404,11 @@ function ItineraryContent() {
             whileTap={{ scale: 0.95 }}
             onClick={() => generateItinerary(team)}
             className="flex flex-col items-center gap-3 py-5 px-3 rounded-2xl"
-            style={{ touchAction: 'pan-y' }}
             style={{
-              background: 'rgba(255,255,255,0.88)',
+              background: 'rgba(255,255,255,0.90)',
               border: '1px solid rgba(217,184,168,0.35)',
-              boxShadow: '0 4px 20px rgba(23,17,10,0.07)',
+              boxShadow: '0 1px 0 rgba(255,255,255,0.9) inset, 0 4px 20px rgba(23,17,10,0.07)',
+              touchAction: 'pan-y',
             }}
           >
             <img

@@ -116,62 +116,99 @@ export default function ScanPage() {
           {/* ── IDLE ── */}
           {!result && !loading && !error && (
             <motion.div key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="flex flex-col items-center gap-6 w-full">
+              className="flex flex-col items-center gap-8 w-full">
 
+              {/* Circular lens UI */}
               <button
                 onClick={openCamera}
-                className="relative w-64 h-64 rounded-3xl flex items-center justify-center active:scale-[0.97] transition-transform duration-150 overflow-hidden"
-                style={{ background: '#FFFFFF', boxShadow: '0 16px 48px rgba(23,17,10,0.12)' }}
+                className="relative flex items-center justify-center active:scale-[0.97] transition-transform duration-200"
+                style={{ width: 260, height: 260 }}
               >
-                {(['top-4 left-4 border-t-2 border-l-2', 'top-4 right-4 border-t-2 border-r-2',
-                   'bottom-4 left-4 border-b-2 border-l-2', 'bottom-4 right-4 border-b-2 border-r-2'] as const
-                ).map((cls, i) => (
-                  <span key={i} className={`absolute w-8 h-8 ${cls}`} style={{ borderColor: '#6B2200', borderRadius: 4 }} />
-                ))}
-                <div className="flex flex-col items-center gap-3">
-                  <Camera size={44} strokeWidth={1.4} color="#8C6E60" />
-                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', fontWeight: 500, color: '#6B5246' }}>
+                {/* Pulsing rings */}
+                <div className="absolute inset-0 rounded-full scan-ring"
+                  style={{ border: '1.5px solid rgba(107,34,0,0.18)' }} />
+                <div className="absolute inset-0 rounded-full scan-ring-delay"
+                  style={{ border: '1.5px solid rgba(107,34,0,0.12)' }} />
+                {/* Static outer ring */}
+                <div className="absolute rounded-full"
+                  style={{ inset: 16, border: '1px dashed rgba(107,34,0,0.18)', borderRadius: 9999 }} />
+                {/* Inner button */}
+                <div
+                  className="flex flex-col items-center justify-center gap-3"
+                  style={{
+                    width: 188,
+                    height: 188,
+                    borderRadius: 9999,
+                    background: '#FFFFFF',
+                    boxShadow: '0 16px 56px rgba(23,17,10,0.13), 0 4px 16px rgba(23,17,10,0.07)',
+                    border: '1px solid rgba(217,184,168,0.35)',
+                  }}
+                >
+                  <Camera size={42} strokeWidth={1.3} color="#8C6E60" />
+                  <span style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: '11px',
+                    fontWeight: 600,
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    color: '#6B5246',
+                  }}>
                     {t(lang, 'scan_tap')}
                   </span>
                 </div>
               </button>
 
-              <button
-                onClick={openCamera}
-                className="flex items-center gap-2"
-                style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#8C6E60' }}
-              >
-                <ImageIcon size={14} strokeWidth={1.75} />
-                {t(lang, 'scan_gallery')}
-              </button>
-
-              <p className="text-center" style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#8C6E60', maxWidth: 260, lineHeight: '20px' }}>
-                {t(lang, 'scan_hint')}
-              </p>
+              <div className="flex flex-col items-center gap-2">
+                <button
+                  onClick={openCamera}
+                  className="flex items-center gap-2"
+                  style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#8C6E60' }}
+                >
+                  <ImageIcon size={13} strokeWidth={1.75} />
+                  {t(lang, 'scan_gallery')}
+                </button>
+                <p className="text-center" style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#A09488', maxWidth: 260, lineHeight: '20px' }}>
+                  {t(lang, 'scan_hint')}
+                </p>
+              </div>
             </motion.div>
           )}
 
           {/* ── LOADING ── */}
           {loading && (
             <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="flex flex-col items-center gap-5 w-full">
+              className="flex flex-col items-center gap-6 w-full">
 
               {preview && (
-                <div className="w-40 h-40 rounded-2xl overflow-hidden" style={{ boxShadow: '0 8px 32px rgba(23,17,10,0.16)' }}>
+                <div className="relative rounded-3xl overflow-hidden" style={{ width: 180, height: 180, boxShadow: '0 16px 48px rgba(23,17,10,0.18)' }}>
                   <img src={preview} alt="scan" className="w-full h-full object-cover" />
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 50%, rgba(23,17,10,0.55) 100%)' }} />
+                  <div className="absolute bottom-3 left-3 right-3 flex justify-center">
+                    <div className="flex gap-1.5">
+                      {[0,1,2].map(i => (
+                        <div key={i} className="w-1.5 h-1.5 rounded-full animate-bounce"
+                          style={{ background: 'rgba(255,255,255,0.85)', animationDelay: `${i * 150}ms` }} />
+                      ))}
+                    </div>
+                  </div>
                 </div>
               )}
 
-              <div className="w-18 h-18 rounded-2xl flex items-center justify-center"
-                style={{ background: '#FEF3EE', border: '1px solid rgba(155,59,10,0.18)', width: 72, height: 72 }}>
-                <Sparkles size={30} color="#6B2200" strokeWidth={1.5} className="animate-pulse" />
+              {!preview && (
+                <div className="w-18 h-18 rounded-3xl flex items-center justify-center"
+                  style={{ background: '#FEF3EE', border: '1px solid rgba(155,59,10,0.18)', width: 80, height: 80 }}>
+                  <Sparkles size={32} color="#6B2200" strokeWidth={1.5} className="animate-pulse" />
+                </div>
+              )}
+
+              <div className="text-center">
+                <p style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 700, color: '#17110A', marginBottom: 6 }}>
+                  {t(lang, 'scan_identifying')}
+                </p>
+                <p style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: '#8C6E60', lineHeight: '22px', maxWidth: 260 }}>
+                  Analysing every detail carefully
+                </p>
               </div>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: '20px', fontWeight: 700, color: '#17110A' }}>
-                {t(lang, 'scan_identifying')}
-              </p>
-              <p style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: '#8C6E60', textAlign: 'center', maxWidth: 260 }}>
-                Analysing every detail carefully — this may take a moment
-              </p>
             </motion.div>
           )}
 

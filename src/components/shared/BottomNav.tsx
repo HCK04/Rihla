@@ -21,52 +21,44 @@ export function BottomNav() {
     <nav
       className="fixed bottom-0 left-0 right-0 z-50 safe-bottom"
       style={{
-        background: 'rgba(250,248,244,0.88)',
-        backdropFilter: 'blur(24px) saturate(1.6)',
-        WebkitBackdropFilter: 'blur(24px) saturate(1.6)',
-        borderTop: '0.5px solid rgba(221,188,172,0.30)',
-        boxShadow: '0 -1px 0 rgba(221,188,172,0.20), 0 -8px 32px rgba(28,20,14,0.06)',
+        background: 'rgba(250,247,242,0.94)',
+        backdropFilter: 'blur(28px) saturate(1.8)',
+        WebkitBackdropFilter: 'blur(28px) saturate(1.8)',
+        borderTop: '0.5px solid rgba(209,178,162,0.22)',
+        boxShadow: '0 -8px 40px rgba(23,17,10,0.06)',
       }}
     >
-      <div className="flex items-center justify-around px-2 pt-2.5 pb-3">
+      <div className="flex items-center justify-around px-2 pt-1.5 pb-2">
         {NAV_ITEMS.map(({ href, icon: Icon, label }) => {
           const active = pathname.startsWith(href)
           return (
             <Link
               key={href}
               href={href}
-              className="flex flex-col items-center gap-1 px-5 py-1 relative"
+              className="flex flex-col items-center gap-1 transition-all duration-200"
+              style={{
+                minWidth: 64,
+                padding: '7px 16px 6px',
+                borderRadius: 18,
+                background: active ? 'rgba(107,34,0,0.10)' : 'transparent',
+              }}
             >
               <Icon
-                size={22}
-                strokeWidth={active ? 2 : 1.6}
-                style={{ color: active ? '#8c3500' : '#6b7c8c' }}
+                size={21}
+                strokeWidth={active ? 2 : 1.5}
+                style={{ color: active ? '#6B2200' : '#A09488' }}
               />
               <span
                 style={{
                   fontFamily: 'var(--font-sans)',
                   fontSize: '10px',
                   fontWeight: active ? 600 : 400,
-                  color: active ? '#8c3500' : '#6b7c8c',
+                  color: active ? '#6B2200' : '#A09488',
                   letterSpacing: '0.04em',
                 }}
               >
                 {label}
               </span>
-              {active && (
-                <span
-                  style={{
-                    position: 'absolute',
-                    bottom: -2,
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: 18,
-                    height: 2,
-                    borderRadius: 2,
-                    background: '#8c3500',
-                  }}
-                />
-              )}
             </Link>
           )
         })}

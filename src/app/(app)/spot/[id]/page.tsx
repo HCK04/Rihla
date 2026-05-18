@@ -62,7 +62,7 @@ export default function SpotDetailPage({ params }: { params: Promise<{ id: strin
   return (
     <div className="min-h-dvh" style={{ background: '#FAF7F2' }}>
       {/* Hero */}
-      <div className="relative h-80 overflow-hidden" style={{ background: '#1A1209' }}>
+      <div className="relative overflow-hidden" style={{ height: '22rem', background: '#1A1209' }}>
         {imgSrc && !imgFailed && (
           <img
             src={imgSrc}
@@ -83,7 +83,7 @@ export default function SpotDetailPage({ params }: { params: Promise<{ id: strin
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(to bottom, rgba(0,0,0,0.28) 0%, transparent 35%, rgba(15,8,3,0.80) 100%)',
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.32) 0%, transparent 32%, rgba(8,4,1,0.88) 100%)',
           }}
         />
 
@@ -103,16 +103,16 @@ export default function SpotDetailPage({ params }: { params: Promise<{ id: strin
         </button>
 
         {/* Bottom content over hero */}
-        <div className="absolute bottom-0 left-0 right-0 px-5 pb-5">
+        <div className="absolute bottom-0 left-0 right-0 px-5 pb-6">
           <span
-            className="inline-block mb-2 uppercase"
+            className="inline-block mb-2.5 uppercase"
             style={{
               fontFamily: 'var(--font-sans)',
-              fontSize: '10px', fontWeight: 700, letterSpacing: '0.10em',
-              color: '#FFFFFF',
-              background: 'rgba(0,0,0,0.40)',
-              backdropFilter: 'blur(6px)',
-              border: '0.5px solid rgba(255,255,255,0.22)',
+              fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em',
+              color: 'rgba(255,255,255,0.85)',
+              background: 'rgba(0,0,0,0.36)',
+              backdropFilter: 'blur(8px)',
+              border: '0.5px solid rgba(255,255,255,0.20)',
               padding: '3px 10px', borderRadius: 9999,
             }}
           >
@@ -121,14 +121,14 @@ export default function SpotDetailPage({ params }: { params: Promise<{ id: strin
           <h1
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: '28px', fontWeight: 700, lineHeight: '34px',
-              letterSpacing: '-0.01em', color: '#FFFFFF', marginBottom: 4,
+              fontSize: '32px', fontWeight: 700, lineHeight: '38px',
+              letterSpacing: '-0.02em', color: '#FFFFFF', marginBottom: 5,
             }}
           >
             {name}
           </h1>
-          <p style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: 'rgba(255,255,255,0.70)' }}>
-            {cityLabel}
+          <p style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: 'rgba(255,255,255,0.65)', letterSpacing: '0.02em' }}>
+            {cityLabel} · Morocco
           </p>
         </div>
       </div>
@@ -140,18 +140,21 @@ export default function SpotDetailPage({ params }: { params: Promise<{ id: strin
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex items-start gap-4 p-4 rounded-2xl"
-          style={{ background: '#FFFFFF', boxShadow: '0 4px 20px rgba(23,17,10,0.07)' }}
+          className="flex items-center gap-4 p-4 rounded-2xl"
+          style={{
+            background: '#FFFFFF',
+            boxShadow: '0 1px 0 rgba(255,255,255,0.9) inset, 0 4px 20px rgba(23,17,10,0.07)',
+          }}
         >
           <div
-            className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-            style={{ background: '#FEF3EE' }}
+            className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
+            style={{ background: 'linear-gradient(135deg, #FEF3EE 0%, #FFF8F5 100%)', border: '1px solid rgba(107,34,0,0.10)' }}
           >
-            <Gem size={20} color="#6B2200" strokeWidth={1.75} />
+            <Gem size={22} color="#6B2200" strokeWidth={1.5} />
           </div>
-          <div>
+          <div className="flex-1">
             <RarityBadge score={spot.rarity} size="md" />
-            <p className="mt-1.5" style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#6B5246', lineHeight: '18px' }}>
+            <p className="mt-1" style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#7A5C4E', lineHeight: '18px' }}>
               {getRarityDescription(spot.rarity)}
             </p>
           </div>
@@ -162,7 +165,7 @@ export default function SpotDetailPage({ params }: { params: Promise<{ id: strin
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.05 }}
-          style={{ fontFamily: 'var(--font-sans)', fontSize: '15px', lineHeight: '26px', color: '#6B5246' }}
+          style={{ fontFamily: 'var(--font-sans)', fontSize: '15px', lineHeight: '27px', color: '#6B5246' }}
         >
           {description}
         </motion.p>
@@ -173,18 +176,24 @@ export default function SpotDetailPage({ params }: { params: Promise<{ id: strin
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="p-5 rounded-2xl"
-            style={{ background: '#FFFFFF', boxShadow: '0 4px 20px rgba(23,17,10,0.07)' }}
+            className="rounded-2xl overflow-hidden"
+            style={{
+              background: '#FFFFFF',
+              boxShadow: '0 1px 0 rgba(255,255,255,0.9) inset, 0 4px 20px rgba(23,17,10,0.07)',
+              borderLeft: `3px solid ${catColor}`,
+            }}
           >
-            <p
-              className="mb-3 uppercase"
-              style={{ fontFamily: 'var(--font-sans)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.10em', color: catColor }}
-            >
-              Cultural Story
-            </p>
-            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', lineHeight: '23px', color: '#17110A' }}>
-              {story}
-            </p>
+            <div className="p-5">
+              <p
+                className="mb-3 uppercase"
+                style={{ fontFamily: 'var(--font-sans)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', color: catColor }}
+              >
+                Cultural Story
+              </p>
+              <p style={{ fontFamily: 'var(--font-display)', fontSize: '17px', lineHeight: '27px', color: '#17110A', fontStyle: 'italic' }}>
+                {story}
+              </p>
+            </div>
           </motion.div>
         )}
 
@@ -197,19 +206,25 @@ export default function SpotDetailPage({ params }: { params: Promise<{ id: strin
         >
           {[
             { icon: <Clock size={14} strokeWidth={1.75} />, label: 'Best time',  value: spot.bestTime },
-            { icon: <MapPin size={14} strokeWidth={1.75} />, label: 'Distance', value: `${spot.distanceFromCenter.toFixed(1)} km from centre` },
+            { icon: <MapPin size={14} strokeWidth={1.75} />, label: 'Distance', value: `${spot.distanceFromCenter.toFixed(1)} km` },
           ].map(item => (
             <div
               key={item.label}
-              className="flex-1 p-3 rounded-xl flex items-center gap-2"
-              style={{ background: '#FFFFFF', boxShadow: '0 2px 10px rgba(23,17,10,0.06)' }}
+              className="flex-1 p-3.5 rounded-2xl flex items-center gap-3"
+              style={{
+                background: '#FFFFFF',
+                boxShadow: '0 1px 0 rgba(255,255,255,0.9) inset, 0 4px 16px rgba(23,17,10,0.06)',
+              }}
             >
-              <span style={{ color: catColor }}>{item.icon}</span>
+              <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0"
+                style={{ background: `${catColor}12` }}>
+                <span style={{ color: catColor }}>{item.icon}</span>
+              </div>
               <div>
-                <p style={{ fontFamily: 'var(--font-sans)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em', color: '#8C6E60', textTransform: 'uppercase' }}>
+                <p style={{ fontFamily: 'var(--font-sans)', fontSize: '10px', fontWeight: 600, letterSpacing: '0.10em', color: '#9B7A6C', textTransform: 'uppercase' }}>
                   {item.label}
                 </p>
-                <p style={{ fontFamily: 'var(--font-sans)', fontSize: '12px', fontWeight: 500, color: '#17110A', marginTop: 2 }}>
+                <p style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', fontWeight: 500, color: '#17110A', marginTop: 2 }}>
                   {item.value}
                 </p>
               </div>
@@ -229,8 +244,10 @@ export default function SpotDetailPage({ params }: { params: Promise<{ id: strin
               key={tag}
               style={{
                 fontFamily: 'var(--font-sans)', fontSize: '12px', fontWeight: 500,
-                background: '#EAE6DF', color: '#6B5246',
-                padding: '4px 12px', borderRadius: 9999, letterSpacing: '0.02em',
+                background: 'rgba(234,230,223,0.80)',
+                border: '1px solid rgba(209,184,168,0.40)',
+                color: '#6B5246',
+                padding: '5px 13px', borderRadius: 9999, letterSpacing: '0.03em',
               }}
             >
               {tag}

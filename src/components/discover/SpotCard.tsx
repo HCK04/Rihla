@@ -43,11 +43,14 @@ export function SpotCard({ spot, index = 0, lang = 'en' }: SpotCardProps) {
     >
       <Link href={`/spot/${spot.id}`}>
         <div
-          className="rounded-3xl overflow-hidden active:scale-[0.982] transition-transform duration-200"
-          style={{ background: '#FFFFFF', boxShadow: '0 2px 0 rgba(217,184,168,0.28), 0 14px 40px rgba(23,17,10,0.09)' }}
+          className="rounded-3xl overflow-hidden active:scale-[0.980] transition-transform duration-200"
+          style={{
+            background: '#FFFFFF',
+            boxShadow: '0 1px 0 rgba(255,255,255,0.9) inset, 0 2px 0 rgba(217,184,168,0.22), 0 16px 44px rgba(23,17,10,0.10)',
+          }}
         >
           {/* Hero image */}
-          <div className="relative h-52 overflow-hidden" style={{ background: catBg }}>
+          <div className="relative h-56 overflow-hidden" style={{ background: catBg }}>
             {!imgFailed && (
               <img
                 src={imgSrc}
@@ -71,7 +74,7 @@ export function SpotCard({ spot, index = 0, lang = 'en' }: SpotCardProps) {
               style={{
                 background: imgFailed
                   ? 'transparent'
-                  : 'linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, transparent 40%, rgba(0,0,0,0.32) 100%)',
+                  : 'linear-gradient(to bottom, rgba(0,0,0,0.04) 0%, transparent 38%, rgba(0,0,0,0.52) 100%)',
               }}
             />
 
@@ -118,14 +121,14 @@ export function SpotCard({ spot, index = 0, lang = 'en' }: SpotCardProps) {
           </div>
 
           {/* Content */}
-          <div className="px-5 pt-4 pb-4">
+          <div className="px-4 pt-3.5 pb-4">
             <h3
               className="line-clamp-1 mb-1.5"
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: '19px',
+                fontSize: '21px',
                 fontWeight: 600,
-                lineHeight: '25px',
+                lineHeight: '27px',
                 color: '#17110A',
                 letterSpacing: '-0.01em',
               }}
@@ -133,19 +136,19 @@ export function SpotCard({ spot, index = 0, lang = 'en' }: SpotCardProps) {
               {name}
             </h3>
             <p
-              className="line-clamp-2 mb-4"
+              className="line-clamp-2 mb-3.5"
               style={{
                 fontFamily: 'var(--font-sans)',
                 fontSize: '13px',
                 fontWeight: 400,
                 lineHeight: '20px',
-                color: '#6B5246',
+                color: '#7A5C4E',
               }}
             >
               {description}
             </p>
-            <div className="zellige-divider mb-3.5" />
-            <div className="flex items-center gap-5">
+            <div className="zellige-divider mb-3" />
+            <div className="flex items-center gap-4">
               <span className="flex items-center gap-1.5" style={{ fontFamily: 'var(--font-sans)', fontSize: '12px', color: '#8C6E60' }}>
                 <Clock size={11} strokeWidth={1.75} />
                 {spot.bestTime}

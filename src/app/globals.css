@@ -53,8 +53,8 @@
   --color-on-error-container: #93000A;
 
   /* Typography */
-  --font-display: "Playfair Display", "Georgia", serif;
-  --font-sans:    "Plus Jakarta Sans", "Helvetica Neue", sans-serif;
+  --font-display: "Cormorant Garamond", "Georgia", serif;
+  --font-sans:    "DM Sans", "Helvetica Neue", sans-serif;
 
   /* Radius */
   --radius-sm:   0.25rem;
@@ -74,7 +74,7 @@
 html {
   background-color: #FAF7F2;
   color: #17110A;
-  font-family: "Plus Jakarta Sans", "Helvetica Neue", sans-serif;
+  font-family: "DM Sans", "Helvetica Neue", sans-serif;
   -webkit-tap-highlight-color: transparent;
   font-feature-settings: "kern" 1, "liga" 1;
   -webkit-font-smoothing: antialiased;
@@ -98,11 +98,11 @@ body {
 .zellige-divider {
   background-image: repeating-linear-gradient(
     90deg,
-    #D9B8A8 0px, #D9B8A8 1px,
-    transparent 1px, transparent 22px
+    #C9A090 0px, #C9A090 2px,
+    transparent 2px, transparent 20px
   );
   height: 1px;
-  opacity: 0.55;
+  opacity: 0.45;
 }
 
 /* Subtle zellige texture */
@@ -147,6 +147,19 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Scan lens ring animation */
+@keyframes scan-pulse {
+  0%   { transform: scale(1);   opacity: 0.55; }
+  70%  { transform: scale(1.12); opacity: 0;   }
+  100% { transform: scale(1.12); opacity: 0;   }
+}
+.scan-ring {
+  animation: scan-pulse 2.4s ease-out infinite;
+}
+.scan-ring-delay {
+  animation: scan-pulse 2.4s ease-out 1.2s infinite;
 }
 
 /* Pulse for video CTA */

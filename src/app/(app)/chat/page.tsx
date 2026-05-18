@@ -118,43 +118,48 @@ export default function ChatPage() {
       {/* Messages */}
       <div className="flex-1 overflow-y-auto px-5 py-4">
         {isEmpty ? (
-          <div className="h-full flex flex-col items-center justify-center">
-            <div
-              className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5"
-              style={{ background: '#fff3ef', border: '1px solid #ffdbcd' }}
-            >
-              <Sparkles size={26} color="#8c3500" strokeWidth={1.5} />
+          <div className="h-full flex flex-col items-center justify-center py-6">
+            <div className="relative mb-6">
+              <div
+                className="w-20 h-20 rounded-full flex items-center justify-center"
+                style={{
+                  background: 'linear-gradient(145deg, #FEF3EE 0%, #FFF8F5 100%)',
+                  border: '1px solid rgba(107,34,0,0.12)',
+                  boxShadow: '0 8px 32px rgba(107,34,0,0.10)',
+                }}
+              >
+                <Sparkles size={28} color="#6B2200" strokeWidth={1.5} />
+              </div>
             </div>
             <h2
               className="mb-2 text-center"
-              style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: 600, color: '#1b1c1a' }}
+              style={{ fontFamily: 'var(--font-display)', fontSize: '30px', fontWeight: 600, color: '#17110A', letterSpacing: '-0.01em' }}
             >
               {t(lang, 'chat_empty_title')}
             </h2>
             <p
               className="text-center mb-8"
-              style={{ fontFamily: 'var(--font-sans)', fontSize: '16px', color: '#594238', maxWidth: 280 }}
+              style={{ fontFamily: 'var(--font-sans)', fontSize: '15px', color: '#7A5C4E', maxWidth: 270, lineHeight: '23px' }}
             >
               {t(lang, 'chat_empty_subtitle')}
             </p>
-            <div className="w-full flex flex-col gap-2">
-              {prompts.map(prompt => (
+            <div className="w-full flex flex-col gap-2.5">
+              {prompts.map((prompt, i) => (
                 <button
                   key={prompt}
                   onClick={() => sendMessage(prompt)}
-                  className="w-full text-left px-4 transition-all duration-150 active:scale-[0.98]"
+                  className="w-full text-left flex items-center gap-3 px-4 transition-all duration-150 active:scale-[0.98]"
                   style={{
-                    height: 52,
+                    height: 54,
                     borderRadius: 16,
                     background: '#ffffff',
-                    boxShadow: '0 4px 16px rgba(44,62,80,0.06)',
+                    border: '1px solid rgba(217,184,168,0.38)',
+                    borderLeft: i === 0 ? '3px solid #8C3500' : '1px solid rgba(217,184,168,0.38)',
+                    boxShadow: '0 2px 10px rgba(23,17,10,0.05)',
                     fontFamily: 'var(--font-sans)',
                     fontSize: '14px',
                     fontWeight: 500,
-                    color: '#1b1c1a',
-                    textAlign: lang === 'ar' ? 'right' : 'left',
-                    display: 'flex',
-                    alignItems: 'center',
+                    color: '#2A1A0E',
                     direction: lang === 'ar' ? 'rtl' : 'ltr',
                   }}
                 >
