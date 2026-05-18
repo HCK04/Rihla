@@ -48,8 +48,26 @@ Return ONLY valid JSON (no markdown, no explanation):
 }`
 }
 
+async function groqGenerate(key: string, prompt: string): Promise<string> {
+  const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
+    body: JSON.stringify({
+      model: 'llama-3.3-70b-versatile',
+      response_format: { type: 'json_object' },
+      messages: [{ role: 'user', content: prompt }],
+    }),
+  })
+  if (!res.ok) {
+    const body = await res.text()
+    throw new Error(`Groq ${res.status}: ${body}`)
+  }
+  const data = await res.json()
+  return data.choices?.[0]?.message?.content ?? ''
+}
+
 export async function POST(req: NextRequest) {
-  const { city, teamName, teamCode, days = 3, lang = 'en' } = await req.json()
+  const { city, teamName, days = 3, lang = 'en' } = await req.json()
 
   const spots = (CITY_SPOTS[city] ?? marrakechSpots)
     .sort((a, b) => b.rarity - a.rarity)
@@ -62,63 +80,40 @@ export async function POST(req: NextRequest) {
 
   const prompt = buildPrompt(city, teamName, days, lang, spotsContext)
 
-  const ollamaBase  = process.env.OLLAMA_BASE_URL
-  const ollamaModel = process.env.OLLAMA_MODEL ?? 'llama3'
+  const groqKey     = process.env.GROQ_API_KEY
   const anthropicKey = process.env.ANTHROPIC_API_KEY
 
   let responseText = ''
 
-  // ── Ollama path (with fallback on connection error) ────────────────────
-  let ollamaSucceeded = false
-  if (ollamaBase) {
+  // ── Groq (free) ────────────────────────────────────────────────────────
+  if (groqKey) {
     try {
-      const res = await fetch(`${ollamaBase}/api/chat`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: ollamaModel,
-          format: 'json',
-          stream: false,
-          messages: [{ role: 'user', content: prompt }],
-        }),
-      })
-      if (res.ok) {
-        const data = await res.json()
-        responseText = data.message?.content ?? ''
-        ollamaSucceeded = true
-      }
-    } catch {
-      // Ollama not running — fall through to Anthropic
+      responseText = await groqGenerate(groqKey, prompt)
+    } catch (e) {
+      console.error('[itinerary] Groq error:', e)
     }
   }
 
   // ── Anthropic fallback ─────────────────────────────────────────────────
-  if (!ollamaSucceeded && anthropicKey) {
+  if (!responseText && anthropicKey) {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: {
-        'x-api-key': anthropicKey,
-        'anthropic-version': '2023-06-01',
-        'content-type': 'application/json',
-      },
+      headers: { 'x-api-key': anthropicKey, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
         max_tokens: 1200,
         messages: [{ role: 'user', content: prompt }],
       }),
     })
-    if (!res.ok) {
-      return new Response(JSON.stringify({ error: await res.text() }), {
-        status: res.status, headers: { 'Content-Type': 'application/json' },
-      })
+    if (res.ok) {
+      const data = await res.json()
+      responseText = data.content?.[0]?.text ?? ''
     }
-    const data = await res.json()
-    responseText = data.content?.[0]?.text ?? ''
   }
 
-  else if (!ollamaSucceeded) {
+  if (!responseText) {
     return new Response(
-      JSON.stringify({ error: 'AI unavailable. Set ANTHROPIC_API_KEY in .env.local or start Ollama.' }),
+      JSON.stringify({ error: 'No AI key configured. Add GROQ_API_KEY to .env.local' }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     )
   }
