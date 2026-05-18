@@ -18,16 +18,33 @@ export default function ChatPage() {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const bottomRef = useRef<HTMLDivElement>(null)
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
 
+  // Auto-scroll on new messages
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages])
+  }, [messages, loading])
+
+  // Auto-focus input on mount
+  useEffect(() => {
+    setTimeout(() => textareaRef.current?.focus(), 300)
+  }, [])
+
+  const resizeTextarea = () => {
+    const el = textareaRef.current
+    if (!el) return
+    el.style.height = 'auto'
+    el.style.height = Math.min(el.scrollHeight, 120) + 'px'
+  }
 
   const sendMessage = async (text: string) => {
     if (!text.trim() || loading) return
-    const userMsg: Message = { id: Date.now().toString(), role: 'user', content: text }
+    const userMsg: Message = { id: Date.now().toString(), role: 'user', content: text.trim() }
     setMessages(prev => [...prev, userMsg])
     setInput('')
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto'
+    }
     setLoading(true)
 
     try {
@@ -81,163 +98,186 @@ export default function ChatPage() {
     }
   }
 
-  const isEmpty = messages.length === 0
   const prompts = chatPrompts(lang)
+  const hasUserMessages = messages.length > 0
 
   return (
     <div className="flex flex-col h-dvh" style={{ background: '#faf8f4' }}>
+
       {/* Header */}
       <div
-        className="flex items-center gap-3 px-5 pb-4 pt-safe-12"
+        className="flex items-center gap-3 px-5 pb-4 pt-safe-12 flex-shrink-0"
         style={{ background: '#faf8f4', borderBottom: '0.5px solid rgba(44,62,80,0.08)' }}
       >
         <div
           className="w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0"
-          style={{ background: '#8c3500', boxShadow: '0 4px 12px rgba(158,61,0,0.20)' }}
+          style={{ background: '#8c3500', boxShadow: '0 4px 12px rgba(140,53,0,0.28)' }}
         >
           <Sparkles size={18} color="#ffffff" strokeWidth={1.5} />
         </div>
         <div>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: '18px',
-              fontWeight: 600,
-              color: '#1b1c1a',
-              lineHeight: '24px',
-            }}
-          >
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '18px', fontWeight: 600, color: '#17110A', lineHeight: '24px' }}>
             {t(lang, 'chat_title')}
           </h1>
-          <p style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#594238' }}>
+          <p style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#8C6E60' }}>
             {t(lang, 'chat_subtitle')}
           </p>
         </div>
       </div>
 
-      {/* Messages */}
-      <div className="flex-1 overflow-y-auto px-5 py-4">
-        {isEmpty ? (
-          <div className="h-full flex flex-col items-center justify-center py-6">
-            <div className="relative mb-6">
+      {/* Messages list */}
+      <div className="flex-1 overflow-y-auto px-5 py-5 flex flex-col gap-4 min-h-0">
+
+        {/* AI greeting — always shown as first bubble */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="flex justify-start items-end gap-2"
+        >
+          <div
+            className="w-7 h-7 rounded-xl flex items-center justify-center flex-shrink-0 mb-0.5"
+            style={{ background: '#8c3500' }}
+          >
+            <Sparkles size={12} color="#ffffff" strokeWidth={1.5} />
+          </div>
+          <div
+            className="px-4 py-3"
+            style={{
+              maxWidth: '78%',
+              background: '#ffffff',
+              borderRadius: '4px 20px 20px 20px',
+              boxShadow: '0 4px 16px rgba(44,62,80,0.08)',
+              fontFamily: 'var(--font-sans)',
+              fontSize: '15px',
+              lineHeight: '24px',
+              color: '#17110A',
+              direction: lang === 'ar' ? 'rtl' : 'ltr',
+            }}
+          >
+            {t(lang, 'chat_empty_subtitle')}
+          </div>
+        </motion.div>
+
+        {/* Conversation messages */}
+        <AnimatePresence initial={false}>
+          {messages.map(msg => (
+            <motion.div
+              key={msg.id}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.22 }}
+              className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} items-end gap-2`}
+            >
+              {msg.role === 'assistant' && (
+                <div
+                  className="w-7 h-7 rounded-xl flex items-center justify-center flex-shrink-0 mb-0.5"
+                  style={{ background: '#8c3500' }}
+                >
+                  <Sparkles size={12} color="#ffffff" strokeWidth={1.5} />
+                </div>
+              )}
               <div
-                className="w-20 h-20 rounded-full flex items-center justify-center"
+                className="px-4 py-3"
                 style={{
-                  background: 'linear-gradient(145deg, #FEF3EE 0%, #FFF8F5 100%)',
-                  border: '1px solid rgba(107,34,0,0.12)',
-                  boxShadow: '0 8px 32px rgba(107,34,0,0.10)',
+                  maxWidth: '78%',
+                  background: msg.role === 'user' ? '#8c3500' : '#ffffff',
+                  color: msg.role === 'user' ? '#ffffff' : '#17110A',
+                  borderRadius: msg.role === 'user' ? '20px 20px 4px 20px' : '4px 20px 20px 20px',
+                  boxShadow: msg.role === 'assistant' ? '0 4px 16px rgba(44,62,80,0.08)' : 'none',
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: '15px',
+                  fontWeight: 400,
+                  lineHeight: '24px',
+                  direction: lang === 'ar' ? 'rtl' : 'ltr',
+                  textAlign: lang === 'ar' ? 'right' : 'left',
+                  whiteSpace: 'pre-wrap',
                 }}
               >
-                <Sparkles size={28} color="#6B2200" strokeWidth={1.5} />
+                {msg.content || (
+                  <span className="flex gap-1 py-0.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-current animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <span className="w-1.5 h-1.5 rounded-full bg-current animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="w-1.5 h-1.5 rounded-full bg-current animate-bounce" style={{ animationDelay: '300ms' }} />
+                  </span>
+                )}
               </div>
-            </div>
-            <h2
-              className="mb-2 text-center"
-              style={{ fontFamily: 'var(--font-display)', fontSize: '30px', fontWeight: 600, color: '#17110A', letterSpacing: '-0.01em' }}
-            >
-              {t(lang, 'chat_empty_title')}
-            </h2>
-            <p
-              className="text-center mb-8"
-              style={{ fontFamily: 'var(--font-sans)', fontSize: '15px', color: '#7A5C4E', maxWidth: 270, lineHeight: '23px' }}
-            >
-              {t(lang, 'chat_empty_subtitle')}
-            </p>
-            <div className="w-full flex flex-col gap-2.5">
-              {prompts.map((prompt, i) => (
+            </motion.div>
+          ))}
+        </AnimatePresence>
+
+        <div ref={bottomRef} />
+      </div>
+
+      {/* Suggestion chips — horizontal scroll, hidden after first message */}
+      <AnimatePresence>
+        {!hasUserMessages && (
+          <motion.div
+            initial={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="flex-shrink-0 overflow-hidden"
+          >
+            <div className="flex gap-2 overflow-x-auto scrollbar-none px-5 pb-3 pt-1">
+              {prompts.slice(0, 4).map((prompt) => (
                 <button
                   key={prompt}
                   onClick={() => sendMessage(prompt)}
-                  className="w-full text-left flex items-center gap-3 px-4 transition-all duration-150 active:scale-[0.98]"
+                  className="flex-shrink-0 transition-all duration-150 active:scale-[0.96]"
                   style={{
-                    height: 54,
-                    borderRadius: 16,
+                    height: 36,
+                    padding: '0 14px',
+                    borderRadius: 9999,
                     background: '#ffffff',
-                    border: '1px solid rgba(217,184,168,0.38)',
-                    borderLeft: i === 0 ? '3px solid #8C3500' : '1px solid rgba(217,184,168,0.38)',
-                    boxShadow: '0 2px 10px rgba(23,17,10,0.05)',
+                    border: '1px solid rgba(209,178,162,0.50)',
+                    boxShadow: '0 2px 8px rgba(23,17,10,0.05)',
                     fontFamily: 'var(--font-sans)',
-                    fontSize: '14px',
+                    fontSize: '13px',
                     fontWeight: 500,
-                    color: '#2A1A0E',
-                    direction: lang === 'ar' ? 'rtl' : 'ltr',
+                    color: '#3D2318',
+                    whiteSpace: 'nowrap',
                   }}
                 >
                   {prompt}
                 </button>
               ))}
             </div>
-          </div>
-        ) : (
-          <div className="flex flex-col gap-4">
-            <AnimatePresence initial={false}>
-              {messages.map(msg => (
-                <motion.div
-                  key={msg.id}
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} items-end gap-2`}
-                >
-                  {msg.role === 'assistant' && (
-                    <div
-                      className="w-7 h-7 rounded-xl flex items-center justify-center flex-shrink-0 mb-0.5"
-                      style={{ background: '#8c3500' }}
-                    >
-                      <Sparkles size={12} color="#ffffff" strokeWidth={1.5} />
-                    </div>
-                  )}
-                  <div
-                    className="max-w-[78%] px-4 py-3 text-sm leading-relaxed"
-                    style={{
-                      background: msg.role === 'user' ? '#8c3500' : '#ffffff',
-                      color: msg.role === 'user' ? '#ffffff' : '#1b1c1a',
-                      borderRadius: msg.role === 'user' ? '20px 20px 4px 20px' : '4px 20px 20px 20px',
-                      boxShadow: msg.role === 'assistant' ? '0 4px 16px rgba(44,62,80,0.08)' : 'none',
-                      fontFamily: 'var(--font-sans)',
-                      fontWeight: 400,
-                      lineHeight: '24px',
-                      direction: lang === 'ar' ? 'rtl' : 'ltr',
-                      textAlign: lang === 'ar' ? 'right' : 'left',
-                    }}
-                  >
-                    {msg.content || (
-                      <span className="flex gap-1 py-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-current animate-bounce" style={{ animationDelay: '0ms' }} />
-                        <span className="w-1.5 h-1.5 rounded-full bg-current animate-bounce" style={{ animationDelay: '150ms' }} />
-                        <span className="w-1.5 h-1.5 rounded-full bg-current animate-bounce" style={{ animationDelay: '300ms' }} />
-                      </span>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-            <div ref={bottomRef} />
-          </div>
+          </motion.div>
         )}
-      </div>
+      </AnimatePresence>
 
-      {/* Input */}
+      {/* Input bar */}
       <div
-        className="px-5 py-3 safe-bottom"
+        className="flex-shrink-0 px-5 py-3 safe-bottom"
         style={{ background: '#faf8f4', borderTop: '0.5px solid rgba(44,62,80,0.08)' }}
       >
         <div
           className="flex items-end gap-3 px-4 py-3 rounded-2xl"
-          style={{ background: '#ffffff', boxShadow: '0 4px 16px rgba(44,62,80,0.08)' }}
+          style={{
+            background: '#ffffff',
+            boxShadow: '0 4px 20px rgba(44,62,80,0.09)',
+            border: '1px solid rgba(209,178,162,0.30)',
+          }}
         >
           <textarea
+            ref={textareaRef}
             value={input}
-            onChange={e => setInput(e.target.value)}
-            onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(input) } }}
+            onChange={e => { setInput(e.target.value); resizeTextarea() }}
+            onKeyDown={e => {
+              if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault()
+                sendMessage(input)
+              }
+            }}
             placeholder={t(lang, 'ask_morocco')}
             rows={1}
             className="flex-1 bg-transparent resize-none outline-none"
             style={{
               fontFamily: 'var(--font-sans)',
               fontSize: '16px',
-              color: '#1b1c1a',
+              color: '#17110A',
               maxHeight: 120,
+              lineHeight: '24px',
               direction: lang === 'ar' ? 'rtl' : 'ltr',
               textAlign: lang === 'ar' ? 'right' : 'left',
             }}
@@ -245,13 +285,14 @@ export default function ChatPage() {
           <button
             onClick={() => sendMessage(input)}
             disabled={!input.trim() || loading}
-            className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-150 disabled:opacity-30"
-            style={{ background: '#8c3500' }}
+            className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-150 disabled:opacity-25 active:scale-95"
+            style={{ background: '#8c3500', flexShrink: 0 }}
           >
             <Send size={15} color="#ffffff" />
           </button>
         </div>
       </div>
+
     </div>
   )
 }
