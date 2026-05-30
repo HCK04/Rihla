@@ -102,25 +102,25 @@ export default function ChatPage() {
   const hasUserMessages = messages.length > 0
 
   return (
-    <div className="flex flex-col h-dvh" style={{ background: '#faf8f4' }}>
+    <div className="flex h-dvh flex-col" style={{ background: '#0F0E0C' }}>
 
       {/* Header */}
       <div
         className="flex items-center gap-3 px-5 pb-4 pt-safe-12 flex-shrink-0"
-        style={{ background: '#faf8f4', borderBottom: '0.5px solid rgba(44,62,80,0.08)' }}
+        style={{ background: 'rgba(15,14,12,0.92)', borderBottom: '0.5px solid rgba(232,168,56,0.20)', backdropFilter: 'blur(18px)' }}
       >
         <div
           className="w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0"
-          style={{ background: '#8c3500', boxShadow: '0 4px 12px rgba(140,53,0,0.28)' }}
+          style={{ background: '#C4622D', boxShadow: '0 8px 24px rgba(196,98,45,0.28)' }}
         >
           <Sparkles size={18} color="#ffffff" strokeWidth={1.5} />
         </div>
         <div>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '18px', fontWeight: 600, color: '#17110A', lineHeight: '24px' }}>
-            {t(lang, 'chat_title')}
+            {t(lang, 'ask_rihla')}
           </h1>
-          <p style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#8C6E60' }}>
-            {t(lang, 'chat_subtitle')}
+          <p style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#B9AD9B' }}>
+            Marrakech Medina · Match day ready
           </p>
         </div>
       </div>
@@ -137,7 +137,7 @@ export default function ChatPage() {
         >
           <div
             className="w-7 h-7 rounded-xl flex items-center justify-center flex-shrink-0 mb-0.5"
-            style={{ background: '#8c3500' }}
+            style={{ background: '#C4622D' }}
           >
             <Sparkles size={12} color="#ffffff" strokeWidth={1.5} />
           </div>
@@ -145,13 +145,15 @@ export default function ChatPage() {
             className="px-4 py-3"
             style={{
               maxWidth: '78%',
-              background: '#ffffff',
+              background: '#1E1D1A',
+              border: '1px solid rgba(232,168,56,0.22)',
+              borderLeft: '3px solid #E8A838',
               borderRadius: '4px 20px 20px 20px',
-              boxShadow: '0 4px 16px rgba(44,62,80,0.08)',
+              boxShadow: '0 8px 32px rgba(196,98,45,0.12)',
               fontFamily: 'var(--font-sans)',
               fontSize: '15px',
               lineHeight: '24px',
-              color: '#17110A',
+              color: '#F5EFE6',
               direction: lang === 'ar' ? 'rtl' : 'ltr',
             }}
           >
@@ -172,7 +174,7 @@ export default function ChatPage() {
               {msg.role === 'assistant' && (
                 <div
                   className="w-7 h-7 rounded-xl flex items-center justify-center flex-shrink-0 mb-0.5"
-                  style={{ background: '#8c3500' }}
+                  style={{ background: '#C4622D' }}
                 >
                   <Sparkles size={12} color="#ffffff" strokeWidth={1.5} />
                 </div>
@@ -181,10 +183,12 @@ export default function ChatPage() {
                 className="px-4 py-3"
                 style={{
                   maxWidth: '78%',
-                  background: msg.role === 'user' ? '#8c3500' : '#ffffff',
-                  color: msg.role === 'user' ? '#ffffff' : '#17110A',
+                  background: msg.role === 'user' ? '#C4622D' : '#1E1D1A',
+                  color: '#F5EFE6',
+                  border: msg.role === 'assistant' ? '1px solid rgba(232,168,56,0.22)' : '1px solid rgba(196,98,45,0.40)',
+                  borderLeft: msg.role === 'assistant' ? '3px solid #E8A838' : '1px solid rgba(196,98,45,0.40)',
                   borderRadius: msg.role === 'user' ? '20px 20px 4px 20px' : '4px 20px 20px 20px',
-                  boxShadow: msg.role === 'assistant' ? '0 4px 16px rgba(44,62,80,0.08)' : 'none',
+                  boxShadow: msg.role === 'assistant' ? '0 8px 32px rgba(196,98,45,0.12)' : '0 8px 24px rgba(196,98,45,0.18)',
                   fontFamily: 'var(--font-sans)',
                   fontSize: '15px',
                   fontWeight: 400,
@@ -228,13 +232,13 @@ export default function ChatPage() {
                     height: 36,
                     padding: '0 14px',
                     borderRadius: 9999,
-                    background: '#ffffff',
-                    border: '1px solid rgba(209,178,162,0.50)',
-                    boxShadow: '0 2px 8px rgba(23,17,10,0.05)',
+                    background: '#1A1815',
+                    border: '1px solid rgba(232,168,56,0.20)',
+                    boxShadow: '0 4px 18px rgba(0,0,0,0.18)',
                     fontFamily: 'var(--font-sans)',
                     fontSize: '13px',
                     fontWeight: 500,
-                    color: '#3D2318',
+                    color: '#D9CCB7',
                     whiteSpace: 'nowrap',
                   }}
                 >
@@ -249,14 +253,14 @@ export default function ChatPage() {
       {/* Input bar */}
       <div
         className="flex-shrink-0 px-5 py-3 safe-bottom"
-        style={{ background: '#faf8f4', borderTop: '0.5px solid rgba(44,62,80,0.08)' }}
+        style={{ background: 'rgba(15,14,12,0.92)', borderTop: '0.5px solid rgba(232,168,56,0.20)', backdropFilter: 'blur(18px)' }}
       >
         <div
           className="flex items-end gap-3 px-4 py-3 rounded-2xl"
           style={{
-            background: '#ffffff',
-            boxShadow: '0 4px 20px rgba(44,62,80,0.09)',
-            border: '1px solid rgba(209,178,162,0.30)',
+            background: '#1A1815',
+            boxShadow: '0 8px 32px rgba(196,98,45,0.15)',
+            border: '1px solid rgba(232,168,56,0.20)',
           }}
         >
           <textarea
@@ -275,7 +279,7 @@ export default function ChatPage() {
             style={{
               fontFamily: 'var(--font-sans)',
               fontSize: '16px',
-              color: '#17110A',
+              color: '#F5EFE6',
               maxHeight: 120,
               lineHeight: '24px',
               direction: lang === 'ar' ? 'rtl' : 'ltr',
@@ -286,7 +290,7 @@ export default function ChatPage() {
             onClick={() => sendMessage(input)}
             disabled={!input.trim() || loading}
             className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-150 disabled:opacity-25 active:scale-95"
-            style={{ background: '#8c3500', flexShrink: 0 }}
+            style={{ background: '#C4622D', flexShrink: 0 }}
           >
             <Send size={15} color="#ffffff" />
           </button>

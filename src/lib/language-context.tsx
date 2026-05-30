@@ -2,7 +2,14 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 
-export type Lang = 'en' | 'fr' | 'ar' | 'es' | 'pt'
+export type Lang = 'en' | 'fr' | 'ar' | 'es' | 'pt' | 'de'
+const LANGS: Lang[] = ['en', 'fr', 'ar', 'es', 'pt', 'de']
+
+function normalizeLang(value: string | null | undefined): Lang | null {
+  if (!value) return null
+  const code = value.split('-')[0].toLowerCase()
+  return LANGS.includes(code as Lang) ? (code as Lang) : null
+}
 
 interface LanguageContextValue {
   lang: Lang
@@ -20,8 +27,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>('en')
 
   useEffect(() => {
-    const stored = localStorage.getItem('rihlai-lang') as Lang | null
-    if (stored) setLangState(stored)
+    const stored = normalizeLang(localStorage.getItem('rihlai-lang'))
+    const browser = normalizeLang(navigator.language)
+    setLangState(stored ?? browser ?? 'en')
   }, [])
 
   const setLang = (l: Lang) => {

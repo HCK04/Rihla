@@ -1,0 +1,8 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#E8A838" stroke-opacity=".18">
+    <path d="M60 2L118 60L60 118L2 60L60 2Z"/>
+    <path d="M60 28L92 60L60 92L28 60L60 28Z"/>
+    <path d="M2 60H118M60 2V118"/>
+    <path d="M18 18L102 102M102 18L18 102" stroke-opacity=".1"/>
+  </g>
+</svg>

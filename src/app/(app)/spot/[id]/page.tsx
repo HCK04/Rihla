@@ -1,31 +1,42 @@
 'use client'
 
-import { use, useState, useEffect } from 'react'
+import { use, useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Clock, MapPin, Plus, Check, Gem } from 'lucide-react'
-import { RarityBadge } from '@/components/shared/RarityBadge'
+import { ArrowLeft, Check, Clock, Heart, MapPin, Navigation, Plus, Sparkles } from 'lucide-react'
+import { RihlaFAB } from '@/components/navigation/RihlaFAB'
+import { RarityBadge } from '@/components/ui/RarityBadge'
+import { RihlaButton } from '@/components/ui/RihlaButton'
+import { ZelligeDivider } from '@/components/ui/ZelligeDivider'
 import { getRarityDescription } from '@/lib/utils'
-import { useLang, pick } from '@/lib/language-context'
-import { getSpotImage, getCategoryFallback } from '@/data/spot-images'
+import { pick, useLang } from '@/lib/language-context'
+import { t } from '@/lib/i18n'
+import { getCategoryFallback, getSpotImage } from '@/content/spot-images'
 import { isSpotSaved, toggleSavedSpot } from '@/lib/saved-spots'
-import marrakechSpots from '@/data/spots/marrakech.json'
-import fezSpots from '@/data/spots/fez.json'
-import casablancaSpots from '@/data/spots/casablanca.json'
-import rabatSpots from '@/data/spots/rabat.json'
-import tangierSpots from '@/data/spots/tangier.json'
-import agadirSpots from '@/data/spots/agadir.json'
+import marrakechSpots from '@/content/spots/marrakech.json'
+import fezSpots from '@/content/spots/fez.json'
+import casablancaSpots from '@/content/spots/casablanca.json'
+import rabatSpots from '@/content/spots/rabat.json'
+import tangierSpots from '@/content/spots/tangier.json'
+import agadirSpots from '@/content/spots/agadir.json'
 import type { Spot } from '@/lib/types'
 
 const ALL_SPOTS = [
-  ...marrakechSpots, ...fezSpots, ...casablancaSpots,
-  ...rabatSpots, ...tangierSpots, ...agadirSpots,
+  ...marrakechSpots,
+  ...fezSpots,
+  ...casablancaSpots,
+  ...rabatSpots,
+  ...tangierSpots,
+  ...agadirSpots,
 ] as Spot[]
 
-const CATEGORY_COLORS: Record<string, string> = {
-  culture: '#9B3B0A', food: '#6B4C00', nature: '#2A5C3F',
-  medina: '#6B2200', market: '#4A2E5C', hammam: '#1A5858',
-  cafe: '#4C3214', museum: '#1A3C5C', mosque: '#341A5C', viewpoint: '#263E0A',
+const CITY_LABELS: Record<string, string> = {
+  casablanca: 'Casablanca',
+  marrakech: 'Marrakech',
+  rabat: 'Rabat',
+  tangier: 'Tangier',
+  agadir: 'Agadir',
+  fez: 'Fez',
 }
 
 export default function SpotDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -45,249 +56,197 @@ export default function SpotDetailPage({ params }: { params: Promise<{ id: strin
     }
   }, [spot])
 
+  const nearby = useMemo(() => {
+    if (!spot) return []
+    return ALL_SPOTS
+      .filter(candidate => candidate.city === spot.city && candidate.id !== spot.id)
+      .sort((a, b) => b.rarity - a.rarity)
+      .slice(0, 2)
+  }, [spot])
+
   if (!spot) {
     return (
-      <div className="min-h-dvh flex items-center justify-center" style={{ background: '#FAF7F2' }}>
-        <p style={{ fontFamily: 'var(--font-sans)', color: '#8C6E60' }}>Spot not found</p>
+      <div className="flex min-h-dvh items-center justify-center bg-[#0F0E0C] px-6 text-center">
+        <p className="text-[15px] text-[#B9AD9B]">This gem slipped out of view.</p>
       </div>
     )
   }
 
-  const catColor    = CATEGORY_COLORS[spot.category] ?? '#6B2200'
-  const name        = pick(spot.name as Record<string, string>, lang)
+  const name = pick(spot.name as Record<string, string>, lang)
   const description = pick(spot.description as Record<string, string>, lang)
-  const story       = pick((spot.culturalStory ?? {}) as Record<string, string>, lang)
-  const cityLabel   = spot.city.charAt(0).toUpperCase() + spot.city.slice(1)
+  const story = pick((spot.culturalStory ?? {}) as Record<string, string>, lang)
+  const cityLabel = CITY_LABELS[spot.city] ?? spot.city
+
+  const saveSpot = () => {
+    const next = toggleSavedSpot({
+      id: spot.id,
+      name: (spot.name as Record<string, string>).en,
+      city: spot.city,
+      category: spot.category,
+      rarity: spot.rarity,
+      bestTime: spot.bestTime,
+      description: (spot.description as Record<string, string>).en,
+      source: 'spot',
+    })
+    setSaved(next)
+    if (typeof navigator !== 'undefined') navigator.vibrate?.([10, 50, 10])
+  }
 
   return (
-    <div className="min-h-dvh" style={{ background: '#FAF7F2' }}>
-      {/* Hero */}
-      <div className="relative overflow-hidden" style={{ height: '22rem', background: '#1A1209' }}>
+    <main className="min-h-dvh bg-[#0F0E0C] pb-[calc(106px+env(safe-area-inset-bottom,0px))] text-[#F0E8D8]">
+      <section className="relative h-[55dvh] min-h-[410px] overflow-hidden bg-[#1A1209]">
         {imgSrc && !imgFailed && (
           <img
             src={imgSrc}
-            alt={name}
-            className="absolute inset-0 w-full h-full object-cover"
+            alt={`${name} in ${cityLabel}`}
+            className="absolute inset-0 h-full w-full object-cover"
             onError={() => {
-              // Wikimedia failed — try Unsplash category fallback
               const fallback = getCategoryFallback(spot.category)
-              if (imgSrc !== fallback) {
-                setImgSrc(fallback)
-              } else {
-                setImgFailed(true)
-              }
+              if (imgSrc !== fallback) setImgSrc(fallback)
+              else setImgFailed(true)
             }}
           />
         )}
-        {/* Gradient overlay */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(to bottom, rgba(0,0,0,0.32) 0%, transparent 32%, rgba(8,4,1,0.88) 100%)',
-          }}
-        />
+        <div className="absolute inset-0 grain-overlay" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(15,14,12,0.25)_0%,rgba(15,14,12,0.08)_38%,rgba(15,14,12,0.98)_100%)]" />
 
-        {/* Back button */}
         <button
           onClick={() => router.back()}
-          className="absolute left-5 w-10 h-10 rounded-xl flex items-center justify-center"
-          style={{
-            top: 'calc(3rem + env(safe-area-inset-top, 0px))',
-            background: 'rgba(0,0,0,0.36)',
-            backdropFilter: 'blur(10px)',
-            WebkitBackdropFilter: 'blur(10px)',
-            border: '0.5px solid rgba(255,255,255,0.18)',
-          }}
+          className="absolute left-5 top-[calc(3rem+env(safe-area-inset-top,0px))] flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/35 text-white backdrop-blur-xl"
+          aria-label="Back"
         >
-          <ArrowLeft size={18} color="#FFFFFF" strokeWidth={2} />
+          <ArrowLeft size={18} strokeWidth={1.8} />
         </button>
 
-        {/* Bottom content over hero */}
-        <div className="absolute bottom-0 left-0 right-0 px-5 pb-6">
-          <span
-            className="inline-block mb-2.5 uppercase"
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em',
-              color: 'rgba(255,255,255,0.85)',
-              background: 'rgba(0,0,0,0.36)',
-              backdropFilter: 'blur(8px)',
-              border: '0.5px solid rgba(255,255,255,0.20)',
-              padding: '3px 10px', borderRadius: 9999,
-            }}
-          >
-            {spot.category}
-          </span>
-          <h1
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: '32px', fontWeight: 700, lineHeight: '38px',
-              letterSpacing: '-0.02em', color: '#FFFFFF', marginBottom: 5,
-            }}
-          >
-            {name}
-          </h1>
-          <p style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: 'rgba(255,255,255,0.65)', letterSpacing: '0.02em' }}>
-            {cityLabel} · Morocco
+        <div className="absolute right-5 top-[calc(3rem+env(safe-area-inset-top,0px))]">
+          <RarityBadge score={spot.rarity} size="md" dark />
+        </div>
+
+        <div className="absolute bottom-10 left-0 right-0 px-5">
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.38 }}>
+            <span className="mb-3 inline-flex rounded-full border border-[#E8A838]/28 bg-black/38 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.10em] text-[#E8A838] backdrop-blur">
+              {spot.category}
+            </span>
+            <h1 className="max-w-[18rem] text-[34px] font-semibold leading-[38px] text-white" style={{ fontFamily: 'var(--font-display)' }}>
+              {name}
+            </h1>
+            <p className="mt-2 flex items-center gap-2 text-[13px] text-white/70">
+              <MapPin size={13} strokeWidth={1.7} />
+              {cityLabel} · Morocco · {spot.distanceFromCenter.toFixed(1)} km
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="relative z-10 -mt-8 rounded-t-[28px] border-t border-[#E8A838]/20 bg-[#0F0E0C] px-5 pt-4">
+        <div className="mx-auto mb-5 h-1 w-9 rounded-full bg-[#786858]" />
+
+        <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} className="rihla-card overflow-hidden rounded-2xl p-4">
+          <div className="flex items-start gap-4">
+            <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl border border-[#E8A838]/20 bg-[#E8A838]/10 text-[#E8A838]">
+              <Sparkles size={21} strokeWidth={1.6} />
+            </div>
+            <div>
+              <RarityBadge score={spot.rarity} size="md" />
+              <p className="mt-2 text-[13px] leading-5 text-[#B8A898]">{getRarityDescription(spot.rarity)}</p>
+            </div>
+          </div>
+        </motion.div>
+
+        <article className="mt-6">
+          <p className="text-[11px] font-bold uppercase tracking-[0.10em] text-[#E8A838]">{t(lang, 'story')}</p>
+          <p className="mt-3 text-[16px] leading-7 text-[#D9CCB7]">{story || description}</p>
+        </article>
+
+        <ZelligeDivider className="my-6" />
+
+        <section>
+          <p className="text-[11px] font-bold uppercase tracking-[0.10em] text-[#E8A838]">{t(lang, 'why_special')}</p>
+          <div className="mt-3 space-y-3">
+            {[
+              `Rarity score ${spot.rarity} means this is not the usual guidebook stop.`,
+              `${spot.reviewCount} reviews and ${spot.photoCount} photos give enough signal without feeling overrun.`,
+              `${cityLabel} locals know the timing matters: ${spot.bestTime}.`,
+            ].map(item => (
+              <div key={item} className="flex gap-3 text-[14px] leading-6 text-[#D9CCB7]">
+                <Sparkles className="mt-1 flex-shrink-0 text-[#E8A838]" size={13} strokeWidth={1.8} />
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <ZelligeDivider className="my-6" />
+
+        <section className="grid grid-cols-2 gap-3">
+          {[
+            { icon: <Clock size={15} strokeWidth={1.7} />, label: t(lang, 'scan_best_time_label'), value: spot.bestTime },
+            { icon: <Navigation size={15} strokeWidth={1.7} />, label: t(lang, 'getting_there'), value: `${spot.distanceFromCenter.toFixed(1)} km` },
+          ].map(item => (
+            <div key={item.label} className="rounded-2xl border border-[#E8A838]/18 bg-[#1A1815] p-4">
+              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-[#E8A838]/10 text-[#E8A838]">
+                {item.icon}
+              </div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.10em] text-[#786858]">{item.label}</p>
+              <p className="mt-1 text-[13px] leading-5 text-[#F0E8D8]">{item.value}</p>
+            </div>
+          ))}
+        </section>
+
+        <section className="mt-6 rounded-2xl border border-[#E8A838]/18 bg-[#1A1815] p-4">
+          <p className="text-[11px] font-bold uppercase tracking-[0.10em] text-[#E8A838]">{t(lang, 'darija_helper')}</p>
+          <p className="mt-3 text-right text-[20px] text-[#F0E8D8]" style={{ fontFamily: 'var(--font-arabic)' }}>
+            فين كاين {name}؟
           </p>
+          <p className="mt-2 text-[13px] leading-5 text-[#B8A898]">“Where is {name}?” Show this when asking nearby.</p>
+        </section>
+
+        {nearby.length > 0 && (
+          <>
+            <ZelligeDivider className="my-6" />
+            <section>
+              <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.10em] text-[#E8A838]">{t(lang, 'nearby_gems')}</p>
+              <div className="grid grid-cols-2 gap-3">
+                {nearby.map(item => (
+                  <button
+                    key={item.id}
+                    onClick={() => router.push(`/spot/${item.id}`)}
+                    className="rounded-2xl border border-[#E8A838]/18 bg-[#1A1815] p-3 text-left active:scale-[0.98]"
+                  >
+                    <p className="line-clamp-2 text-[15px] font-semibold leading-5 text-[#F0E8D8]" style={{ fontFamily: 'var(--font-display)' }}>
+                      {pick(item.name as Record<string, string>, lang)}
+                    </p>
+                    <div className="mt-2">
+                      <RarityBadge score={item.rarity} size="sm" />
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </section>
+          </>
+        )}
+      </section>
+
+      <div className="fixed bottom-0 left-0 right-0 z-[240] border-t border-[#E8A838]/18 bg-[#0F0E0C]/92 px-5 pb-[calc(16px+env(safe-area-inset-bottom,0px))] pt-3 backdrop-blur-2xl">
+        <div className="flex gap-3">
+          <RihlaButton
+            className="h-14 flex-1 text-[15px]"
+            icon={saved ? <Check size={17} strokeWidth={2.2} /> : <Plus size={17} strokeWidth={1.8} />}
+            onClick={saveSpot}
+          >
+            {saved ? t(lang, 'added_to_my_day') : t(lang, 'add_to_my_day')}
+          </RihlaButton>
+          <RihlaButton
+            variant="secondary"
+            className="h-14 w-14 px-0"
+            aria-label="Keep this one"
+            icon={<Heart size={18} fill={saved ? '#E8A838' : 'none'} color={saved ? '#E8A838' : '#D9CCB7'} />}
+            onClick={saveSpot}
+          />
         </div>
       </div>
 
-      {/* Content */}
-      <div className="px-5 py-5 flex flex-col gap-5">
-
-        {/* Rarity card */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex items-center gap-4 p-4 rounded-2xl"
-          style={{
-            background: '#FFFFFF',
-            boxShadow: '0 1px 0 rgba(255,255,255,0.9) inset, 0 4px 20px rgba(23,17,10,0.07)',
-          }}
-        >
-          <div
-            className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
-            style={{ background: 'linear-gradient(135deg, #FEF3EE 0%, #FFF8F5 100%)', border: '1px solid rgba(107,34,0,0.10)' }}
-          >
-            <Gem size={22} color="#6B2200" strokeWidth={1.5} />
-          </div>
-          <div className="flex-1">
-            <RarityBadge score={spot.rarity} size="md" />
-            <p className="mt-1" style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#7A5C4E', lineHeight: '18px' }}>
-              {getRarityDescription(spot.rarity)}
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.05 }}
-          style={{ fontFamily: 'var(--font-sans)', fontSize: '15px', lineHeight: '27px', color: '#6B5246' }}
-        >
-          {description}
-        </motion.p>
-
-        {/* Cultural story */}
-        {story && (
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="rounded-2xl overflow-hidden"
-            style={{
-              background: '#FFFFFF',
-              boxShadow: '0 1px 0 rgba(255,255,255,0.9) inset, 0 4px 20px rgba(23,17,10,0.07)',
-              borderLeft: `3px solid ${catColor}`,
-            }}
-          >
-            <div className="p-5">
-              <p
-                className="mb-3 uppercase"
-                style={{ fontFamily: 'var(--font-sans)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', color: catColor }}
-              >
-                Cultural Story
-              </p>
-              <p style={{ fontFamily: 'var(--font-display)', fontSize: '17px', lineHeight: '27px', color: '#17110A', fontStyle: 'italic' }}>
-                {story}
-              </p>
-            </div>
-          </motion.div>
-        )}
-
-        {/* Meta row */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15 }}
-          className="flex gap-3"
-        >
-          {[
-            { icon: <Clock size={14} strokeWidth={1.75} />, label: 'Best time',  value: spot.bestTime },
-            { icon: <MapPin size={14} strokeWidth={1.75} />, label: 'Distance', value: `${spot.distanceFromCenter.toFixed(1)} km` },
-          ].map(item => (
-            <div
-              key={item.label}
-              className="flex-1 p-3.5 rounded-2xl flex items-center gap-3"
-              style={{
-                background: '#FFFFFF',
-                boxShadow: '0 1px 0 rgba(255,255,255,0.9) inset, 0 4px 16px rgba(23,17,10,0.06)',
-              }}
-            >
-              <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: `${catColor}12` }}>
-                <span style={{ color: catColor }}>{item.icon}</span>
-              </div>
-              <div>
-                <p style={{ fontFamily: 'var(--font-sans)', fontSize: '10px', fontWeight: 600, letterSpacing: '0.10em', color: '#9B7A6C', textTransform: 'uppercase' }}>
-                  {item.label}
-                </p>
-                <p style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', fontWeight: 500, color: '#17110A', marginTop: 2 }}>
-                  {item.value}
-                </p>
-              </div>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* Tags */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="flex flex-wrap gap-2"
-        >
-          {spot.tags.map(tag => (
-            <span
-              key={tag}
-              style={{
-                fontFamily: 'var(--font-sans)', fontSize: '12px', fontWeight: 500,
-                background: 'rgba(234,230,223,0.80)',
-                border: '1px solid rgba(209,184,168,0.40)',
-                color: '#6B5246',
-                padding: '5px 13px', borderRadius: 9999, letterSpacing: '0.03em',
-              }}
-            >
-              {tag}
-            </span>
-          ))}
-        </motion.div>
-
-        {/* CTA */}
-        <motion.button
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25 }}
-          whileTap={{ scale: 0.97 }}
-          onClick={() => {
-            const next = toggleSavedSpot({
-              id: spot.id,
-              name: typeof spot.name === 'string' ? spot.name : (spot.name as Record<string, string>).en,
-              city: spot.city,
-              category: spot.category,
-              rarity: spot.rarity,
-              bestTime: spot.bestTime,
-              description: typeof spot.description === 'string' ? spot.description : (spot.description as Record<string, string>).en,
-              source: 'spot',
-            })
-            setSaved(next)
-          }}
-          className="w-full flex items-center justify-center gap-2"
-          style={{
-            height: 58, borderRadius: 18,
-            background: saved ? '#2A5C3F' : '#6B2200',
-            boxShadow: saved ? '0 8px 28px rgba(42,92,63,0.28)' : '0 8px 28px rgba(107,34,0,0.32)',
-            fontFamily: 'var(--font-sans)', fontSize: '16px', fontWeight: 600,
-            color: '#FFFFFF', letterSpacing: '0.02em',
-            transition: 'background 0.25s, box-shadow 0.25s',
-          }}
-        >
-          {saved ? <Check size={18} strokeWidth={2.5} /> : <Plus size={18} strokeWidth={2} />}
-          {saved ? 'Saved to Plan' : 'Add to My Plan'}
-        </motion.button>
-      </div>
-    </div>
+      <RihlaFAB />
+    </main>
   )
 }

@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Camera, Sparkles, RotateCcw, Plus, Check, ImageIcon } from 'lucide-react'
-import { RarityBadge } from '@/components/shared/RarityBadge'
+import { RarityBadge } from '@/components/ui/RarityBadge'
 import { useLang } from '@/lib/language-context'
 import { t } from '@/lib/i18n'
 import { toggleSavedSpot } from '@/lib/saved-spots'
@@ -90,7 +90,7 @@ export default function ScanPage() {
   const handleReset = () => { setResult(null); setError(null); setPreview(null); setScanSaved(false) }
 
   return (
-    <div className="min-h-dvh flex flex-col" style={{ background: '#FAF7F2' }}>
+    <div className="min-h-dvh flex flex-col" style={{ background: '#0F0E0C', color: '#F5EFE6' }}>
 
       <input
         ref={fileRef}
@@ -101,11 +101,11 @@ export default function ScanPage() {
       />
 
       {/* Header */}
-      <div className="px-5 pb-4 pt-safe-12" style={{ borderBottom: '0.5px solid rgba(217,184,168,0.28)' }}>
-        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '36px', fontWeight: 700, color: '#17110A', letterSpacing: '-0.01em' }}>
+      <div className="px-5 pb-4 pt-safe-12" style={{ borderBottom: '0.5px solid rgba(232,168,56,0.20)' }}>
+        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '36px', fontWeight: 700, color: '#F5EFE6', letterSpacing: '-0.01em' }}>
           {t(lang, 'scan_heading')}
         </h1>
-        <p style={{ fontFamily: 'var(--font-sans)', fontSize: '15px', color: '#8C6E60', marginTop: 4 }}>
+        <p style={{ fontFamily: 'var(--font-sans)', fontSize: '15px', color: '#B9AD9B', marginTop: 4 }}>
           {t(lang, 'scan_subheading')}
         </p>
       </div>
@@ -126,12 +126,12 @@ export default function ScanPage() {
               >
                 {/* Pulsing rings */}
                 <div className="absolute inset-0 rounded-full scan-ring"
-                  style={{ border: '1.5px solid rgba(107,34,0,0.18)' }} />
+                  style={{ border: '1.5px solid rgba(232,168,56,0.24)' }} />
                 <div className="absolute inset-0 rounded-full scan-ring-delay"
-                  style={{ border: '1.5px solid rgba(107,34,0,0.12)' }} />
+                  style={{ border: '1.5px solid rgba(232,168,56,0.16)' }} />
                 {/* Static outer ring */}
                 <div className="absolute rounded-full"
-                  style={{ inset: 16, border: '1px dashed rgba(107,34,0,0.18)', borderRadius: 9999 }} />
+                  style={{ inset: 16, border: '1px dashed rgba(232,168,56,0.22)', borderRadius: 9999 }} />
                 {/* Inner button */}
                 <div
                   className="flex flex-col items-center justify-center gap-3"
@@ -139,19 +139,19 @@ export default function ScanPage() {
                     width: 188,
                     height: 188,
                     borderRadius: 9999,
-                    background: '#FFFFFF',
-                    boxShadow: '0 16px 56px rgba(23,17,10,0.13), 0 4px 16px rgba(23,17,10,0.07)',
-                    border: '1px solid rgba(217,184,168,0.35)',
+                    background: '#1A1815',
+                    boxShadow: '0 16px 56px rgba(0,0,0,0.32), 0 8px 32px rgba(196,98,45,0.15)',
+                    border: '1px solid rgba(232,168,56,0.22)',
                   }}
                 >
-                  <Camera size={42} strokeWidth={1.3} color="#8C6E60" />
+                  <Camera size={42} strokeWidth={1.3} color="#E8A838" />
                   <span style={{
                     fontFamily: 'var(--font-sans)',
                     fontSize: '11px',
                     fontWeight: 600,
                     letterSpacing: '0.12em',
                     textTransform: 'uppercase',
-                    color: '#6B5246',
+                    color: '#D9CCB7',
                   }}>
                     {t(lang, 'scan_tap')}
                   </span>
@@ -162,12 +162,12 @@ export default function ScanPage() {
                 <button
                   onClick={openCamera}
                   className="flex items-center gap-2"
-                  style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#8C6E60' }}
+                  style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#B9AD9B' }}
                 >
                   <ImageIcon size={13} strokeWidth={1.75} />
                   {t(lang, 'scan_gallery')}
                 </button>
-                <p className="text-center" style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#A09488', maxWidth: 260, lineHeight: '20px' }}>
+                <p className="text-center" style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#7A7060', maxWidth: 260, lineHeight: '20px' }}>
                   {t(lang, 'scan_hint')}
                 </p>
               </div>
@@ -351,7 +351,7 @@ export default function ScanPage() {
                     transition: 'background 0.25s, box-shadow 0.25s',
                   }}>
                   {scanSaved ? <Check size={15} strokeWidth={2.5} /> : <Plus size={15} strokeWidth={2} />}
-                  {scanSaved ? 'Saved!' : t(lang, 'add_to_plan')}
+                  {scanSaved ? t(lang, 'saved') : t(lang, 'add_to_plan')}
                 </button>
               </div>
             </motion.div>

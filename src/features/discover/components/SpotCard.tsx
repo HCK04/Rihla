@@ -4,8 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Clock, MapPin } from 'lucide-react'
-import { RarityBadge } from '@/components/shared/RarityBadge'
-import { getSpotImage, getCategoryFallback } from '@/data/spot-images'
+import { RarityBadge } from '@/components/ui/RarityBadge'
+import { getSpotImage, getCategoryFallback } from '@/content/spot-images'
 import { pick } from '@/lib/language-context'
 import type { Spot } from '@/lib/types'
 
@@ -25,9 +25,10 @@ interface SpotCardProps {
   spot: Spot
   index?: number
   lang?: string
+  compact?: boolean
 }
 
-export function SpotCard({ spot, index = 0, lang = 'en' }: SpotCardProps) {
+export function SpotCard({ spot, index = 0, lang = 'en', compact = false }: SpotCardProps) {
   const [imgSrc, setImgSrc] = useState(() => getSpotImage(spot.id, spot.category))
   const [imgFailed, setImgFailed] = useState(false)
   const name = pick(spot.name as Record<string, string>, lang as 'en')
@@ -43,14 +44,13 @@ export function SpotCard({ spot, index = 0, lang = 'en' }: SpotCardProps) {
     >
       <Link href={`/spot/${spot.id}`}>
         <div
-          className="rounded-3xl overflow-hidden active:scale-[0.980] transition-transform duration-200"
+          className="overflow-hidden rounded-2xl border border-[#E8A838]/20 bg-[#1A1815] active:scale-[0.980] transition-transform duration-200"
           style={{
-            background: '#FFFFFF',
-            boxShadow: '0 1px 0 rgba(255,255,255,0.9) inset, 0 2px 0 rgba(217,184,168,0.22), 0 16px 44px rgba(23,17,10,0.10)',
+            boxShadow: '0 8px 32px rgba(196,98,45,0.15)',
           }}
         >
           {/* Hero image */}
-          <div className="relative h-56 overflow-hidden" style={{ background: catBg }}>
+          <div className={`relative overflow-hidden ${compact ? 'h-44' : 'h-56'}`} style={{ background: catBg }}>
             {!imgFailed && (
               <img
                 src={imgSrc}
@@ -86,8 +86,8 @@ export function SpotCard({ spot, index = 0, lang = 'en' }: SpotCardProps) {
                 fontSize: '9px',
                 fontWeight: 700,
                 letterSpacing: '0.10em',
-                color: imgFailed ? catColor : '#FFFFFF',
-                background: imgFailed ? `${catColor}14` : 'rgba(0,0,0,0.36)',
+                  color: imgFailed ? catColor : '#FFFFFF',
+                  background: imgFailed ? `${catColor}14` : 'rgba(15,14,12,0.52)',
                 backdropFilter: imgFailed ? 'none' : 'blur(6px)',
                 border: imgFailed ? `1px solid ${catColor}28` : '0.5px solid rgba(255,255,255,0.25)',
                 padding: '3px 9px',
@@ -126,10 +126,10 @@ export function SpotCard({ spot, index = 0, lang = 'en' }: SpotCardProps) {
               className="line-clamp-1 mb-1.5"
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: '21px',
+                fontSize: compact ? '19px' : '21px',
                 fontWeight: 600,
                 lineHeight: '27px',
-                color: '#17110A',
+                color: '#F5EFE6',
                 letterSpacing: '-0.01em',
               }}
             >
@@ -142,18 +142,18 @@ export function SpotCard({ spot, index = 0, lang = 'en' }: SpotCardProps) {
                 fontSize: '13px',
                 fontWeight: 400,
                 lineHeight: '20px',
-                color: '#7A5C4E',
+                color: '#B9AD9B',
               }}
             >
               {description}
             </p>
             <div className="zellige-divider mb-3" />
             <div className="flex items-center gap-4">
-              <span className="flex items-center gap-1.5" style={{ fontFamily: 'var(--font-sans)', fontSize: '12px', color: '#8C6E60' }}>
+              <span className="flex items-center gap-1.5" style={{ fontFamily: 'var(--font-sans)', fontSize: '12px', color: '#B9AD9B' }}>
                 <Clock size={11} strokeWidth={1.75} />
                 {spot.bestTime}
               </span>
-              <span className="flex items-center gap-1.5" style={{ fontFamily: 'var(--font-sans)', fontSize: '12px', color: '#8C6E60' }}>
+              <span className="flex items-center gap-1.5" style={{ fontFamily: 'var(--font-sans)', fontSize: '12px', color: '#B9AD9B' }}>
                 <MapPin size={11} strokeWidth={1.75} />
                 {spot.distanceFromCenter.toFixed(1)} km
               </span>

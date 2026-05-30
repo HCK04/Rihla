@@ -3,9 +3,10 @@ import { NextRequest } from 'next/server'
 const LANG_INSTRUCTION: Record<string, string> = {
   en: 'Write description, culturalStory, and bestTime in English.',
   fr: 'Écris description, culturalStory et bestTime en français.',
-  ar: 'اكتب description وculturalStory وbestTime باللغة العربية.',
+  ar: 'اكتب description و culturalStory و bestTime باللغة العربية.',
   es: 'Escribe description, culturalStory y bestTime en español.',
   pt: 'Escreve description, culturalStory e bestTime em português.',
+  de: 'Schreibe description, culturalStory und bestTime auf Deutsch.',
 }
 
 function buildPrompt(lang: string) {
@@ -19,7 +20,7 @@ Return ONLY valid JSON:
 {
   "confident": true,
   "name": "Exact official or widely-used local name",
-  "type": "One of: Monument · Mosque · Market · Food · Architecture · Nature · Art · Sign",
+  "type": "One of: Monument, Mosque, Market, Food, Architecture, Nature, Art, Sign",
   "description": "One vivid sentence explaining what this is and why it matters",
   "culturalStory": "Two to three sentences of cultural or historical context with at least one specific fact.",
   "rarity": <integer 1-100>,
@@ -27,14 +28,23 @@ Return ONLY valid JSON:
 }`
 }
 
+function parseScanResult(text: string) {
+  const match = text.match(/\{[\s\S]*\}/)
+  if (!match) return null
+  try {
+    return JSON.parse(match[0])
+  } catch {
+    return null
+  }
+}
+
 export async function POST(req: NextRequest) {
   const { image, lang = 'en' } = await req.json()
 
-  const groqKey     = process.env.GROQ_API_KEY
+  const groqKey = process.env.GROQ_API_KEY
   const anthropicKey = process.env.ANTHROPIC_API_KEY
   const prompt = buildPrompt(lang)
 
-  // ── Groq vision (free) ─────────────────────────────────────────────────
   if (groqKey) {
     const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
@@ -54,31 +64,25 @@ export async function POST(req: NextRequest) {
 
     if (res.ok) {
       const data = await res.json()
-      const text = data.choices?.[0]?.message?.content ?? ''
-      const match = text.match(/\{[\s\S]*\}/)
-      if (match) {
-        try {
-          const parsed = JSON.parse(match[0])
-          if (parsed.confident === false) {
-            return new Response(JSON.stringify({ error: 'not_confident' }), { status: 422, headers: { 'Content-Type': 'application/json' } })
-          }
-          return new Response(JSON.stringify(parsed), { headers: { 'Content-Type': 'application/json' } })
-        } catch {}
+      const parsed = parseScanResult(data.choices?.[0]?.message?.content ?? '')
+      if (parsed) {
+        if (parsed.confident === false) return Response.json({ error: 'not_confident' }, { status: 422 })
+        return Response.json(parsed)
       }
     }
   }
 
-  // ── Anthropic fallback ─────────────────────────────────────────────────
   if (!anthropicKey) {
-    return new Response(
-      JSON.stringify({ error: 'No AI key configured. Add GROQ_API_KEY to .env.local' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    )
+    return Response.json({ error: 'No AI key configured. Add GROQ_API_KEY or ANTHROPIC_API_KEY to .env.local' }, { status: 500 })
   }
 
   const response = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
-    headers: { 'x-api-key': anthropicKey, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
+    headers: {
+      'x-api-key': anthropicKey,
+      'anthropic-version': '2023-06-01',
+      'content-type': 'application/json',
+    },
     body: JSON.stringify({
       model: 'claude-sonnet-4-6',
       max_tokens: 700,
@@ -92,30 +96,12 @@ export async function POST(req: NextRequest) {
     }),
   })
 
-  if (!response.ok) {
-    return new Response(JSON.stringify({ error: await response.text() }), {
-      status: response.status, headers: { 'Content-Type': 'application/json' },
-    })
-  }
+  if (!response.ok) return Response.json({ error: await response.text() }, { status: response.status })
 
   const data = await response.json()
-  const text = data.content?.[0]?.text ?? ''
-  const match = text.match(/\{[\s\S]*\}/)
-  if (!match) {
-    return new Response(JSON.stringify({ error: 'Could not parse response' }), {
-      status: 500, headers: { 'Content-Type': 'application/json' },
-    })
-  }
+  const parsed = parseScanResult(data.content?.[0]?.text ?? '')
+  if (!parsed) return Response.json({ error: 'Could not parse response' }, { status: 500 })
+  if (parsed.confident === false) return Response.json({ error: 'not_confident' }, { status: 422 })
 
-  try {
-    const parsed = JSON.parse(match[0])
-    if (parsed.confident === false) {
-      return new Response(JSON.stringify({ error: 'not_confident' }), { status: 422, headers: { 'Content-Type': 'application/json' } })
-    }
-    return new Response(JSON.stringify(parsed), { headers: { 'Content-Type': 'application/json' } })
-  } catch {
-    return new Response(JSON.stringify({ error: 'Invalid JSON from AI' }), {
-      status: 500, headers: { 'Content-Type': 'application/json' },
-    })
-  }
+  return Response.json(parsed)
 }

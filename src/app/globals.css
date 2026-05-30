@@ -91,7 +91,7 @@ body {
 .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
 
 [dir="rtl"] {
-  font-family: "Cairo", "Noto Naskh Arabic", "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-arabic), "Noto Naskh Arabic", serif;
 }
 
 /* Zellige decorative divider */
@@ -175,4 +175,87 @@ body {
   border-radius: 50%;
   border: 2px solid rgba(255,255,255,0.44);
   animation: pulse-ring 2.2s ease-out infinite;
+}
+
+/* Rihla dark medina design system */
+:root {
+  --rihla-bg: #0F0E0C;
+  --rihla-card: #1A1815;
+  --rihla-card-2: #1E1D1A;
+  --rihla-soft: #F5EFE6;
+  --rihla-text: #F5EFE6;
+  --rihla-muted: #B9AD9B;
+  --rihla-muted-2: #7A7060;
+  --rihla-primary: #C4622D;
+  --rihla-midnight: #1A1A2E;
+  --rihla-gold: #E8A838;
+  --rihla-teal: #2A7F6F;
+  --rihla-success: #3D8B5E;
+  --rihla-hairline: rgba(232, 168, 56, 0.20);
+  --rihla-shadow: 0 8px 32px rgba(196, 98, 45, 0.15);
+  --rihla-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  background-color: var(--rihla-bg);
+  color: var(--rihla-text);
+}
+
+body {
+  background:
+    radial-gradient(circle at 20% -10%, rgba(196,98,45,0.18), transparent 34rem),
+    radial-gradient(circle at 100% 10%, rgba(232,168,56,0.10), transparent 30rem),
+    var(--rihla-bg);
+}
+
+.rihla-screen {
+  min-height: 100dvh;
+  background:
+    linear-gradient(180deg, rgba(15,14,12,0.76), var(--rihla-bg) 34rem),
+    radial-gradient(circle at 15% 8%, rgba(196,98,45,0.18), transparent 26rem),
+    var(--rihla-bg);
+  color: var(--rihla-text);
+}
+
+.rihla-card {
+  position: relative;
+  background: var(--rihla-card);
+  border: 1px solid var(--rihla-hairline);
+  box-shadow: var(--rihla-shadow);
+}
+
+.rihla-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: repeating-radial-gradient(circle at 0 0, #F5EFE6 0 1px, transparent 1px 5px);
+}
+
+.rihla-zellige {
+  background-image: url("data:image/svg+xml,%3Csvg width='72' height='72' viewBox='0 0 72 72' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23E8A838' stroke-opacity='0.18' stroke-width='1'%3E%3Cpath d='M36 2 70 36 36 70 2 36Z'/%3E%3Cpath d='M36 18 54 36 36 54 18 36Z'/%3E%3Cpath d='M2 36h68M36 2v68'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.rihla-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(232,168,56,0.34), transparent);
+}
+
+.ken-burns {
+  animation: ken-burns 8s ease-in-out infinite alternate;
+}
+
+@keyframes ken-burns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
 }

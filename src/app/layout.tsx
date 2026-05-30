@@ -1,18 +1,40 @@
 import type { Metadata, Viewport } from 'next'
+import { Cormorant_Garamond, DM_Sans, Noto_Naskh_Arabic } from 'next/font/google'
 import './globals.css'
 
+const display = Cormorant_Garamond({
+  subsets: ['latin'],
+  variable: '--font-display',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+})
+
+const body = DM_Sans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+  weight: ['300', '400', '500', '600', '700'],
+})
+
+const arabic = Noto_Naskh_Arabic({
+  subsets: ['arabic'],
+  variable: '--font-arabic',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+})
+
 export const metadata: Metadata = {
-  title: 'RihlAI — Morocco as locals know it',
-  description: 'AI-powered Morocco tourism guide for WC2030. Discover hidden gems, plan your trip, scan monuments.',
+  title: 'Rihla - Your local friend in Morocco',
+  description: 'AI-powered Morocco travel guide for WC2030. Discover hidden gems, plan your day, scan monuments, and explore like a local.',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'RihlAI',
+    title: 'Rihla',
   },
   icons: {
-    icon: '/icons/icon-192.png',
-    apple: '/icons/icon-192.png',
+    icon: '/logo.png',
+    apple: '/logo.png',
   },
 }
 
@@ -21,26 +43,13 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  themeColor: '#17110A',
+  themeColor: '#0F0E0C',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Cormorant Garamond — editorial luxury serif */}
-        {/* DM Sans — clean modern body */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Cairo:wght@400;600&display=swap"
-          rel="stylesheet"
-        />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-      </head>
-      <body className="antialiased" style={{ background: '#FAF7F2', color: '#17110A' }}>
+    <html lang="en" className={`${display.variable} ${body.variable} ${arabic.variable}`}>
+      <body className="antialiased" style={{ background: '#0F0E0C', color: '#F5EFE6' }}>
         {children}
       </body>
     </html>

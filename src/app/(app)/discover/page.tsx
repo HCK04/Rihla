@@ -1,17 +1,19 @@
 'use client'
 
-import { useState } from 'react'
-import { Gem } from 'lucide-react'
-import { SpotCard } from '@/components/discover/SpotCard'
+import Link from 'next/link'
+import type { ReactNode } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { Coffee, Gem, MapPin, Search, Sparkles, Utensils } from 'lucide-react'
+import { SpotCard } from '@/features/discover/components/SpotCard'
 import { useLang } from '@/lib/language-context'
 import { t } from '@/lib/i18n'
-import marrakechSpots from '@/data/spots/marrakech.json'
-import fezSpots from '@/data/spots/fez.json'
-import casablancaSpots from '@/data/spots/casablanca.json'
-import rabatSpots from '@/data/spots/rabat.json'
-import tangierSpots from '@/data/spots/tangier.json'
-import agadirSpots from '@/data/spots/agadir.json'
-import type { Spot } from '@/lib/types'
+import marrakechSpots from '@/content/spots/marrakech.json'
+import fezSpots from '@/content/spots/fez.json'
+import casablancaSpots from '@/content/spots/casablanca.json'
+import rabatSpots from '@/content/spots/rabat.json'
+import tangierSpots from '@/content/spots/tangier.json'
+import agadirSpots from '@/content/spots/agadir.json'
+import type { City, Spot } from '@/lib/types'
 
 const ALL_SPOTS = [
   ...marrakechSpots,
@@ -22,164 +24,164 @@ const ALL_SPOTS = [
   ...agadirSpots,
 ] as Spot[]
 
-const CITY_IDS = ['all', 'marrakech', 'fez', 'casablanca', 'rabat', 'tangier', 'agadir']
-const CITY_FIXED_LABELS: Record<string, string> = {
-  marrakech: 'Marrakech', fez: 'Fez', casablanca: 'Casablanca',
-  rabat: 'Rabat', tangier: 'Tangier', agadir: 'Agadir',
+const CITY_LABELS: Record<City | 'all', string> = {
+  all: 'Morocco',
+  marrakech: 'Marrakech',
+  fez: 'Fez',
+  casablanca: 'Casablanca',
+  rabat: 'Rabat',
+  tangier: 'Tangier',
+  agadir: 'Agadir',
 }
 
-const CATEGORY_IDS = ['all', 'culture', 'food', 'nature', 'medina', 'market', 'museum', 'cafe']
+const CITY_IDS: (City | 'all')[] = ['marrakech', 'fez', 'casablanca', 'rabat', 'tangier', 'agadir', 'all']
+
+function Lane({
+  title,
+  icon,
+  spots,
+  lang,
+}: {
+  title: string
+  icon: ReactNode
+  spots: Spot[]
+  lang: string
+}) {
+  return (
+    <section className="mt-7">
+      <div className="mb-3 flex items-center justify-between px-5">
+        <div className="flex items-center gap-2">
+          <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-[#E8A838]/20 bg-[#E8A838]/10 text-[#E8A838]">
+            {icon}
+          </span>
+          <h2 className="text-[18px] font-semibold text-[#F5EFE6]" style={{ fontFamily: 'var(--font-display)' }}>
+            {title}
+          </h2>
+        </div>
+        <span className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#7A7060]">{spots.length}</span>
+      </div>
+
+      <div className="flex gap-4 overflow-x-auto px-5 pb-2 scrollbar-none">
+        {spots.slice(0, 8).map((spot, index) => (
+          <div key={spot.id} className="w-[82vw] max-w-[330px] flex-shrink-0">
+            <SpotCard spot={spot} index={index} lang={lang} compact />
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
 
 export default function DiscoverPage() {
   const { lang } = useLang()
-  const [city, setCity] = useState('all')
-  const [category, setCategory] = useState('all')
-  const [hiddenGemsOnly, setHiddenGemsOnly] = useState(false)
+  const [city, setCity] = useState<City | 'all'>('marrakech')
+  const [headerHidden, setHeaderHidden] = useState(false)
+  const lastScrollY = useRef(0)
 
-  const filtered = ALL_SPOTS.filter(s => {
-    if (city !== 'all' && s.city !== city) return false
-    if (category !== 'all' && s.category !== category) return false
-    if (hiddenGemsOnly && s.rarity < 70) return false
-    return true
-  }).sort((a, b) => b.rarity - a.rarity)
+  const citySpots = useMemo(
+    () => ALL_SPOTS.filter(spot => city === 'all' || spot.city === city),
+    [city]
+  )
+  const hiddenGems = [...citySpots].sort((a, b) => b.rarity - a.rarity)
+  const foodSpots = citySpots.filter(spot => spot.category === 'food' || spot.category === 'cafe')
+  const matchDaySpots = citySpots.filter(spot => ['culture', 'market', 'medina', 'viewpoint'].includes(spot.category))
+
+  useEffect(() => {
+    lastScrollY.current = window.scrollY
+
+    const onScroll = () => {
+      const current = window.scrollY
+      const delta = current - lastScrollY.current
+
+      if (current < 40) {
+        setHeaderHidden(false)
+      } else if (delta > 8) {
+        setHeaderHidden(true)
+      } else if (delta < -8) {
+        setHeaderHidden(false)
+      }
+
+      lastScrollY.current = current
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
-    <div className="min-h-dvh" style={{ background: '#faf8f4' }}>
-      {/* Header */}
+    <main className="rihla-screen min-h-dvh pb-6">
       <div
-        className="sticky top-0 z-20 safe-top"
-        style={{ background: 'rgba(250,249,245,0.95)', backdropFilter: 'blur(12px)', borderBottom: '0.5px solid rgba(44,62,80,0.08)' }}
+        className="sticky top-0 z-30 border-b border-[#E8A838]/15 bg-[#0F0E0C]/88 px-5 pb-4 pt-safe-12 backdrop-blur-2xl transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+        style={{
+          transform: headerHidden ? 'translateY(calc(-100% + env(safe-area-inset-top, 0px) + 8px))' : 'translateY(0)',
+          boxShadow: headerHidden ? 'none' : '0 14px 42px rgba(0,0,0,0.22)',
+        }}
       >
-        <div className="px-5 pt-4 pb-3">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <p style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: '10px',
-                fontWeight: 600,
-                letterSpacing: '0.12em',
-                color: '#9B6E58',
-                textTransform: 'uppercase',
-                marginBottom: 3,
-              }}>
-                Morocco · WC2030
-              </p>
-              <h1
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: '44px',
-                  fontWeight: 700,
-                  lineHeight: '46px',
-                  letterSpacing: '-0.02em',
-                  color: '#17110A',
-                }}
-              >
-                {t(lang, 'discover')}
-              </h1>
-            </div>
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.10em] text-[#E8A838]">Rihla</p>
+            <h1 className="mt-1 text-[30px] font-semibold leading-none text-[#F5EFE6]" style={{ fontFamily: 'var(--font-display)' }}>
+              {t(lang, 'discovery_title')}
+            </h1>
+          </div>
+          <button className="flex h-10 items-center gap-1.5 rounded-full border border-[#E8A838]/20 bg-[#1A1815] px-3 text-[12px] font-semibold text-[#F5EFE6]">
+            <MapPin size={13} color="#E8A838" strokeWidth={1.7} />
+            {CITY_LABELS[city]}
+          </button>
+        </div>
 
-            {/* Hidden gems toggle */}
+        <Link
+          href="/chat"
+          className="mt-4 flex h-13 min-h-[52px] items-center gap-3 rounded-2xl border border-[#E8A838]/20 bg-[#1A1815] px-4 shadow-[0_8px_32px_rgba(196,98,45,0.12)]"
+        >
+          <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-[#C4622D]">
+            <Sparkles size={15} color="#fff" strokeWidth={1.6} />
+            <span className="absolute inset-[-4px] rounded-full border border-[#C4622D]/40 animate-ping" />
+          </span>
+          <span className="flex-1 text-[15px] text-[#B9AD9B]">{t(lang, 'ask_morocco')}</span>
+          <Search size={16} color="#E8A838" strokeWidth={1.6} />
+        </Link>
+
+        <div className="-mx-5 mt-4 flex gap-2 overflow-x-auto px-5 scrollbar-none">
+          {CITY_IDS.map(id => (
             <button
-              onClick={() => setHiddenGemsOnly(!hiddenGemsOnly)}
-              className="flex items-center gap-2 transition-all duration-200"
+              key={id}
+              onClick={() => setCity(id)}
+              className="h-9 flex-shrink-0 rounded-full border px-4 text-[13px] font-semibold transition-colors"
               style={{
-                height: 36,
-                paddingLeft: 14,
-                paddingRight: 14,
-                borderRadius: 9999,
-                background: hiddenGemsOnly ? '#fff3ef' : '#efeeea',
-                border: `1px solid ${hiddenGemsOnly ? '#c64f00' : '#e3e2df'}`,
-                fontFamily: 'var(--font-sans)',
-                fontSize: '12px',
-                fontWeight: 600,
-                color: hiddenGemsOnly ? '#8c3500' : '#594238',
-                letterSpacing: '0.03em',
+                background: city === id ? '#C4622D' : '#1A1815',
+                borderColor: city === id ? 'rgba(232,168,56,0.45)' : 'rgba(232,168,56,0.16)',
+                color: city === id ? '#FFFFFF' : '#B9AD9B',
               }}
             >
-              <Gem size={12} strokeWidth={1.75} />
-              {t(lang, 'hidden_gems')}
+              {CITY_LABELS[id]}
             </button>
-          </div>
-
-          {/* City pills */}
-          <div className="flex gap-2 overflow-x-auto pb-2 -mx-5 px-5 scrollbar-none">
-            {CITY_IDS.map(id => (
-              <button
-                key={id}
-                onClick={() => setCity(id)}
-                className="whitespace-nowrap flex-shrink-0 transition-all duration-150"
-                style={{
-                  height: 34,
-                  paddingLeft: 14,
-                  paddingRight: 14,
-                  borderRadius: 9999,
-                  background: city === id ? '#8c3500' : '#ffffff',
-                  border: `1px solid ${city === id ? '#8c3500' : '#e3e2df'}`,
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: '13px',
-                  fontWeight: city === id ? 600 : 500,
-                  color: city === id ? '#ffffff' : '#594238',
-                  boxShadow: city === id ? '0 4px 12px rgba(158,61,0,0.20)' : 'none',
-                }}
-              >
-                {id === 'all' ? t(lang, 'all_cities') : CITY_FIXED_LABELS[id]}
-              </button>
-            ))}
-          </div>
-
-          {/* Category pills */}
-          <div className="flex gap-2 overflow-x-auto pb-1 -mx-5 px-5 scrollbar-none mt-2">
-            {CATEGORY_IDS.map(id => (
-              <button
-                key={id}
-                onClick={() => setCategory(id)}
-                className="whitespace-nowrap flex-shrink-0 transition-all duration-150"
-                style={{
-                  height: 30,
-                  paddingLeft: 12,
-                  paddingRight: 12,
-                  borderRadius: 9999,
-                  background: category === id ? '#fff3ef' : 'transparent',
-                  border: `1px solid ${category === id ? '#c64f00' : '#e0c0b2'}`,
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: '12px',
-                  fontWeight: 500,
-                  color: category === id ? '#8c3500' : '#8c7166',
-                  letterSpacing: '0.02em',
-                }}
-              >
-                {id === 'all' ? t(lang, 'all_categories') : t(lang, `cat_${id}`)}
-              </button>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* Count */}
-      <div className="px-5 py-3 flex items-center gap-2">
-        <span style={{ fontFamily: 'var(--font-display)', fontSize: '18px', fontWeight: 700, color: '#17110A' }}>
-          {filtered.length}
-        </span>
-        <span style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#8C7166' }}>
-          {hiddenGemsOnly ? t(lang, 'hidden_gems').toLowerCase() : t(lang, 'all_spots').toLowerCase()}
-        </span>
+      <div className="px-5 pt-5">
+        <div className="rihla-card overflow-hidden rounded-2xl p-4">
+          <p className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#E8A838]">{t(lang, 'marhaba')}</p>
+          <p className="mt-2 text-[16px] leading-6 text-[#D9CCB7]">
+            {t(lang, 'discovery_intro')}
+          </p>
+        </div>
       </div>
 
-      {/* Cards */}
-      <div className="px-5 pb-6 flex flex-col gap-4">
-        {filtered.length === 0 ? (
-          <div className="text-center py-16">
-            <Gem size={36} strokeWidth={1.5} className="mx-auto mb-3" style={{ color: '#e0c0b2' }} />
-            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '16px', color: '#8c7166' }}>
-              No spots match your filters
-            </p>
-          </div>
-        ) : (
-          filtered.map((spot, i) => (
-            <SpotCard key={spot.id} spot={spot} index={i} lang={lang} />
-          ))
-        )}
+      <Lane title={t(lang, 'hidden_near_you')} icon={<Gem size={16} strokeWidth={1.5} />} spots={hiddenGems} lang={lang} />
+      <Lane title={t(lang, 'match_day_guide')} icon={<Sparkles size={16} strokeWidth={1.5} />} spots={matchDaySpots} lang={lang} />
+      <Lane title={t(lang, 'eat_like_local')} icon={<Utensils size={16} strokeWidth={1.5} />} spots={foodSpots.length ? foodSpots : hiddenGems} lang={lang} />
+
+      <div className="px-5 pb-3 pt-6">
+        <Link
+          href="/itinerary"
+          className="flex h-14 items-center justify-center gap-2 rounded-lg bg-[#C4622D] text-[15px] font-semibold text-white shadow-[0_12px_36px_rgba(196,98,45,0.28)]"
+        >
+          <Coffee size={17} strokeWidth={1.7} />
+          {t(lang, 'build_my_day')}
+        </Link>
       </div>
-    </div>
+    </main>
   )
 }
